@@ -109,39 +109,64 @@ namespace ros_opencl {
         ROS_INFO("Kernel created");
     }
 
-// void cloudCallback (const sensor_msgs::PointCloud2& msg){
-//     cl_int sz = msg.data.size();
-//     cl_uint8 *in = (cl_uint8 *) malloc(sizeof(cl_uint8)*sz);
-//     cl_int error = 0;
+    sensor_msgs::PointCloud2 ROS_OpenCL::process(const sensor_msgs::PointCloud2& msg){
+        cl_int sz = msg.data.size();
+        cl_uint8 *in = (cl_uint8 *) malloc(sizeof(cl_uint8)*sz);
+        cl_int error = 0;
+        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(cl_uint8) * sz, NULL, &error);
+        checkError(error);
+        clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
+        cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
 
-//     cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(cl_uint8) * sz, NULL, &error);
-//     checkError(error);
+        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, sizeof(cl_uint8) * sz, in, 0, NULL, NULL);
+        checkError (error);
 
-//     clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
+        size_t size = sz;
 
-//     cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
+        cl_event gpuExec;
 
-//     clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, sizeof(cl_uint8) * sz, in, 0, NULL, NULL);
-//     checkError (error);
+        checkError (clEnqueueNDRangeKernel (queue, kernel, 1, NULL, &size, NULL, 0, NULL, &gpuExec));
 
-//     size_t size = sz;
+        clWaitForEvents(1, &gpuExec);
 
-//     cl_event gpuExec;
+        uint8_t *result = (uint8_t *) malloc(sizeof(uint8_t) * sz);
+        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, sizeof(uint8_t) * sz, result, 0, NULL, NULL));
 
-//     checkError (clEnqueueNDRangeKernel (queue, kernel, 1, NULL, &size, NULL, 0, NULL, &gpuExec));
+        clReleaseCommandQueue (queue);
+        clReleaseMemObject(buffer);
 
-//     clWaitForEvents(1, &gpuExec);
+        sensor_msgs::PointCloud2 res = sensor_msgs::PointCloud2(msg);
+        res.data.insert(res.data.end(), &result[0], &result[sz]);
+        return res;
+    }
 
-//     uint8_t *result = (uint8_t *) malloc(sizeof(uint8_t) * sz);
-//     checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, sizeof(uint8_t) * sz, result, 0, NULL, NULL));
+    void ROS_OpenCL::process(sensor_msgs::PointCloud2::Ptr msg){
+        cl_int sz = msg->data.size();
+        cl_uint8 *in = (cl_uint8 *) malloc(sizeof(cl_uint8)*sz);
+        cl_int error = 0;
+        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(cl_uint8) * sz, NULL, &error);
+        checkError(error);
+        clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
+        cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
 
-//     clReleaseCommandQueue (queue);
-//     clReleaseMemObject(buffer);
+        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, sizeof(cl_uint8) * sz, in, 0, NULL, NULL);
+        checkError (error);
 
-//     sensor_msgs::PointCloud2 res = sensor_msgs::PointCloud2(msg);
-//     res.data.insert(res.data.end(), &result[0], &result[sz]);
-//     pub.publish(res);
-//     free(result);
-// }
+        size_t size = sz;
+
+        cl_event gpuExec;
+
+        checkError (clEnqueueNDRangeKernel (queue, kernel, 1, NULL, &size, NULL, 0, NULL, &gpuExec));
+
+        clWaitForEvents(1, &gpuExec);
+
+        uint8_t *result = (uint8_t *) malloc(sizeof(uint8_t) * sz);
+        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, sizeof(uint8_t) * sz, result, 0, NULL, NULL));
+
+        clReleaseCommandQueue (queue);
+        clReleaseMemObject(buffer);
+
+        msg->data.insert(msg->data.end(), &result[0], &result[sz]);
+    }
 
 }

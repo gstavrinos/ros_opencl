@@ -35,6 +35,8 @@ class ROS_OpenCL{
         ROS_OpenCL(const std::string full_kernel_path, const std::string kernel_function);
         virtual ~ROS_OpenCL();
 
+        sensor_msgs::PointCloud2 process(const sensor_msgs::PointCloud2& msg);
+        void process(sensor_msgs::PointCloud2::Ptr msg);
 };
 
 }
