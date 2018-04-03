@@ -97,7 +97,7 @@ namespace ros_opencl {
 
         ROS_INFO("Context created");
 
-        cl_program program = createProgram (LoadKernel (full_kernel_path.c_str()), context);
+        program = createProgram (LoadKernel (full_kernel_path.c_str()), context);
 
         checkError (clBuildProgram (program, deviceIdCount, deviceIds.data (), "-D FILTER_SIZE=1", NULL, NULL));
 
@@ -115,6 +115,7 @@ namespace ros_opencl {
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(cl_uint8) * sz, NULL, &error);
         checkError(error);
+        // TODO bug around here, msg.data is not written in the buffer!
         clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
         cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
 
@@ -132,11 +133,15 @@ namespace ros_opencl {
         uint8_t *result = (uint8_t *) malloc(sizeof(uint8_t) * sz);
         checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, sizeof(uint8_t) * sz, result, 0, NULL, NULL));
 
+        sensor_msgs::PointCloud2 res = sensor_msgs::PointCloud2(msg);
+        res.data.clear();
+        res.data.insert(res.data.end(), &result[0], &result[sz]);
+
         clReleaseCommandQueue (queue);
         clReleaseMemObject(buffer);
+        free(in);
+        free(result);
 
-        sensor_msgs::PointCloud2 res = sensor_msgs::PointCloud2(msg);
-        res.data.insert(res.data.end(), &result[0], &result[sz]);
         return res;
     }
 
@@ -163,10 +168,18 @@ namespace ros_opencl {
         uint8_t *result = (uint8_t *) malloc(sizeof(uint8_t) * sz);
         checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, sizeof(uint8_t) * sz, result, 0, NULL, NULL));
 
+        msg->data.insert(msg->data.end(), &result[0], &result[sz]);
+
         clReleaseCommandQueue (queue);
         clReleaseMemObject(buffer);
+        free(in);
+        free(result);
+    }
 
-        msg->data.insert(msg->data.end(), &result[0], &result[sz]);
+    void ROS_OpenCL::clean(){
+        clReleaseKernel (kernel);
+        clReleaseProgram (program);
+        clReleaseContext (context);
     }
 
 }

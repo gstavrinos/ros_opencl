@@ -41,4 +41,7 @@ add_library(${PROJECT_NAME}
     src/${PROJECT_NAME}.cpp
 )
 
-target_link_libraries(${PROJECT_NAME} ${OpenCL_LIBRARIES} ${catkin_LIBRARIES} ${OpenCL_})
+target_link_libraries(${PROJECT_NAME} ${OpenCL_LIBRARIES} ${catkin_LIBRARIES})
+
+add_executable(pointcloud_test1 tests/src/pointcloud_test1.cpp)
+target_link_libraries(pointcloud_test1 ${PROJECT_NAME} ${catkin_LIBRARIES})
