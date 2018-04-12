@@ -109,13 +109,13 @@ namespace ros_opencl {
         ROS_INFO("Kernel created");
     }
 
+    // TODO pointcloud bug with reading bytes that correspond to float32. How should I handle this?
     sensor_msgs::PointCloud2 ROS_OpenCL::process(const sensor_msgs::PointCloud2& msg){
         cl_int sz = msg.data.size();
         cl_uint8 *in = (cl_uint8 *) malloc(sizeof(cl_uint8)*sz);
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(cl_uint8) * sz, NULL, &error);
         checkError(error);
-        // TODO bug around here, msg.data is not written in the buffer!
         clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
         cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
 
@@ -145,6 +145,7 @@ namespace ros_opencl {
         return res;
     }
 
+    // TODO pointcloud bug with reading bytes that correspond to float32. How should I handle this?
     void ROS_OpenCL::process(sensor_msgs::PointCloud2::Ptr msg){
         cl_int sz = msg->data.size();
         cl_uint8 *in = (cl_uint8 *) malloc(sizeof(cl_uint8)*sz);
@@ -175,6 +176,72 @@ namespace ros_opencl {
         free(in);
         free(result);
     }
+
+    sensor_msgs::LaserScan ROS_OpenCL::process(const sensor_msgs::LaserScan& msg){
+        cl_int sz = msg.ranges.size();
+        float *in = (float *) malloc(sizeof(float)*sz);
+        cl_int error = 0;
+        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(float) * sz, NULL, &error);
+        checkError(error);
+        clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
+        cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
+
+        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, sizeof(float) * sz, in, 0, NULL, NULL);
+        checkError (error);
+
+        size_t size = sz;
+
+        cl_event gpuExec;
+
+        checkError (clEnqueueNDRangeKernel (queue, kernel, 1, NULL, &size, NULL, 0, NULL, &gpuExec));
+
+        clWaitForEvents(1, &gpuExec);
+
+        float *result = (float *) malloc(sizeof(float) * sz);
+        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, sizeof(float) * sz, result, 0, NULL, NULL));
+
+        sensor_msgs::LaserScan res = sensor_msgs::LaserScan(msg);
+        res.ranges.clear();
+        res.ranges.insert(res.ranges.end(), &result[0], &result[sz]);
+
+        clReleaseCommandQueue (queue);
+        clReleaseMemObject(buffer);
+        free(in);
+        free(result);
+
+        return res;
+    }
+
+    void ROS_OpenCL::process(sensor_msgs::LaserScan::Ptr msg){
+        cl_int sz = msg->ranges.size();
+        float *in = (float *) malloc(sizeof(float)*sz);
+        cl_int error = 0;
+        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(float) * sz, NULL, &error);
+        checkError(error);
+        clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
+        cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
+
+        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, sizeof(float) * sz, in, 0, NULL, NULL);
+        checkError (error);
+
+        size_t size = sz;
+
+        cl_event gpuExec;
+
+        checkError (clEnqueueNDRangeKernel (queue, kernel, 1, NULL, &size, NULL, 0, NULL, &gpuExec));
+
+        clWaitForEvents(1, &gpuExec);
+
+        float *result = (float *) malloc(sizeof(float) * sz);
+        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, sizeof(float) * sz, result, 0, NULL, NULL));
+
+        msg->ranges.clear();
+        msg->ranges.insert(msg->ranges.end(), &result[0], &result[sz]);
+
+        clReleaseCommandQueue (queue);
+        clReleaseMemObject(buffer);
+        free(in);
+        free(result);}
 
     void ROS_OpenCL::clean(){
         clReleaseKernel (kernel);

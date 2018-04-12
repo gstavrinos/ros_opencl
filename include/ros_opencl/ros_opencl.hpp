@@ -7,6 +7,7 @@
 #include <ros/ros.h>
 #include <ros/package.h>
 #include <sensor_msgs/Image.h>
+#include <sensor_msgs/LaserScan.h>
 #include <sensor_msgs/PointCloud2.h>
 
 #ifdef __APPLE__
@@ -39,6 +40,8 @@ class ROS_OpenCL{
 
         sensor_msgs::PointCloud2 process(const sensor_msgs::PointCloud2& msg);
         void process(sensor_msgs::PointCloud2::Ptr msg);
+        sensor_msgs::LaserScan process(const sensor_msgs::LaserScan& msg);
+        void process(sensor_msgs::LaserScan::Ptr msg);
         void clean();
 };
 
