@@ -29,6 +29,7 @@ namespace ros_opencl {
     void ROS_OpenCL::checkError (const cl_int error){
         if (error != CL_SUCCESS) {
             ROS_ERROR("OpenCL call failed with error: %d", error);
+            // TODO error handling
             //exit (1);
         }
     }
@@ -144,7 +145,7 @@ namespace ros_opencl {
     void ROS_OpenCL::process(sensor_msgs::PointCloud2::Ptr msg){
         cl_int sz = msg->data.size();
         cl_int error = 0;
-        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(cl_uint8) * sz, NULL, &error);
+        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, sz, NULL, &error);
         checkError(error);
         clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
         cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
@@ -173,12 +174,12 @@ namespace ros_opencl {
     sensor_msgs::LaserScan ROS_OpenCL::process(const sensor_msgs::LaserScan& msg){
         cl_int sz = msg.ranges.size();
         cl_int error = 0;
-        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(float) * sz, NULL, &error);
+        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, sz, NULL, &error);
         checkError(error);
         clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
         cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
 
-        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, sizeof(float) * sz, &msg.ranges[0], 0, NULL, NULL);
+        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, sz, &msg.ranges[0], 0, NULL, NULL);
         checkError (error);
 
         size_t size = sz;
@@ -189,8 +190,8 @@ namespace ros_opencl {
 
         clWaitForEvents(1, &gpuExec);
 
-        float *result = (float *) malloc(sizeof(float) * sz);
-        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, sizeof(float) * sz, result, 0, NULL, NULL));
+        float *result = (float *) malloc(sz);
+        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, sz, result, 0, NULL, NULL));
 
         sensor_msgs::LaserScan res = sensor_msgs::LaserScan(msg);
         res.ranges.assign(result, result+sz);
@@ -210,7 +211,7 @@ namespace ros_opencl {
         clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
         cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
 
-        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, sizeof(float) * sz, &msg->ranges[0], 0, NULL, NULL);
+        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, sz, &msg->ranges[0], 0, NULL, NULL);
         checkError (error);
 
         size_t size = sz;
@@ -221,10 +222,71 @@ namespace ros_opencl {
 
         clWaitForEvents(1, &gpuExec);
 
-        float *result = (float *) malloc(sizeof(float) * sz);
-        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, sizeof(float) * sz, result, 0, NULL, NULL));
+        float *result = (float *) malloc(sz);
+        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, sz, result, 0, NULL, NULL));
 
         msg->ranges.assign(result, result+sz);
+
+        clReleaseCommandQueue (queue);
+        clReleaseMemObject(buffer);
+        free(result);
+    }
+
+    sensor_msgs::Image ROS_OpenCL::process(const sensor_msgs::Image& msg){
+        cl_int sz = msg.data.size();
+        cl_int error = 0;
+        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, sz, NULL, &error);
+        checkError(error);
+        clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
+        cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
+
+        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, sz, &msg.data[0], 0, NULL, NULL);
+        checkError (error);
+
+        size_t size = sz;
+
+        cl_event gpuExec;
+
+        checkError (clEnqueueNDRangeKernel (queue, kernel, 1, NULL, &size, NULL, 0, NULL, &gpuExec));
+
+        clWaitForEvents(1, &gpuExec);
+
+        uint8_t *result = (uint8_t *) malloc(sz);
+        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, sz, result, 0, NULL, NULL));
+
+        sensor_msgs::Image res = sensor_msgs::Image(msg);
+        res.data.assign(result, result+sz);
+
+        clReleaseCommandQueue (queue);
+        clReleaseMemObject(buffer);
+        free(result);
+
+        return res;
+    }
+
+    void ROS_OpenCL::process(sensor_msgs::Image::Ptr msg){
+        cl_int sz = msg->data.size();
+        cl_int error = 0;
+        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, sz, NULL, &error);
+        checkError(error);
+        clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
+        cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
+
+        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, sz, &msg->data[0], 0, NULL, NULL);
+        checkError (error);
+
+        size_t size = sz;
+
+        cl_event gpuExec;
+
+        checkError (clEnqueueNDRangeKernel (queue, kernel, 1, NULL, &size, NULL, 0, NULL, &gpuExec));
+
+        clWaitForEvents(1, &gpuExec);
+
+        uint8_t *result = (uint8_t *) malloc(sz);
+        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, sz, result, 0, NULL, NULL));
+
+        msg->data.assign(result, result+sz);
 
         clReleaseCommandQueue (queue);
         clReleaseMemObject(buffer);

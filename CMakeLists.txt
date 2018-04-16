@@ -54,3 +54,6 @@ target_link_libraries(laserscan_test1 ${PROJECT_NAME} ${catkin_LIBRARIES})
 
 add_executable(laserscan_test2 tests/src/laserscan_test2.cpp)
 target_link_libraries(laserscan_test2 ${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(image_test1 tests/src/image_test1.cpp)
+target_link_libraries(image_test1 ${PROJECT_NAME} ${catkin_LIBRARIES})

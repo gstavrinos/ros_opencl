@@ -42,6 +42,8 @@ class ROS_OpenCL{
         void process(sensor_msgs::PointCloud2::Ptr msg);
         sensor_msgs::LaserScan process(const sensor_msgs::LaserScan& msg);
         void process(sensor_msgs::LaserScan::Ptr msg);
+        sensor_msgs::Image process(const sensor_msgs::Image& msg);
+        void process(sensor_msgs::Image::Ptr msg);
         void clean();
 };
 
