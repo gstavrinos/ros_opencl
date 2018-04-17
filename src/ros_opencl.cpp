@@ -293,6 +293,67 @@ namespace ros_opencl {
         free(result);
     }
 
+    std::vector<float> ROS_OpenCL::process(const std::vector<float> v){
+        cl_int sz = v.size();
+        cl_int error = 0;
+        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, sz, NULL, &error);
+        checkError(error);
+        clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
+        cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
+
+        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, sz, &v[0], 0, NULL, NULL);
+        checkError (error);
+
+        size_t size = sz;
+
+        cl_event gpuExec;
+
+        checkError (clEnqueueNDRangeKernel (queue, kernel, 1, NULL, &size, NULL, 0, NULL, &gpuExec));
+
+        clWaitForEvents(1, &gpuExec);
+
+        float *result = (float *) malloc(sz);
+        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, sz, result, 0, NULL, NULL));
+
+        std::vector<float> res = std::vector<float>();
+        res.assign(result, result+sz);
+
+        clReleaseCommandQueue (queue);
+        clReleaseMemObject(buffer);
+        free(result);
+
+        return res;
+    }
+
+    void ROS_OpenCL::process(std::vector<float>* v){
+        cl_int sz = v->size();
+        cl_int error = 0;
+        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, sz, NULL, &error);
+        checkError(error);
+        clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
+        cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
+
+        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, sz, &v, 0, NULL, NULL);
+        checkError (error);
+
+        size_t size = sz;
+
+        cl_event gpuExec;
+
+        checkError (clEnqueueNDRangeKernel (queue, kernel, 1, NULL, &size, NULL, 0, NULL, &gpuExec));
+
+        clWaitForEvents(1, &gpuExec);
+
+        float *result = (float *) malloc(sz);
+        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, sz, result, 0, NULL, NULL));
+
+        v->assign(result, result+sz);
+
+        clReleaseCommandQueue (queue);
+        clReleaseMemObject(buffer);
+        free(result);
+    }
+
     void ROS_OpenCL::clean(){
         clReleaseKernel (kernel);
         clReleaseProgram (program);

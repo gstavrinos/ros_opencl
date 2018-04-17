@@ -13,12 +13,12 @@ kernel void closerLaserScan(global float* v){
     v[i] = v[i] * v[i] * 0.1f;
 }
 
-kernel void grayScale(global uint* v){
+kernel void grayScale(global char* v){
     unsigned int i = get_global_id(0);
-     v[i] = v[i];
-    // if(i % 3 == 0){
-    //     v[i] = (v[i] + v[i+1] + v[i+2]) / 3;
-    //     v[i+1] = (v[i] + v[i+1] + v[i+2]) / 3;
-    //     v[i+2] = (v[i] + v[i+1] + v[i+2]) / 3;
-    // }
+    //v[i] = v[i];
+    if(i % 3 == 0){
+        v[i] = v[i];
+        v[i+1] = v[i];
+        v[i+2] = v[i];
+    }
 }
