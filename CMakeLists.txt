@@ -60,3 +60,9 @@ target_link_libraries(image_test1 ${PROJECT_NAME} ${catkin_LIBRARIES})
 
 add_executable(image_test2 tests/src/image_test2.cpp)
 target_link_libraries(image_test2 ${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(float_vector_test1 tests/src/float_vector_test1.cpp)
+target_link_libraries(float_vector_test1 ${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(float_vector_test2 tests/src/float_vector_test2.cpp)
+target_link_libraries(float_vector_test2 ${PROJECT_NAME} ${catkin_LIBRARIES})
