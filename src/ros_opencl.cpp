@@ -137,6 +137,7 @@ namespace ros_opencl {
 
         clReleaseCommandQueue (queue);
         clReleaseMemObject(buffer);
+        clReleaseEvent(gpuExec);
         free(result);
 
         return res;
@@ -168,6 +169,7 @@ namespace ros_opencl {
 
         clReleaseCommandQueue (queue);
         clReleaseMemObject(buffer);
+        clReleaseEvent(gpuExec);
         free(result);
     }
 
@@ -199,6 +201,7 @@ namespace ros_opencl {
 
         clReleaseCommandQueue (queue);
         clReleaseMemObject(buffer);
+        clReleaseEvent(gpuExec);
         free(result);
 
         return res;
@@ -231,6 +234,7 @@ namespace ros_opencl {
 
         clReleaseCommandQueue (queue);
         clReleaseMemObject(buffer);
+        clReleaseEvent(gpuExec);
         free(result);
     }
 
@@ -261,6 +265,7 @@ namespace ros_opencl {
 
         clReleaseCommandQueue (queue);
         clReleaseMemObject(buffer);
+        clReleaseEvent(gpuExec);
         free(result);
 
         return res;
@@ -292,6 +297,7 @@ namespace ros_opencl {
 
         clReleaseCommandQueue (queue);
         clReleaseMemObject(buffer);
+        clReleaseEvent(gpuExec);
         free(result);
     }
 
@@ -323,6 +329,7 @@ namespace ros_opencl {
 
         clReleaseCommandQueue (queue);
         clReleaseMemObject(buffer);
+        clReleaseEvent(gpuExec);
         free(result);
 
         return res;
@@ -355,6 +362,7 @@ namespace ros_opencl {
 
         clReleaseCommandQueue (queue);
         clReleaseMemObject(buffer);
+        clReleaseEvent(gpuExec);
         free(result);
     }
 
