@@ -46,6 +46,8 @@ class ROS_OpenCL{
         void process(sensor_msgs::Image::Ptr msg);
         std::vector<float> process(const std::vector<float> v);
         void process(std::vector<float>* v);
+        std::vector<int> process(const std::vector<int> v);
+        void process(std::vector<int>* v);
         void clean();
 };
 
