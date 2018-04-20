@@ -4,6 +4,12 @@ namespace ros_opencl {
 
     // Private Methods
 
+    void ROS_OpenCL::clean(){
+        clReleaseKernel (kernel);
+        clReleaseProgram (program);
+        clReleaseContext (context);
+    }
+
     std::string ROS_OpenCL::getPlatformName (const cl_platform_id id){
         size_t size = 0;
         clGetPlatformInfo (id, CL_PLATFORM_NAME, 0, NULL, &size);
@@ -108,6 +114,21 @@ namespace ros_opencl {
         checkError (error);
 
         ROS_INFO("Kernel created");
+    }
+
+    ROS_OpenCL::~ROS_OpenCL(){
+        if(!deviceIds.empty()){
+            clean();
+        }
+    }
+
+    ROS_OpenCL ROS_OpenCL::operator=(ROS_OpenCL* s){
+        std::swap(kernel, s->kernel);
+        std::swap(context, s->context);
+        std::swap(program, s->program);
+        std::swap(deviceIds, s->deviceIds);
+        printf("=====\n");
+        return *this;
     }
 
     sensor_msgs::PointCloud2 ROS_OpenCL::process(const sensor_msgs::PointCloud2& msg){
@@ -430,11 +451,4 @@ namespace ros_opencl {
         clReleaseEvent(gpuExec);
         free(result);
     }
-
-    void ROS_OpenCL::clean(){
-        clReleaseKernel (kernel);
-        clReleaseProgram (program);
-        clReleaseContext (context);
-    }
-
 }

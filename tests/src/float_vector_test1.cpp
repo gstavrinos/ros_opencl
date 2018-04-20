@@ -29,7 +29,7 @@ int main (int argc, char** argv){
 
     string full_kernel_path = ros::package::getPath("ros_opencl") + "/tests/kernels/" + kernel_filename;
 
-    roscl = ros_opencl::ROS_OpenCL(full_kernel_path, "closerLaserScan");
+    roscl = new ros_opencl::ROS_OpenCL(full_kernel_path, "closerLaserScan");
 
     pub = nh.advertise<sensor_msgs::LaserScan>(result_topic, 1);
     ros::Subscriber s = nh.subscribe (scan_topic, 1, scanCallback);
@@ -37,6 +37,4 @@ int main (int argc, char** argv){
     while(ros::ok()){
         ros::spin();
     }
-
-    roscl.clean();
 }

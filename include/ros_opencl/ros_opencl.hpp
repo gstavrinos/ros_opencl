@@ -20,13 +20,13 @@ namespace ros_opencl {
 
 class ROS_OpenCL{
 
-    protected:
+    private:
         cl_kernel kernel;
         cl_context context;
         cl_program program;
         std::vector<cl_device_id> deviceIds;
 
-    private:
+        void clean();
         void checkError (const cl_int error);
         std::string LoadKernel (const char* name);
         std::string getDeviceName (const cl_device_id id);
@@ -36,19 +36,25 @@ class ROS_OpenCL{
     public:
         ROS_OpenCL(){}
         ROS_OpenCL(const std::string full_kernel_path, const std::string kernel_function);
-        virtual ~ROS_OpenCL(){}
+        ROS_OpenCL(const ROS_OpenCL& s){}
+        ~ROS_OpenCL();
+        ROS_OpenCL operator=(ROS_OpenCL* s);
+
 
         sensor_msgs::PointCloud2 process(const sensor_msgs::PointCloud2& msg);
         void process(sensor_msgs::PointCloud2::Ptr msg);
+
         sensor_msgs::LaserScan process(const sensor_msgs::LaserScan& msg);
         void process(sensor_msgs::LaserScan::Ptr msg);
+
         sensor_msgs::Image process(const sensor_msgs::Image& msg);
         void process(sensor_msgs::Image::Ptr msg);
+
         std::vector<float> process(const std::vector<float> v);
         void process(std::vector<float>* v);
+
         std::vector<int> process(const std::vector<int> v);
         void process(std::vector<int>* v);
-        void clean();
 };
 
 }
