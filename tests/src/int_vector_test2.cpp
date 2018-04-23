@@ -10,15 +10,15 @@ ros_opencl::ROS_OpenCL roscl;
 
 void imageCallback (const sensor_msgs::Image& msg){
     sensor_msgs::Image im = sensor_msgs::Image(msg);
-    // std::vector<int>* v;
-    // for (unsigned i = 0; i<msg.data.size(); i++){
-    //     v->push_back(msg.data[i]);
-    // }
-    // roscl.process(v);
-    // im.data.clear();
-    //  for (unsigned i = 0; i<v->size(); i++){
-    //      im.data.push_back(v->at(i));
-    //  }
+    std::vector<int> v;
+    for (unsigned i = 0; i<msg.data.size(); i++){
+        v.push_back(msg.data[i]);
+    }
+    roscl.process(&v);
+    im.data.clear();
+    for (unsigned i = 0; i<v.size(); i++){
+        im.data.push_back(v.at(i));
+    }
     pub.publish(im);
 }
 
