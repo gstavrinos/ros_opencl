@@ -127,7 +127,7 @@ namespace ros_opencl {
         std::swap(context, s->context);
         std::swap(program, s->program);
         std::swap(deviceIds, s->deviceIds);
-        printf("=====\n");
+        ROS_INFO("=====");
         return *this;
     }
 
@@ -196,17 +196,17 @@ namespace ros_opencl {
 
     sensor_msgs::LaserScan ROS_OpenCL::process(const sensor_msgs::LaserScan& msg){
         cl_int sz = msg.ranges.size();
-        cl_int floatsz = sizeof(float) * sz;
+        cl_int typesz = sizeof(float) * sz;
         cl_int error = 0;
-        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, floatsz, NULL, &error);
+        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
         clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
         cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
 
-        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, floatsz, &msg.ranges[0], 0, NULL, NULL);
+        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, typesz, &msg.ranges[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size = floatsz;
+        size_t size = typesz;
 
         cl_event gpuExec;
 
@@ -214,8 +214,8 @@ namespace ros_opencl {
 
         clWaitForEvents(1, &gpuExec);
 
-        float *result = (float *) malloc(floatsz);
-        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, floatsz, result, 0, NULL, NULL));
+        float *result = (float *) malloc(typesz);
+        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
 
         sensor_msgs::LaserScan res = sensor_msgs::LaserScan(msg);
         res.ranges.assign(result, result+sz);
@@ -230,17 +230,17 @@ namespace ros_opencl {
 
     void ROS_OpenCL::process(sensor_msgs::LaserScan::Ptr msg){
         cl_int sz = msg->ranges.size();
-        cl_int floatsz = sizeof(float) * sz;
+        cl_int typesz = sizeof(float) * sz;
         cl_int error = 0;
-        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, floatsz, NULL, &error);
+        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
         clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
         cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
 
-        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, floatsz, &msg->ranges[0], 0, NULL, NULL);
+        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, typesz, &msg->ranges[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size = floatsz;
+        size_t size = typesz;
 
         cl_event gpuExec;
 
@@ -248,8 +248,8 @@ namespace ros_opencl {
 
         clWaitForEvents(1, &gpuExec);
 
-        float *result = (float *) malloc(floatsz);
-        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, floatsz, result, 0, NULL, NULL));
+        float *result = (float *) malloc(typesz);
+        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
 
         msg->ranges.assign(result, result+sz);
 
@@ -324,17 +324,17 @@ namespace ros_opencl {
 
     std::vector<float> ROS_OpenCL::process(const std::vector<float> v){
         cl_int sz = v.size();
-        cl_int floatsz = sizeof(float) * sz;
+        cl_int typesz = sizeof(float) * sz;
         cl_int error = 0;
-        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, floatsz, NULL, &error);
+        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
         clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
         cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
 
-        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, floatsz, &v[0], 0, NULL, NULL);
+        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, typesz, &v[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size = floatsz;
+        size_t size = typesz;
 
         cl_event gpuExec;
 
@@ -342,8 +342,8 @@ namespace ros_opencl {
 
         clWaitForEvents(1, &gpuExec);
 
-        float *result = (float *) malloc(floatsz);
-        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, floatsz, result, 0, NULL, NULL));
+        float *result = (float *) malloc(typesz);
+        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
 
         std::vector<float> res = std::vector<float>();
         res.assign(result, result+sz);
@@ -358,17 +358,17 @@ namespace ros_opencl {
 
     void ROS_OpenCL::process(std::vector<float>* v){
         cl_int sz = v->size();
-        cl_int floatsz = sizeof(float) * sz;
+        cl_int typesz = sizeof(float) * sz;
         cl_int error = 0;
-        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, floatsz, NULL, &error);
+        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
         clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
         cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
 
-        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, floatsz, &v->at(0), 0, NULL, NULL);
+        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, typesz, &v->at(0), 0, NULL, NULL);
         checkError (error);
 
-        size_t size = floatsz;
+        size_t size = typesz;
 
         cl_event gpuExec;
 
@@ -376,8 +376,73 @@ namespace ros_opencl {
 
         clWaitForEvents(1, &gpuExec);
 
-        float *result = (float *) malloc(floatsz);
-        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, floatsz, result, 0, NULL, NULL));
+        float *result = (float *) malloc(typesz);
+        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
+
+        v->assign(result, result+sz);
+
+        clReleaseCommandQueue (queue);
+        clReleaseMemObject(buffer);
+        clReleaseEvent(gpuExec);
+        free(result);
+    }
+
+    std::vector<double> ROS_OpenCL::process(const std::vector<double> v){
+        cl_int sz = v.size();
+        cl_int typesz = sizeof(double) * sz;
+        cl_int error = 0;
+        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
+        checkError(error);
+        clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
+        cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
+
+        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, typesz, &v[0], 0, NULL, NULL);
+        checkError (error);
+
+        size_t size = typesz;
+
+        cl_event gpuExec;
+
+        checkError (clEnqueueNDRangeKernel (queue, kernel, 1, NULL, &size, NULL, 0, NULL, &gpuExec));
+
+        clWaitForEvents(1, &gpuExec);
+
+        double *result = (double *) malloc(typesz);
+        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
+
+        std::vector<double> res = std::vector<double>();
+        res.assign(result, result+sz);
+
+        clReleaseCommandQueue (queue);
+        clReleaseMemObject(buffer);
+        clReleaseEvent(gpuExec);
+        free(result);
+
+        return res;
+    }
+
+    void ROS_OpenCL::process(std::vector<double>* v){
+        cl_int sz = v->size();
+        cl_int typesz = sizeof(double) * sz;
+        cl_int error = 0;
+        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
+        checkError(error);
+        clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
+        cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
+
+        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, typesz, &v->at(0), 0, NULL, NULL);
+        checkError (error);
+
+        size_t size = typesz;
+
+        cl_event gpuExec;
+
+        checkError (clEnqueueNDRangeKernel (queue, kernel, 1, NULL, &size, NULL, 0, NULL, &gpuExec));
+
+        clWaitForEvents(1, &gpuExec);
+
+        double *result = (double *) malloc(typesz);
+        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
 
         v->assign(result, result+sz);
 
@@ -389,17 +454,17 @@ namespace ros_opencl {
 
     std::vector<int> ROS_OpenCL::process(const std::vector<int> v){
         cl_int sz = v.size();
-        cl_int intsz = sizeof(int) * sz;
+        cl_int typesz = sizeof(int) * sz;
         cl_int error = 0;
-        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, intsz, NULL, &error);
+        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
         clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
         cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
 
-        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, intsz, &v[0], 0, NULL, NULL);
+        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, typesz, &v[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size = intsz;
+        size_t size = typesz;
 
         cl_event gpuExec;
 
@@ -407,8 +472,8 @@ namespace ros_opencl {
 
         clWaitForEvents(1, &gpuExec);
 
-        int *result = (int *) malloc(intsz);
-        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, intsz, result, 0, NULL, NULL));
+        int *result = (int *) malloc(typesz);
+        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
 
         std::vector<int> res = std::vector<int>();
         res.assign(result, result+sz);
@@ -423,17 +488,17 @@ namespace ros_opencl {
 
     void ROS_OpenCL::process(std::vector<int>* v){
         cl_int sz = v->size();
-        cl_int intsz = sizeof(int) * sz;
+        cl_int typesz = sizeof(int) * sz;
         cl_int error = 0;
-        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, intsz, NULL, &error);
+        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
         clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
         cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
 
-        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, intsz, &v->at(0), 0, NULL, NULL);
+        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, typesz, &v->at(0), 0, NULL, NULL);
         checkError (error);
 
-        size_t size = intsz;
+        size_t size = typesz;
 
         cl_event gpuExec;
 
@@ -441,8 +506,73 @@ namespace ros_opencl {
 
         clWaitForEvents(1, &gpuExec);
 
-        int *result = (int *) malloc(intsz);
-        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, intsz, result, 0, NULL, NULL));
+        int *result = (int *) malloc(typesz);
+        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
+
+        v->assign(result, result+sz);
+
+        clReleaseCommandQueue (queue);
+        clReleaseMemObject(buffer);
+        clReleaseEvent(gpuExec);
+        free(result);
+    }
+
+    std::vector<char> ROS_OpenCL::process(const std::vector<char> v){
+        cl_int sz = v.size();
+        cl_int typesz = sizeof(char) * sz;
+        cl_int error = 0;
+        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
+        checkError(error);
+        clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
+        cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
+
+        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, typesz, &v[0], 0, NULL, NULL);
+        checkError (error);
+
+        size_t size = typesz;
+
+        cl_event gpuExec;
+
+        checkError (clEnqueueNDRangeKernel (queue, kernel, 1, NULL, &size, NULL, 0, NULL, &gpuExec));
+
+        clWaitForEvents(1, &gpuExec);
+
+        char *result = (char *) malloc(typesz);
+        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
+
+        std::vector<char> res = std::vector<char>();
+        res.assign(result, result+sz);
+
+        clReleaseCommandQueue (queue);
+        clReleaseMemObject(buffer);
+        clReleaseEvent(gpuExec);
+        free(result);
+
+        return res;
+    }
+
+    void ROS_OpenCL::process(std::vector<char>* v){
+        cl_int sz = v->size();
+        cl_int typesz = sizeof(char) * sz;
+        cl_int error = 0;
+        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
+        checkError(error);
+        clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
+        cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
+
+        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, typesz, &v->at(0), 0, NULL, NULL);
+        checkError (error);
+
+        size_t size = typesz;
+
+        cl_event gpuExec;
+
+        checkError (clEnqueueNDRangeKernel (queue, kernel, 1, NULL, &size, NULL, 0, NULL, &gpuExec));
+
+        clWaitForEvents(1, &gpuExec);
+
+        char *result = (char *) malloc(typesz);
+        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
 
         v->assign(result, result+sz);
 

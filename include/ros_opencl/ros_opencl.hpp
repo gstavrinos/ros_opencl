@@ -53,8 +53,14 @@ class ROS_OpenCL{
         std::vector<float> process(const std::vector<float> v);
         void process(std::vector<float>* v);
 
+        std::vector<double> process(const std::vector<double> v);
+        void process(std::vector<double>* v);
+
         std::vector<int> process(const std::vector<int> v);
         void process(std::vector<int>* v);
+
+        std::vector<char> process(const std::vector<char> v);
+        void process(std::vector<char>* v);
 };
 
 }

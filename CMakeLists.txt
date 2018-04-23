@@ -67,8 +67,20 @@ target_link_libraries(float_vector_test1 ${PROJECT_NAME} ${catkin_LIBRARIES})
 add_executable(float_vector_test2 tests/src/float_vector_test2.cpp)
 target_link_libraries(float_vector_test2 ${PROJECT_NAME} ${catkin_LIBRARIES})
 
+add_executable(double_vector_test1 tests/src/double_vector_test1.cpp)
+target_link_libraries(double_vector_test1 ${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(double_vector_test2 tests/src/double_vector_test2.cpp)
+target_link_libraries(double_vector_test2 ${PROJECT_NAME} ${catkin_LIBRARIES})
+
 add_executable(int_vector_test1 tests/src/int_vector_test1.cpp)
 target_link_libraries(int_vector_test1 ${PROJECT_NAME} ${catkin_LIBRARIES})
 
 add_executable(int_vector_test2 tests/src/int_vector_test2.cpp)
 target_link_libraries(int_vector_test2 ${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(char_vector_test1 tests/src/char_vector_test1.cpp)
+target_link_libraries(char_vector_test1 ${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(char_vector_test2 tests/src/char_vector_test2.cpp)
+target_link_libraries(char_vector_test2 ${PROJECT_NAME} ${catkin_LIBRARIES})

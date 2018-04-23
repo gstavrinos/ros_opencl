@@ -13,6 +13,11 @@ kernel void closerLaserScan(global float* v){
     v[i] = v[i] * v[i] * 0.1f;
 }
 
+kernel void closerLaserScanDouble(global double* v){
+    unsigned int i = get_global_id(0);
+    v[i] = v[i] * v[i] * 0.1f;
+}
+
 kernel void grayScale(global char* v){
     unsigned int i = get_global_id(0);
     //v[i] = v[i];
