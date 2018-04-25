@@ -35,8 +35,7 @@ namespace ros_opencl {
     void ROS_OpenCL::checkError (const cl_int error){
         if (error != CL_SUCCESS) {
             ROS_ERROR("OpenCL call failed with error: %d", error);
-            // TODO error handling
-            //exit (1);
+            exit (1);
         }
     }
 
