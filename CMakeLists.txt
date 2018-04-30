@@ -75,3 +75,12 @@ target_link_libraries(char_vector_test1 ${PROJECT_NAME} ${catkin_LIBRARIES})
 
 add_executable(char_vector_test2 tests/src/char_vector_test2.cpp)
 target_link_libraries(char_vector_test2 ${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(char_char_vectors_test1 tests/src/char_char_vectors_test1.cpp)
+target_link_libraries(char_char_vectors_test1 ${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(char_char_vectors_test2 tests/src/char_char_vectors_test2.cpp)
+target_link_libraries(char_char_vectors_test2 ${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(char_char_vectors_test3 tests/src/char_char_vectors_test3.cpp)
+target_link_libraries(char_char_vectors_test3 ${PROJECT_NAME} ${catkin_LIBRARIES})

@@ -62,15 +62,15 @@ class ROS_OpenCL{
         std::vector<char> process(const std::vector<char> v);
         void process(std::vector<char>* v);
 
+        std::vector<char> process(const std::vector<char> v, const std::vector<char> v2);
+        void process(std::vector<char>* v, const std::vector<char> v2);
+        void process(std::vector<char>* v, std::vector<char>* v2);
+
         // |                             |
         // |            TODO             |
         // |  -- Not yet implemented --  |
         // |                             |
         // v                             v
-
-        std::vector<char> process(const std::vector<char> v, const std::vector<char> v2);
-        void process(std::vector<char>* v, const std::vector<char> v2);
-        void process(std::vector<char>* v, std::vector<char>* v2);
 
         std::vector<char> process(const std::vector<char> v, const std::vector<int> v2);
         void process(std::vector<char>* v, const std::vector<int> v2);
