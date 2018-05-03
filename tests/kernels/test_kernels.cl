@@ -37,15 +37,12 @@ kernel void frameDiff(global char* v, global char* v2){
 
 kernel void doubleGrayScale(global char* v, global char* v2){
     unsigned int i = get_global_id(0);
-    unsigned int j = get_global_id(1);
     if(i % 3 == 0){
         v[i] = v[i];
         v[i+1] = v[i];
         v[i+2] = v[i];
-    }
-    if(j % 3 == 0){
-        v[j] = v[j];
-        v[j+1] = v[j];
-        v[j+2] = v[j];
+        v2[i] = v2[i];
+        v2[i+1] = v2[i];
+        v2[i+2] = v2[i];
     }
 }

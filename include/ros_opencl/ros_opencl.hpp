@@ -62,9 +62,13 @@ class ROS_OpenCL{
         std::vector<char> process(const std::vector<char> v);
         void process(std::vector<char>* v);
 
-        std::vector<char> process(const std::vector<char> v, const std::vector<char> v2);
-        void process(std::vector<char>* v, const std::vector<char> v2);
-        void process(std::vector<char>* v, std::vector<char>* v2);
+        std::vector<char> process(const std::vector<char> v, const std::vector<char> v2, bool two_dimensional=false);
+        void process(std::vector<char>* v, const std::vector<char> v2, bool two_dimensional=false);
+        void process(std::vector<char>* v, std::vector<char>* v2, bool two_dimensional=false);
+
+        std::vector<char> process(const std::vector<char> v, const std::vector<int> v2, bool two_dimensional=false);
+        void process(std::vector<char>* v, const std::vector<int> v2, bool two_dimensional=false);
+        void process(std::vector<char>* v, std::vector<int>* v2, bool two_dimensional=false);
 
         // |                             |
         // |            TODO             |
@@ -72,49 +76,45 @@ class ROS_OpenCL{
         // |                             |
         // v                             v
 
-        std::vector<char> process(const std::vector<char> v, const std::vector<int> v2);
-        void process(std::vector<char>* v, const std::vector<int> v2);
-        void process(std::vector<char>* v, std::vector<int>* v2);
+        std::vector<char> process(const std::vector<char> v, const std::vector<float> v2, bool two_dimensional=false);
+        void process(std::vector<char>* v, const std::vector<float> v2, bool two_dimensional=false);
+        void process(std::vector<char>* v, std::vector<float>* v2, bool two_dimensional=false);
 
-        std::vector<char> process(const std::vector<char> v, const std::vector<float> v2);
-        void process(std::vector<char>* v, const std::vector<float> v2);
-        void process(std::vector<char>* v, std::vector<float>* v2);
+        std::vector<char> process(const std::vector<char> v, const std::vector<double> v2, bool two_dimensional=false);
+        void process(std::vector<char>* v, const std::vector<double> v2, bool two_dimensional=false);
+        void process(std::vector<char>* v, std::vector<double>* v2, bool two_dimensional=false);
 
-        std::vector<char> process(const std::vector<char> v, const std::vector<double> v2);
-        void process(std::vector<char>* v, const std::vector<double> v2);
-        void process(std::vector<char>* v, std::vector<double>* v2);
+        std::vector<int> process(const std::vector<int> v, const std::vector<char> v2, bool two_dimensional=false);
+        void process(std::vector<int>* v, const std::vector<char> v2, bool two_dimensional=false);
+        void process(std::vector<int>* v, std::vector<char>* v2, bool two_dimensional=false);
 
-        std::vector<int> process(const std::vector<int> v, const std::vector<char> v2);
-        void process(std::vector<int>* v, const std::vector<char> v2);
-        void process(std::vector<int>* v, std::vector<char>* v2);
+        std::vector<int> process(const std::vector<int> v, const std::vector<int> v2, bool two_dimensional=false);
+        void process(std::vector<int>* v, const std::vector<int> v2, bool two_dimensional=false);
+        void process(std::vector<int>* v, std::vector<int>* v2, bool two_dimensional=false);
 
-        std::vector<int> process(const std::vector<int> v, const std::vector<int> v2);
-        void process(std::vector<int>* v, const std::vector<int> v2);
-        void process(std::vector<int>* v, std::vector<int>* v2);
+        std::vector<int> process(const std::vector<int> v, const std::vector<float> v2, bool two_dimensional=false);
+        void process(std::vector<int>* v, const std::vector<float> v2, bool two_dimensional=false);
+        void process(std::vector<int>* v, std::vector<float>* v2, bool two_dimensional=false);
 
-        std::vector<int> process(const std::vector<int> v, const std::vector<float> v2);
-        void process(std::vector<int>* v, const std::vector<float> v2);
-        void process(std::vector<int>* v, std::vector<float>* v2);
+        std::vector<int> process(const std::vector<int> v, const std::vector<double> v2, bool two_dimensional=false);
+        void process(std::vector<int>* v, const std::vector<double> v2, bool two_dimensional=false);
+        void process(std::vector<int>* v, std::vector<double>* v2, bool two_dimensional=false);
 
-        std::vector<int> process(const std::vector<int> v, const std::vector<double> v2);
-        void process(std::vector<int>* v, const std::vector<double> v2);
-        void process(std::vector<int>* v, std::vector<double>* v2);
+        std::vector<float> process(const std::vector<float> v, const std::vector<char> v2, bool two_dimensional=false);
+        void process(std::vector<float>* v, const std::vector<char> v2, bool two_dimensional=false);
+        void process(std::vector<float>* v, std::vector<char>* v2, bool two_dimensional=false);
 
-        std::vector<float> process(const std::vector<float> v, const std::vector<char> v2);
-        void process(std::vector<float>* v, const std::vector<char> v2);
-        void process(std::vector<float>* v, std::vector<char>* v2);
+        std::vector<float> process(const std::vector<float> v, const std::vector<int> v2, bool two_dimensional=false);
+        void process(std::vector<float>* v, const std::vector<int> v2, bool two_dimensional=false);
+        void process(std::vector<float>* v, std::vector<int>* v2, bool two_dimensional=false);
 
-        std::vector<float> process(const std::vector<float> v, const std::vector<int> v2);
-        void process(std::vector<float>* v, const std::vector<int> v2);
-        void process(std::vector<float>* v, std::vector<int>* v2);
+        std::vector<float> process(const std::vector<float> v, const std::vector<float> v2, bool two_dimensional=false);
+        void process(std::vector<float>* v, const std::vector<float> v2, bool two_dimensional=false);
+        void process(std::vector<float>* v, std::vector<float>* v2, bool two_dimensional=false);
 
-        std::vector<float> process(const std::vector<float> v, const std::vector<float> v2);
-        void process(std::vector<float>* v, const std::vector<float> v2);
-        void process(std::vector<float>* v, std::vector<float>* v2);
-
-        std::vector<float> process(const std::vector<float> v, const std::vector<double> v2);
-        void process(std::vector<float>* v, const std::vector<double> v2);
-        void process(std::vector<float>* v, std::vector<double>* v2);
+        std::vector<float> process(const std::vector<float> v, const std::vector<double> v2, bool two_dimensional=false);
+        void process(std::vector<float>* v, const std::vector<double> v2, bool two_dimensional=false);
+        void process(std::vector<float>* v, std::vector<double>* v2, bool two_dimensional=false);
 
         std::vector<double> process(const std::vector<double> v, const std::vector<char> v2);
         void process(std::vector<double>* v, const std::vector<char> v2);
