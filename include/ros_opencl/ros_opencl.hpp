@@ -74,12 +74,6 @@ class ROS_OpenCL{
         void process(std::vector<char>* v, const std::vector<float> v2, bool two_dimensional=false);
         void process(std::vector<char>* v, std::vector<float>* v2, bool two_dimensional=false);
 
-        // |                             |
-        // |            TODO             |
-        // |  -- Not yet implemented --  |
-        // |                             |
-        // v                             v
-
         std::vector<char> process(const std::vector<char> v, const std::vector<double> v2, bool two_dimensional=false);
         void process(std::vector<char>* v, const std::vector<double> v2, bool two_dimensional=false);
         void process(std::vector<char>* v, std::vector<double>* v2, bool two_dimensional=false);
@@ -87,6 +81,12 @@ class ROS_OpenCL{
         std::vector<int> process(const std::vector<int> v, const std::vector<char> v2, bool two_dimensional=false);
         void process(std::vector<int>* v, const std::vector<char> v2, bool two_dimensional=false);
         void process(std::vector<int>* v, std::vector<char>* v2, bool two_dimensional=false);
+
+        // |                             |
+        // |            TODO             |
+        // |  -- Not yet implemented --  |
+        // |                             |
+        // v                             v
 
         std::vector<int> process(const std::vector<int> v, const std::vector<int> v2, bool two_dimensional=false);
         void process(std::vector<int>* v, const std::vector<int> v2, bool two_dimensional=false);

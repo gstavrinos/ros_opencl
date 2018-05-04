@@ -103,7 +103,6 @@ target_link_libraries(char_float_vectors_test2 ${PROJECT_NAME} ${catkin_LIBRARIE
 add_executable(char_float_vectors_test3 tests/src/char_float_vectors_test3.cpp)
 target_link_libraries(char_float_vectors_test3 ${PROJECT_NAME} ${catkin_LIBRARIES})
 
-
 add_executable(char_double_vectors_test1 tests/src/char_double_vectors_test1.cpp)
 target_link_libraries(char_double_vectors_test1 ${PROJECT_NAME} ${catkin_LIBRARIES})
 
@@ -112,3 +111,12 @@ target_link_libraries(char_double_vectors_test2 ${PROJECT_NAME} ${catkin_LIBRARI
 
 add_executable(char_double_vectors_test3 tests/src/char_double_vectors_test3.cpp)
 target_link_libraries(char_double_vectors_test3 ${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(int_char_vectors_test1 tests/src/int_char_vectors_test1.cpp)
+target_link_libraries(int_char_vectors_test1 ${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(int_char_vectors_test2 tests/src/int_char_vectors_test2.cpp)
+target_link_libraries(int_char_vectors_test2 ${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(int_char_vectors_test3 tests/src/int_char_vectors_test3.cpp)
+target_link_libraries(int_char_vectors_test3 ${PROJECT_NAME} ${catkin_LIBRARIES})

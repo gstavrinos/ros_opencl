@@ -30,7 +30,14 @@ kernel void grayScale(global char* v){
 
 kernel void frameDiff(global char* v, global char* v2){
     unsigned int i = get_global_id(0);
-    if (abs(v[i] - v2[i]) < 20) {
+    if (abs(v[i] - v2[i/4]) < 20) {
+        v[i] = 0;
+    }
+}
+
+kernel void frameDiffSmallerSecondVector(global char* v, global char* v2){
+    unsigned int i = get_global_id(0);
+    if (abs(v[i] - v2[i/4]) < 20) {
         v[i] = 0;
     }
 }
@@ -44,5 +51,18 @@ kernel void doubleGrayScale(global char* v, global char* v2){
         v2[i] = v2[i];
         v2[i+1] = v2[i];
         v2[i+2] = v2[i];
+    }
+}
+
+kernel void doubleGrayScaleSmallerSecondVector(global char* v, global char* v2){
+    unsigned int i = get_global_id(0);
+    if(i % 3 == 0){
+        unsigned int ii = i / 4;
+        v[i] = v[i];
+        v[i+1] = v[i];
+        v[i+2] = v[i];
+        v2[ii] = v2[ii];
+        v2[ii+1] = v2[ii];
+        v2[ii+2] = v2[ii];
     }
 }
