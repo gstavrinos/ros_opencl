@@ -30,7 +30,7 @@ kernel void grayScale(global char* v){
 
 kernel void frameDiff(global char* v, global char* v2){
     unsigned int i = get_global_id(0);
-    if (abs(v[i] - v2[i/4]) < 20) {
+    if (abs(v[i] - v2[i]) < 20) {
         v[i] = 0;
     }
 }
