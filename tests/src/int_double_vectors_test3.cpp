@@ -30,17 +30,17 @@ void imageCallback (const sensor_msgs::Image& msg){
 }
 
 int main (int argc, char** argv){
-    ros::init (argc, argv, "ros_opencl_int_int_vectors_test3");
+    ros::init (argc, argv, "ros_opencl_int_double_vectors_test3");
     ros::NodeHandle nh;
     string kernel_filename;
     string image_topic;
     string result_topic;
     string result_topic2;
 
-    nh.param("ros_opencl_int_int_vectors_test3/kernel_filename", kernel_filename, string("test_kernels.cl"));
-    nh.param("ros_opencl_int_int_vectors_test3/image_topic", image_topic, string("/usb_cam/image_raw"));
-    nh.param("ros_opencl_int_int_vectors_test3/result_topic", result_topic, string("ros_opencl_int_int_vectors_test3/result"));
-    nh.param("ros_opencl_int_int_vectors_test3/result_topic", result_topic2, string("ros_opencl_int_int_vectors_test3/result2"));
+    nh.param("ros_opencl_int_double_vectors_test3/kernel_filename", kernel_filename, string("test_kernels.cl"));
+    nh.param("ros_opencl_int_double_vectors_test3/image_topic", image_topic, string("/usb_cam/image_raw"));
+    nh.param("ros_opencl_int_double_vectors_test3/result_topic", result_topic, string("ros_opencl_int_double_vectors_test3/result"));
+    nh.param("ros_opencl_int_double_vectors_test3/result_topic", result_topic2, string("ros_opencl_int_double_vectors_test3/result2"));
 
     string full_kernel_path = ros::package::getPath("ros_opencl") + "/tests/kernels/" + kernel_filename;
 
