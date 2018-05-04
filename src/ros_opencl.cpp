@@ -1419,4 +1419,144 @@ namespace ros_opencl {
         free(result);
         free(result2);
     }
+
+    std::vector<int> ROS_OpenCL::process(const std::vector<int> v, const std::vector<float> v2, bool two_dimensional){
+        cl_int sz = v.size();
+        cl_int sz2 = v2.size();
+        size_t typesz = sizeof(int) * sz;
+        size_t typesz2 = sizeof(float) * sz2;
+        cl_int error = 0;
+        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
+        checkError(error);
+        cl_mem buffer2 = clCreateBuffer(context, CL_MEM_WRITE_ONLY, typesz2, NULL, &error);
+        checkError(error);
+        clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
+        clSetKernelArg (kernel, 1, sizeof (cl_mem), &buffer2);
+        cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
+
+        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, typesz, &v[0], 0, NULL, NULL);
+        checkError (error);
+        clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2[0], 0, NULL, NULL);
+        checkError (error);
+
+        size_t size[2] = {typesz, typesz2};
+        size_t work_dimension = 2;
+
+        if (sz == sz2 and not two_dimensional){
+            work_dimension--;
+        }
+
+        cl_event gpuExec;
+
+        checkError (clEnqueueNDRangeKernel (queue, kernel, work_dimension, NULL, size, NULL, 0, NULL, &gpuExec));
+
+        clWaitForEvents(1, &gpuExec);
+
+        int *result = (int *) malloc(typesz);
+        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
+
+        std::vector<int> res = std::vector<int>();
+        res.assign(result, result+sz);
+
+        clReleaseCommandQueue (queue);
+        clReleaseMemObject(buffer);
+        clReleaseMemObject(buffer2);
+        clReleaseEvent(gpuExec);
+        free(result);
+
+        return res;
+    }
+
+    void ROS_OpenCL::process(std::vector<int>* v, const std::vector<float> v2, bool two_dimensional){
+        cl_int sz = v->size();
+        cl_int sz2 = v2.size();
+        size_t typesz = sizeof(int) * sz;
+        size_t typesz2 = sizeof(float) * sz2;
+        cl_int error = 0;
+        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
+        checkError(error);
+        cl_mem buffer2 = clCreateBuffer(context, CL_MEM_WRITE_ONLY, typesz2, NULL, &error);
+        checkError(error);
+        clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
+        clSetKernelArg (kernel, 1, sizeof (cl_mem), &buffer2);
+        cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
+
+        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, typesz, &v->at(0), 0, NULL, NULL);
+        checkError (error);
+        clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2[0], 0, NULL, NULL);
+        checkError (error);
+
+        size_t size[2] = {typesz, typesz2};
+        size_t work_dimension = 2;
+
+        if (sz == sz2 and not two_dimensional){
+            work_dimension--;
+        }
+
+        cl_event gpuExec;
+
+        checkError (clEnqueueNDRangeKernel (queue, kernel, work_dimension, NULL, size, NULL, 0, NULL, &gpuExec));
+
+        clWaitForEvents(1, &gpuExec);
+
+        int *result = (int *) malloc(typesz);
+        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
+
+        v->assign(result, result+sz);
+
+        clReleaseCommandQueue (queue);
+        clReleaseMemObject(buffer);
+        clReleaseMemObject(buffer2);
+        clReleaseEvent(gpuExec);
+        free(result);
+    }
+
+    void ROS_OpenCL::process(std::vector<int>* v, std::vector<float>* v2, bool two_dimensional){
+        cl_int sz = v->size();
+        cl_int sz2 = v2->size();
+        size_t typesz = sizeof(int) * sz;
+        size_t typesz2 = sizeof(float) * sz2;
+        cl_int error = 0;
+        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
+        checkError(error);
+        cl_mem buffer2 = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz2, NULL, &error);
+        checkError(error);
+        clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
+        clSetKernelArg (kernel, 1, sizeof (cl_mem), &buffer2);
+        cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
+
+        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, typesz, &v->at(0), 0, NULL, NULL);
+        checkError (error);
+        clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2->at(0), 0, NULL, NULL);
+        checkError (error);
+
+        size_t size[2] = {typesz, typesz2};
+        size_t work_dimension = 2;
+
+        if (sz == sz2 and not two_dimensional){
+            work_dimension--;
+        }
+
+        cl_event gpuExec;
+        checkError (clEnqueueNDRangeKernel (queue, kernel, work_dimension, NULL, size, NULL, 0, NULL, &gpuExec));
+
+        clWaitForEvents(1, &gpuExec);
+
+        int *result = (int *) malloc(typesz);
+        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
+
+        v->assign(result, result+sz);
+
+        float *result2 = (float *) malloc(typesz2);
+        checkError(clEnqueueReadBuffer(queue, buffer2, CL_TRUE, 0, typesz2, result2, 0, NULL, NULL));
+
+        v2->assign(result2, result2+sz2);
+
+        clReleaseCommandQueue (queue);
+        clReleaseMemObject(buffer);
+        clReleaseMemObject(buffer2);
+        clReleaseEvent(gpuExec);
+        free(result);
+        free(result2);
+    }
 }

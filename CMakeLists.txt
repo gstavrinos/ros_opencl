@@ -129,3 +129,12 @@ target_link_libraries(int_int_vectors_test2 ${PROJECT_NAME} ${catkin_LIBRARIES})
 
 add_executable(int_int_vectors_test3 tests/src/int_int_vectors_test3.cpp)
 target_link_libraries(int_int_vectors_test3 ${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(int_float_vectors_test1 tests/src/int_float_vectors_test1.cpp)
+target_link_libraries(int_float_vectors_test1 ${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(int_float_vectors_test2 tests/src/int_float_vectors_test2.cpp)
+target_link_libraries(int_float_vectors_test2 ${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(int_float_vectors_test3 tests/src/int_float_vectors_test3.cpp)
+target_link_libraries(int_float_vectors_test3 ${PROJECT_NAME} ${catkin_LIBRARIES})
