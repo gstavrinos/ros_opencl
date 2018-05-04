@@ -86,15 +86,15 @@ class ROS_OpenCL{
         void process(std::vector<int>* v, const std::vector<int> v2, bool two_dimensional=false);
         void process(std::vector<int>* v, std::vector<int>* v2, bool two_dimensional=false);
 
+        std::vector<int> process(const std::vector<int> v, const std::vector<float> v2, bool two_dimensional=false);
+        void process(std::vector<int>* v, const std::vector<float> v2, bool two_dimensional=false);
+        void process(std::vector<int>* v, std::vector<float>* v2, bool two_dimensional=false);
+
         // |                             |
         // |            TODO             |
         // |  -- Not yet implemented --  |
         // |                             |
         // v                             v
-
-        std::vector<int> process(const std::vector<int> v, const std::vector<float> v2, bool two_dimensional=false);
-        void process(std::vector<int>* v, const std::vector<float> v2, bool two_dimensional=false);
-        void process(std::vector<int>* v, std::vector<float>* v2, bool two_dimensional=false);
 
         std::vector<int> process(const std::vector<int> v, const std::vector<double> v2, bool two_dimensional=false);
         void process(std::vector<int>* v, const std::vector<double> v2, bool two_dimensional=false);
@@ -131,6 +131,9 @@ class ROS_OpenCL{
         std::vector<double> process(const std::vector<double> v, const std::vector<double> v2);
         void process(std::vector<double>* v, const std::vector<double> v2);
         void process(std::vector<double>* v, std::vector<double>* v2);
+
+        // Extra TODO:
+        // Remove the second buffer on functions with vectors of the same type!
 
 };
 
