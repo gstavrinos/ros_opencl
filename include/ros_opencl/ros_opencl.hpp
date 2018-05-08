@@ -116,21 +116,21 @@ class ROS_OpenCL{
         void process(std::vector<float>* v, const std::vector<double> v2, bool two_dimensional=false);
         void process(std::vector<float>* v, std::vector<double>* v2, bool two_dimensional=false);
 
-        std::vector<double> process(const std::vector<double> v, const std::vector<char> v2);
-        void process(std::vector<double>* v, const std::vector<char> v2);
-        void process(std::vector<double>* v, std::vector<char>* v2);
+        std::vector<double> process(const std::vector<double> v, const std::vector<char> v2, bool two_dimensional=false);
+        void process(std::vector<double>* v, const std::vector<char> v2, bool two_dimensional=false);
+        void process(std::vector<double>* v, std::vector<char>* v2, bool two_dimensional=false);
 
-        std::vector<double> process(const std::vector<double> v, const std::vector<int> v2);
-        void process(std::vector<double>* v, const std::vector<int> v2);
-        void process(std::vector<double>* v, std::vector<int>* v2);
+        std::vector<double> process(const std::vector<double> v, const std::vector<int> v2, bool two_dimensional=false);
+        void process(std::vector<double>* v, const std::vector<int> v2, bool two_dimensional=false);
+        void process(std::vector<double>* v, std::vector<int>* v2, bool two_dimensional=false);
 
-        std::vector<double> process(const std::vector<double> v, const std::vector<float> v2);
-        void process(std::vector<double>* v, const std::vector<float> v2);
-        void process(std::vector<double>* v, std::vector<float>* v2);
+        std::vector<double> process(const std::vector<double> v, const std::vector<float> v2, bool two_dimensional=false);
+        void process(std::vector<double>* v, const std::vector<float> v2, bool two_dimensional=false);
+        void process(std::vector<double>* v, std::vector<float>* v2, bool two_dimensional=false);
 
-        std::vector<double> process(const std::vector<double> v, const std::vector<double> v2);
-        void process(std::vector<double>* v, const std::vector<double> v2);
-        void process(std::vector<double>* v, std::vector<double>* v2);
+        std::vector<double> process(const std::vector<double> v, const std::vector<double> v2, bool two_dimensional=false);
+        void process(std::vector<double>* v, const std::vector<double> v2, bool two_dimensional=false);
+        void process(std::vector<double>* v, std::vector<double>* v2, bool two_dimensional=false);
 
         // Extra TODO:
         // Remove the second buffer on functions with vectors of the same type!
