@@ -147,3 +147,39 @@ target_link_libraries(int_double_vectors_test2 ${PROJECT_NAME} ${catkin_LIBRARIE
 
 add_executable(int_double_vectors_test3 tests/src/int_double_vectors_test3.cpp)
 target_link_libraries(int_double_vectors_test3 ${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(float_char_vectors_test1 tests/src/float_char_vectors_test1.cpp)
+target_link_libraries(float_char_vectors_test1 ${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(float_char_vectors_test2 tests/src/float_char_vectors_test2.cpp)
+target_link_libraries(float_char_vectors_test2 ${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(float_char_vectors_test3 tests/src/float_char_vectors_test3.cpp)
+target_link_libraries(float_char_vectors_test3 ${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(float_float_vectors_test1 tests/src/float_float_vectors_test1.cpp)
+target_link_libraries(float_float_vectors_test1 ${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(float_float_vectors_test2 tests/src/float_float_vectors_test2.cpp)
+target_link_libraries(float_float_vectors_test2 ${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(float_float_vectors_test3 tests/src/float_float_vectors_test3.cpp)
+target_link_libraries(float_float_vectors_test3 ${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(float_int_vectors_test1 tests/src/float_int_vectors_test1.cpp)
+target_link_libraries(float_int_vectors_test1 ${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(float_int_vectors_test2 tests/src/float_int_vectors_test2.cpp)
+target_link_libraries(float_int_vectors_test2 ${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(float_int_vectors_test3 tests/src/float_int_vectors_test3.cpp)
+target_link_libraries(float_int_vectors_test3 ${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(float_double_vectors_test1 tests/src/float_double_vectors_test1.cpp)
+target_link_libraries(float_double_vectors_test1 ${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(float_double_vectors_test2 tests/src/float_double_vectors_test2.cpp)
+target_link_libraries(float_double_vectors_test2 ${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(float_double_vectors_test3 tests/src/float_double_vectors_test3.cpp)
+target_link_libraries(float_double_vectors_test3 ${PROJECT_NAME} ${catkin_LIBRARIES})
