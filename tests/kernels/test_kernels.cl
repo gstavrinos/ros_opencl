@@ -35,6 +35,13 @@ kernel void frameDiff(global char* v, global char* v2){
     }
 }
 
+kernel void frameDiffFloats(global float* v, global float* v2){
+    unsigned int i = get_global_id(0);
+    if (v[i] != v2[i]) {
+        v[i] = 0.0f;
+    }
+}
+
 kernel void frameDiffSmallerSecondVector(global char* v, global char* v2){
     unsigned int i = get_global_id(0);
     if (abs(v[i] - v2[i/4]) < 20) {

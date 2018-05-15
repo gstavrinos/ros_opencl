@@ -908,6 +908,7 @@ namespace ros_opencl {
 
         return res;
     }
+
     void ROS_OpenCL::process(std::vector<char>* v, const std::vector<float> v2, bool two_dimensional){
         cl_int sz = v->size();
         cl_int sz2 = v2.size();
@@ -951,6 +952,7 @@ namespace ros_opencl {
         clReleaseEvent(gpuExec);
         free(result);
     }
+
     void ROS_OpenCL::process(std::vector<char>* v, std::vector<float>* v2, bool two_dimensional){
         cl_int sz = v->size();
         cl_int sz2 = v2->size();
@@ -1983,7 +1985,7 @@ namespace ros_opencl {
     std::vector<float> ROS_OpenCL::process(const std::vector<float> v, const std::vector<float> v2, bool two_dimensional){
         cl_int sz = v.size();
         cl_int sz2 = v2.size();
-        size_t typesz = sizeof(float) * sz;
+        size_t typesz = sizeof(cl_float) * sz;
         size_t typesz2 = sizeof(float) * sz2;
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
@@ -2011,9 +2013,10 @@ namespace ros_opencl {
         checkError (clEnqueueNDRangeKernel (queue, kernel, work_dimension, NULL, size, NULL, 0, NULL, &gpuExec));
 
         clWaitForEvents(1, &gpuExec);
-
+        ROS_WARN("1");
         float *result = (float *) malloc(typesz);
         checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
+        ROS_WARN("2");
 
         std::vector<float> res = std::vector<float>();
         res.assign(result, result+sz);
