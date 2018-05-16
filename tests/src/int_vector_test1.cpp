@@ -35,7 +35,7 @@ int main (int argc, char** argv){
 
     string full_kernel_path = ros::package::getPath("ros_opencl") + "/tests/kernels/" + kernel_filename;
 
-    roscl = new ros_opencl::ROS_OpenCL(full_kernel_path, "grayScale");
+    roscl = new ros_opencl::ROS_OpenCL(full_kernel_path, "grayScaleInt");
 
     pub = nh.advertise<sensor_msgs::Image>(result_topic, 1);
     ros::Subscriber s = nh.subscribe (image_topic, 1, imageCallback);

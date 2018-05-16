@@ -28,6 +28,16 @@ kernel void grayScale(global char* v){
     }
 }
 
+kernel void grayScaleInt(global int* v){
+    unsigned int i = get_global_id(0);
+    //v[i] = v[i];
+    if(i % 3 == 0){
+        v[i] = v[i];
+        v[i+1] = v[i];
+        v[i+2] = v[i];
+    }
+}
+
 kernel void frameDiff(global char* v, global char* v2){
     unsigned int i = get_global_id(0);
     if (abs(v[i] - v2[i]) < 20) {
