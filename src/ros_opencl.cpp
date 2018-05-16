@@ -367,7 +367,7 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, typesz, &v->at(0), 0, NULL, NULL);
         checkError (error);
 
-        size_t size = typesz;
+        size_t size = sz;
 
         cl_event gpuExec;
 
@@ -398,7 +398,7 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, typesz, &v[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size = typesz;
+        size_t size = sz;
 
         cl_event gpuExec;
 
@@ -432,7 +432,7 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, typesz, &v->at(0), 0, NULL, NULL);
         checkError (error);
 
-        size_t size = typesz;
+        size_t size = sz;
 
         cl_event gpuExec;
 
