@@ -35,10 +35,17 @@ kernel void frameDiff(global char* v, global char* v2){
     }
 }
 
-kernel void frameDiffFloats(global float* v, global float* v2){
+kernel void frameDiffFloatFloat(global float* v, global float* v2){
     unsigned int i = get_global_id(0);
-    if (v[i] != v2[i]) {
-        v[i] = 0.0f;
+    if (abs((int)(v[i] - v2[i])) < 20) {
+        v[i] = 0;
+    }
+}
+
+kernel void frameDiffFloatDouble(global float* v, global double* v2){
+    unsigned int i = get_global_id(0);
+    if (abs((int)(v[i] - v2[i])) < 20) {
+        v[i] = 0;
     }
 }
 
@@ -50,6 +57,30 @@ kernel void frameDiffSmallerSecondVector(global char* v, global char* v2){
 }
 
 kernel void doubleGrayScale(global char* v, global char* v2){
+    unsigned int i = get_global_id(0);
+    if(i % 3 == 0){
+        v[i] = v[i];
+        v[i+1] = v[i];
+        v[i+2] = v[i];
+        v2[i] = v2[i];
+        v2[i+1] = v2[i];
+        v2[i+2] = v2[i];
+    }
+}
+
+kernel void doubleGrayScaleFloatFloat(global float* v, global float* v2){
+    unsigned int i = get_global_id(0);
+    if(i % 3 == 0){
+        v[i] = v[i];
+        v[i+1] = v[i];
+        v[i+2] = v[i];
+        v2[i] = v2[i];
+        v2[i+1] = v2[i];
+        v2[i+2] = v2[i];
+    }
+}
+
+kernel void doubleGrayScaleFloatDouble(global float* v, global double* v2){
     unsigned int i = get_global_id(0);
     if(i % 3 == 0){
         v[i] = v[i];

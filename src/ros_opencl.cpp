@@ -131,7 +131,7 @@ namespace ros_opencl {
     }
 
     sensor_msgs::PointCloud2 ROS_OpenCL::process(const sensor_msgs::PointCloud2& msg){
-        cl_int sz = msg.data.size();
+        size_t sz = msg.data.size();
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, sz, NULL, &error);
         checkError(error);
@@ -164,7 +164,7 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(sensor_msgs::PointCloud2::Ptr msg){
-        cl_int sz = msg->data.size();
+        size_t sz = msg->data.size();
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, sz, NULL, &error);
         checkError(error);
@@ -194,7 +194,7 @@ namespace ros_opencl {
     }
 
     sensor_msgs::LaserScan ROS_OpenCL::process(const sensor_msgs::LaserScan& msg){
-        cl_int sz = msg.ranges.size();
+        size_t sz = msg.ranges.size();
         cl_int typesz = sizeof(float) * sz;
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
@@ -228,7 +228,7 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(sensor_msgs::LaserScan::Ptr msg){
-        cl_int sz = msg->ranges.size();
+        size_t sz = msg->ranges.size();
         cl_int typesz = sizeof(float) * sz;
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
@@ -259,7 +259,7 @@ namespace ros_opencl {
     }
 
     sensor_msgs::Image ROS_OpenCL::process(const sensor_msgs::Image& msg){
-        cl_int sz = msg.data.size();
+        size_t sz = msg.data.size();
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, sz, NULL, &error);
         checkError(error);
@@ -292,7 +292,7 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(sensor_msgs::Image::Ptr msg){
-        cl_int sz = msg->data.size();
+        size_t sz = msg->data.size();
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, sz, NULL, &error);
         checkError(error);
@@ -322,7 +322,7 @@ namespace ros_opencl {
     }
 
     std::vector<float> ROS_OpenCL::process(const std::vector<float> v){
-        cl_int sz = v.size();
+        size_t sz = v.size();
         cl_int typesz = sizeof(float) * sz;
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
@@ -356,7 +356,7 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<float>* v){
-        cl_int sz = v->size();
+        size_t sz = v->size();
         cl_int typesz = sizeof(float) * sz;
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
@@ -387,7 +387,7 @@ namespace ros_opencl {
     }
 
     std::vector<double> ROS_OpenCL::process(const std::vector<double> v){
-        cl_int sz = v.size();
+        size_t sz = v.size();
         cl_int typesz = sizeof(double) * sz;
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
@@ -421,7 +421,7 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<double>* v){
-        cl_int sz = v->size();
+        size_t sz = v->size();
         cl_int typesz = sizeof(double) * sz;
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
@@ -452,7 +452,7 @@ namespace ros_opencl {
     }
 
     std::vector<int> ROS_OpenCL::process(const std::vector<int> v){
-        cl_int sz = v.size();
+        size_t sz = v.size();
         cl_int typesz = sizeof(int) * sz;
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
@@ -486,7 +486,7 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<int>* v){
-        cl_int sz = v->size();
+        size_t sz = v->size();
         cl_int typesz = sizeof(int) * sz;
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
@@ -517,7 +517,7 @@ namespace ros_opencl {
     }
 
     std::vector<char> ROS_OpenCL::process(const std::vector<char> v){
-        cl_int sz = v.size();
+        size_t sz = v.size();
         cl_int typesz = sizeof(char) * sz;
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
@@ -551,7 +551,7 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<char>* v){
-        cl_int sz = v->size();
+        size_t sz = v->size();
         cl_int typesz = sizeof(char) * sz;
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
@@ -582,8 +582,8 @@ namespace ros_opencl {
     }
 
     std::vector<char> ROS_OpenCL::process(const std::vector<char> v, const std::vector<char> v2, bool two_dimensional){
-        cl_int sz = v.size();
-        cl_int sz2 = v2.size();
+        size_t sz = v.size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(char) * sz;
         size_t typesz2 = sizeof(char) * sz2;
         cl_int error = 0;
@@ -629,8 +629,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<char>* v, const std::vector<char> v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2.size();
+        size_t sz = v->size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(char) * sz;
         size_t typesz2 = sizeof(char) * sz2;
         cl_int error = 0;
@@ -673,8 +673,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<char>* v, std::vector<char>* v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2->size();
+        size_t sz = v->size();
+        size_t sz2 = v2->size();
         size_t typesz = sizeof(char) * sz;
         size_t typesz2 = sizeof(char) * sz2;
         cl_int error = 0;
@@ -723,8 +723,8 @@ namespace ros_opencl {
     }
 
     std::vector<char> ROS_OpenCL::process(const std::vector<char> v, const std::vector<int> v2, bool two_dimensional){
-        cl_int sz = v.size();
-        cl_int sz2 = v2.size();
+        size_t sz = v.size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(char) * sz;
         size_t typesz2 = sizeof(int) * sz2;
         cl_int error = 0;
@@ -770,8 +770,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<char>* v, const std::vector<int> v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2.size();
+        size_t sz = v->size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(char) * sz;
         size_t typesz2 = sizeof(int) * sz2;
         cl_int error = 0;
@@ -814,8 +814,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<char>* v, std::vector<int>* v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2->size();
+        size_t sz = v->size();
+        size_t sz2 = v2->size();
         size_t typesz = sizeof(char) * sz;
         size_t typesz2 = sizeof(int) * sz2;
         cl_int error = 0;
@@ -863,8 +863,8 @@ namespace ros_opencl {
     }
 
     std::vector<char> ROS_OpenCL::process(const std::vector<char> v, const std::vector<float> v2, bool two_dimensional){
-        cl_int sz = v.size();
-        cl_int sz2 = v2.size();
+        size_t sz = v.size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(char) * sz;
         size_t typesz2 = sizeof(float) * sz2;
         cl_int error = 0;
@@ -910,8 +910,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<char>* v, const std::vector<float> v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2.size();
+        size_t sz = v->size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(char) * sz;
         size_t typesz2 = sizeof(float) * sz2;
         cl_int error = 0;
@@ -954,8 +954,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<char>* v, std::vector<float>* v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2->size();
+        size_t sz = v->size();
+        size_t sz2 = v2->size();
         size_t typesz = sizeof(char) * sz;
         size_t typesz2 = sizeof(float) * sz2;
         cl_int error = 0;
@@ -1003,8 +1003,8 @@ namespace ros_opencl {
     }
 
     std::vector<char> ROS_OpenCL::process(const std::vector<char> v, const std::vector<double> v2, bool two_dimensional){
-        cl_int sz = v.size();
-        cl_int sz2 = v2.size();
+        size_t sz = v.size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(char) * sz;
         size_t typesz2 = sizeof(double) * sz2;
         cl_int error = 0;
@@ -1050,8 +1050,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<char>* v, const std::vector<double> v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2.size();
+        size_t sz = v->size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(char) * sz;
         size_t typesz2 = sizeof(double) * sz2;
         cl_int error = 0;
@@ -1094,8 +1094,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<char>* v, std::vector<double>* v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2->size();
+        size_t sz = v->size();
+        size_t sz2 = v2->size();
         size_t typesz = sizeof(char) * sz;
         size_t typesz2 = sizeof(double) * sz2;
         cl_int error = 0;
@@ -1143,8 +1143,8 @@ namespace ros_opencl {
     }
 
     std::vector<int> ROS_OpenCL::process(const std::vector<int> v, const std::vector<char> v2, bool two_dimensional){
-        cl_int sz = v.size();
-        cl_int sz2 = v2.size();
+        size_t sz = v.size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(int) * sz;
         size_t typesz2 = sizeof(char) * sz2;
         cl_int error = 0;
@@ -1190,8 +1190,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<int>* v, const std::vector<char> v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2.size();
+        size_t sz = v->size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(int) * sz;
         size_t typesz2 = sizeof(char) * sz2;
         cl_int error = 0;
@@ -1234,8 +1234,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<int>* v, std::vector<char>* v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2->size();
+        size_t sz = v->size();
+        size_t sz2 = v2->size();
         size_t typesz = sizeof(int) * sz;
         size_t typesz2 = sizeof(char) * sz2;
         cl_int error = 0;
@@ -1283,8 +1283,8 @@ namespace ros_opencl {
     }
 
     std::vector<int> ROS_OpenCL::process(const std::vector<int> v, const std::vector<int> v2, bool two_dimensional){
-        cl_int sz = v.size();
-        cl_int sz2 = v2.size();
+        size_t sz = v.size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(int) * sz;
         size_t typesz2 = sizeof(int) * sz2;
         cl_int error = 0;
@@ -1330,8 +1330,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<int>* v, const std::vector<int> v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2.size();
+        size_t sz = v->size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(int) * sz;
         size_t typesz2 = sizeof(int) * sz2;
         cl_int error = 0;
@@ -1374,8 +1374,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<int>* v, std::vector<int>* v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2->size();
+        size_t sz = v->size();
+        size_t sz2 = v2->size();
         size_t typesz = sizeof(int) * sz;
         size_t typesz2 = sizeof(int) * sz2;
         cl_int error = 0;
@@ -1423,8 +1423,8 @@ namespace ros_opencl {
     }
 
     std::vector<int> ROS_OpenCL::process(const std::vector<int> v, const std::vector<float> v2, bool two_dimensional){
-        cl_int sz = v.size();
-        cl_int sz2 = v2.size();
+        size_t sz = v.size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(int) * sz;
         size_t typesz2 = sizeof(float) * sz2;
         cl_int error = 0;
@@ -1470,8 +1470,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<int>* v, const std::vector<float> v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2.size();
+        size_t sz = v->size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(int) * sz;
         size_t typesz2 = sizeof(float) * sz2;
         cl_int error = 0;
@@ -1514,8 +1514,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<int>* v, std::vector<float>* v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2->size();
+        size_t sz = v->size();
+        size_t sz2 = v2->size();
         size_t typesz = sizeof(int) * sz;
         size_t typesz2 = sizeof(float) * sz2;
         cl_int error = 0;
@@ -1563,8 +1563,8 @@ namespace ros_opencl {
     }
 
     std::vector<int> ROS_OpenCL::process(const std::vector<int> v, const std::vector<double> v2, bool two_dimensional){
-        cl_int sz = v.size();
-        cl_int sz2 = v2.size();
+        size_t sz = v.size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(int) * sz;
         size_t typesz2 = sizeof(double) * sz2;
         cl_int error = 0;
@@ -1610,8 +1610,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<int>* v, const std::vector<double> v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2.size();
+        size_t sz = v->size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(int) * sz;
         size_t typesz2 = sizeof(double) * sz2;
         cl_int error = 0;
@@ -1654,8 +1654,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<int>* v, std::vector<double>* v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2->size();
+        size_t sz = v->size();
+        size_t sz2 = v2->size();
         size_t typesz = sizeof(int) * sz;
         size_t typesz2 = sizeof(double) * sz2;
         cl_int error = 0;
@@ -1703,8 +1703,8 @@ namespace ros_opencl {
     }
 
     std::vector<float> ROS_OpenCL::process(const std::vector<float> v, const std::vector<char> v2, bool two_dimensional){
-        cl_int sz = v.size();
-        cl_int sz2 = v2.size();
+        size_t sz = v.size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(float) * sz;
         size_t typesz2 = sizeof(char) * sz2;
         cl_int error = 0;
@@ -1750,8 +1750,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<float>* v, const std::vector<char> v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2.size();
+        size_t sz = v->size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(float) * sz;
         size_t typesz2 = sizeof(char) * sz2;
         cl_int error = 0;
@@ -1794,8 +1794,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<float>* v, std::vector<char>* v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2->size();
+        size_t sz = v->size();
+        size_t sz2 = v2->size();
         size_t typesz = sizeof(float) * sz;
         size_t typesz2 = sizeof(char) * sz2;
         cl_int error = 0;
@@ -1843,8 +1843,8 @@ namespace ros_opencl {
     }
 
     std::vector<float> ROS_OpenCL::process(const std::vector<float> v, const std::vector<int> v2, bool two_dimensional){
-        cl_int sz = v.size();
-        cl_int sz2 = v2.size();
+        size_t sz = v.size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(float) * sz;
         size_t typesz2 = sizeof(int) * sz2;
         cl_int error = 0;
@@ -1890,8 +1890,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<float>* v, const std::vector<int> v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2.size();
+        size_t sz = v->size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(float) * sz;
         size_t typesz2 = sizeof(int) * sz2;
         cl_int error = 0;
@@ -1934,8 +1934,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<float>* v, std::vector<int>* v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2->size();
+        size_t sz = v->size();
+        size_t sz2 = v2->size();
         size_t typesz = sizeof(float) * sz;
         size_t typesz2 = sizeof(int) * sz2;
         cl_int error = 0;
@@ -1983,9 +1983,9 @@ namespace ros_opencl {
     }
 
     std::vector<float> ROS_OpenCL::process(const std::vector<float> v, const std::vector<float> v2, bool two_dimensional){
-        cl_int sz = v.size();
-        cl_int sz2 = v2.size();
-        size_t typesz = sizeof(cl_float) * sz;
+        size_t sz = v.size();
+        size_t sz2 = v2.size();
+        size_t typesz = sizeof(float) * sz;
         size_t typesz2 = sizeof(float) * sz2;
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
@@ -2001,7 +2001,7 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
         if (sz == sz2 and not two_dimensional){
@@ -2013,10 +2013,9 @@ namespace ros_opencl {
         checkError (clEnqueueNDRangeKernel (queue, kernel, work_dimension, NULL, size, NULL, 0, NULL, &gpuExec));
 
         clWaitForEvents(1, &gpuExec);
-        ROS_WARN("1");
+
         float *result = (float *) malloc(typesz);
         checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
-        ROS_WARN("2");
 
         std::vector<float> res = std::vector<float>();
         res.assign(result, result+sz);
@@ -2031,8 +2030,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<float>* v, const std::vector<float> v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2.size();
+        size_t sz = v->size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(float) * sz;
         size_t typesz2 = sizeof(float) * sz2;
         cl_int error = 0;
@@ -2049,7 +2048,7 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
         if (sz == sz2 and not two_dimensional){
@@ -2075,8 +2074,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<float>* v, std::vector<float>* v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2->size();
+        size_t sz = v->size();
+        size_t sz2 = v2->size();
         size_t typesz = sizeof(float) * sz;
         size_t typesz2 = sizeof(float) * sz2;
         cl_int error = 0;
@@ -2093,7 +2092,7 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2->at(0), 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
         if (sz == sz2 and not two_dimensional){
@@ -2124,8 +2123,8 @@ namespace ros_opencl {
     }
 
     std::vector<float> ROS_OpenCL::process(const std::vector<float> v, const std::vector<double> v2, bool two_dimensional){
-        cl_int sz = v.size();
-        cl_int sz2 = v2.size();
+        size_t sz = v.size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(float) * sz;
         size_t typesz2 = sizeof(double) * sz2;
         cl_int error = 0;
@@ -2142,7 +2141,7 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
         if (sz == sz2 and not two_dimensional){
@@ -2171,8 +2170,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<float>* v, const std::vector<double> v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2.size();
+        size_t sz = v->size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(float) * sz;
         size_t typesz2 = sizeof(double) * sz2;
         cl_int error = 0;
@@ -2189,7 +2188,7 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
         if (sz == sz2 and not two_dimensional){
@@ -2215,8 +2214,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<float>* v, std::vector<double>* v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2->size();
+        size_t sz = v->size();
+        size_t sz2 = v2->size();
         size_t typesz = sizeof(float) * sz;
         size_t typesz2 = sizeof(double) * sz2;
         cl_int error = 0;
@@ -2233,7 +2232,7 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2->at(0), 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
         if (sz == sz2 and not two_dimensional){
@@ -2264,8 +2263,8 @@ namespace ros_opencl {
     }
 
     std::vector<double> ROS_OpenCL::process(const std::vector<double> v, const std::vector<char> v2, bool two_dimensional){
-        cl_int sz = v.size();
-        cl_int sz2 = v2.size();
+        size_t sz = v.size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(double) * sz;
         size_t typesz2 = sizeof(char) * sz2;
         cl_int error = 0;
@@ -2311,8 +2310,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<double>* v, const std::vector<char> v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2.size();
+        size_t sz = v->size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(double) * sz;
         size_t typesz2 = sizeof(char) * sz2;
         cl_int error = 0;
@@ -2355,8 +2354,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<double>* v, std::vector<char>* v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2->size();
+        size_t sz = v->size();
+        size_t sz2 = v2->size();
         size_t typesz = sizeof(double) * sz;
         size_t typesz2 = sizeof(char) * sz2;
         cl_int error = 0;
@@ -2404,8 +2403,8 @@ namespace ros_opencl {
     }
 
     std::vector<double> ROS_OpenCL::process(const std::vector<double> v, const std::vector<int> v2, bool two_dimensional){
-        cl_int sz = v.size();
-        cl_int sz2 = v2.size();
+        size_t sz = v.size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(double) * sz;
         size_t typesz2 = sizeof(int) * sz2;
         cl_int error = 0;
@@ -2451,8 +2450,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<double>* v, const std::vector<int> v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2.size();
+        size_t sz = v->size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(double) * sz;
         size_t typesz2 = sizeof(int) * sz2;
         cl_int error = 0;
@@ -2495,8 +2494,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<double>* v, std::vector<int>* v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2->size();
+        size_t sz = v->size();
+        size_t sz2 = v2->size();
         size_t typesz = sizeof(double) * sz;
         size_t typesz2 = sizeof(int) * sz2;
         cl_int error = 0;
@@ -2544,8 +2543,8 @@ namespace ros_opencl {
     }
 
     std::vector<double> ROS_OpenCL::process(const std::vector<double> v, const std::vector<float> v2, bool two_dimensional){
-        cl_int sz = v.size();
-        cl_int sz2 = v2.size();
+        size_t sz = v.size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(double) * sz;
         size_t typesz2 = sizeof(float) * sz2;
         cl_int error = 0;
@@ -2591,8 +2590,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<double>* v, const std::vector<float> v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2.size();
+        size_t sz = v->size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(double) * sz;
         size_t typesz2 = sizeof(float) * sz2;
         cl_int error = 0;
@@ -2635,8 +2634,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<double>* v, std::vector<float>* v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2->size();
+        size_t sz = v->size();
+        size_t sz2 = v2->size();
         size_t typesz = sizeof(double) * sz;
         size_t typesz2 = sizeof(float) * sz2;
         cl_int error = 0;
@@ -2684,8 +2683,8 @@ namespace ros_opencl {
     }
 
     std::vector<double> ROS_OpenCL::process(const std::vector<double> v, const std::vector<double> v2, bool two_dimensional){
-        cl_int sz = v.size();
-        cl_int sz2 = v2.size();
+        size_t sz = v.size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(double) * sz;
         size_t typesz2 = sizeof(double) * sz2;
         cl_int error = 0;
@@ -2731,8 +2730,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<double>* v, const std::vector<double> v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2.size();
+        size_t sz = v->size();
+        size_t sz2 = v2.size();
         size_t typesz = sizeof(double) * sz;
         size_t typesz2 = sizeof(double) * sz2;
         cl_int error = 0;
@@ -2775,8 +2774,8 @@ namespace ros_opencl {
     }
 
     void ROS_OpenCL::process(std::vector<double>* v, std::vector<double>* v2, bool two_dimensional){
-        cl_int sz = v->size();
-        cl_int sz2 = v2->size();
+        size_t sz = v->size();
+        size_t sz2 = v2->size();
         size_t typesz = sizeof(double) * sz;
         size_t typesz2 = sizeof(double) * sz2;
         cl_int error = 0;
