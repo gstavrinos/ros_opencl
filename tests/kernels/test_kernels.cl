@@ -49,6 +49,34 @@ kernel void frameDiffFloatDouble(global float* v, global double* v2){
     }
 }
 
+kernel void frameDiffDoubleChar(global double* v, global char* v2){
+    unsigned int i = get_global_id(0);
+    if (abs((int)(v[i] - v2[i])) < 20) {
+        v[i] = 0;
+    }
+}
+
+kernel void frameDiffDoubleInt(global double* v, global int* v2){
+    unsigned int i = get_global_id(0);
+    if (abs((int)(v[i] - v2[i])) < 20) {
+        v[i] = 0;
+    }
+}
+
+kernel void frameDiffDoubleFloat(global double* v, global float* v2){
+    unsigned int i = get_global_id(0);
+    if (abs((int)(v[i] - v2[i])) < 20) {
+        v[i] = 0;
+    }
+}
+
+kernel void frameDiffDoubleDouble(global double* v, global double* v2){
+    unsigned int i = get_global_id(0);
+    if (abs((int)(v[i] - v2[i])) < 20) {
+        v[i] = 0;
+    }
+}
+
 kernel void frameDiffSmallerSecondVector(global char* v, global char* v2){
     unsigned int i = get_global_id(0);
     if (abs(v[i] - v2[i/4]) < 20) {
@@ -81,6 +109,54 @@ kernel void doubleGrayScaleFloatFloat(global float* v, global float* v2){
 }
 
 kernel void doubleGrayScaleFloatDouble(global float* v, global double* v2){
+    unsigned int i = get_global_id(0);
+    if(i % 3 == 0){
+        v[i] = v[i];
+        v[i+1] = v[i];
+        v[i+2] = v[i];
+        v2[i] = v2[i];
+        v2[i+1] = v2[i];
+        v2[i+2] = v2[i];
+    }
+}
+
+kernel void doubleGrayScaleDoubleChar(global double* v, global char* v2){
+    unsigned int i = get_global_id(0);
+    if(i % 3 == 0){
+        v[i] = v[i];
+        v[i+1] = v[i];
+        v[i+2] = v[i];
+        v2[i] = v2[i];
+        v2[i+1] = v2[i];
+        v2[i+2] = v2[i];
+    }
+}
+
+kernel void doubleGrayScaleDoubleInt(global double* v, global int* v2){
+    unsigned int i = get_global_id(0);
+    if(i % 3 == 0){
+        v[i] = v[i];
+        v[i+1] = v[i];
+        v[i+2] = v[i];
+        v2[i] = v2[i];
+        v2[i+1] = v2[i];
+        v2[i+2] = v2[i];
+    }
+}
+
+kernel void doubleGrayScaleDoubleFloat(global double* v, global float* v2){
+    unsigned int i = get_global_id(0);
+    if(i % 3 == 0){
+        v[i] = v[i];
+        v[i+1] = v[i];
+        v[i+2] = v[i];
+        v2[i] = v2[i];
+        v2[i+1] = v2[i];
+        v2[i+2] = v2[i];
+    }
+}
+
+kernel void doubleGrayScaleDoubleDouble(global double* v, global double* v2){
     unsigned int i = get_global_id(0);
     if(i % 3 == 0){
         v[i] = v[i];

@@ -110,12 +110,6 @@ class ROS_OpenCL{
         void process(std::vector<float>* v, const std::vector<double> v2, bool two_dimensional=false);
         void process(std::vector<float>* v, std::vector<double>* v2, bool two_dimensional=false);
 
-        // |                             |
-        // |            TODO             |
-        // |  -- Not yet implemented --  |
-        // |                             |
-        // v                             v
-
         std::vector<double> process(const std::vector<double> v, const std::vector<char> v2, bool two_dimensional=false);
         void process(std::vector<double>* v, const std::vector<char> v2, bool two_dimensional=false);
         void process(std::vector<double>* v, std::vector<char>* v2, bool two_dimensional=false);
@@ -132,8 +126,19 @@ class ROS_OpenCL{
         void process(std::vector<double>* v, const std::vector<double> v2, bool two_dimensional=false);
         void process(std::vector<double>* v, std::vector<double>* v2, bool two_dimensional=false);
 
+        // |                             |
+        // |            TODO             |
+        // |  -- Not yet implemented --  |
+        // |                             |
+        // v                             v
+
+        // Major TODO:
+        // Fix dimensionality for almost all functions! (typesz -> sz)
+
         // Extra TODO:
         // Remove the second buffer on functions with vectors of the same type!
+        // Dimensionality parameters
+        // Error info and not just numbers
 
 };
 
