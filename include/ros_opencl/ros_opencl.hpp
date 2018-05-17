@@ -132,9 +132,6 @@ class ROS_OpenCL{
         // |                             |
         // v                             v
 
-        // Major TODO:
-        // Fix dimensionality for almost all functions! (typesz -> sz)
-
         // Extra TODO:
         // Remove the second buffer on functions with vectors of the same type!
         // Dimensionality parameters

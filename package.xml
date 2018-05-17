@@ -1,23 +1,23 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>ros_opencl</name>
-  <version>0.0.1</version>
-  <description>The ros_opencl package</description>
+  <version>1.0.0</version>
+  <description>The ros_opencl package offers a library for easy integration of the OpenCL library into ROS.</description>
 
   <maintainer email="gstavrinos@iit.demokritos.gr">George Stavrinos</maintainer>
+  <author email="gstavrinos@iit.demokritos.gr">George Stavrinos</author>
 
-  <license>TODO</license>
+  <url type="website">http://wiki.ros.org/ros_opencl</url>
+  <url type="repository">https://github.com/gstavrinos/ros_opencl</url>
+  <url type="bugtracker">https://github.com/gstavrinos/ros_opencl/issues</url>
+
+  <license>BSD</license>
 
   <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>roscpp</build_depend>
-  <build_depend>roslib</build_depend>
-  <build_depend>sensor_msgs</build_depend>
-  <build_export_depend>roscpp</build_export_depend>
-  <build_export_depend>roslib</build_export_depend>
-  <build_export_depend>sensor_msgs</build_export_depend>
-  <exec_depend>roscpp</exec_depend>
-  <exec_depend>roslib</exec_depend>
-  <exec_depend>sensor_msgs</exec_depend>
+
+  <depend>roscpp</depend>
+  <depend>roslib</depend>
+  <depend>sensor_msgs</depend>
 
   <export>
 

@@ -44,7 +44,7 @@ int main (int argc, char** argv){
 
     string full_kernel_path = ros::package::getPath("ros_opencl") + "/tests/kernels/" + kernel_filename;
 
-    roscl = new ros_opencl::ROS_OpenCL(full_kernel_path, "doubleGrayScale");
+    roscl = new ros_opencl::ROS_OpenCL(full_kernel_path, "doubleGrayScaleIntFloat");
 
     pub = nh.advertise<sensor_msgs::Image>(result_topic, 1);
     pub2 = nh.advertise<sensor_msgs::Image>(result_topic2, 1);

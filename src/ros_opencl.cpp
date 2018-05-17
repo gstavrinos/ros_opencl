@@ -600,10 +600,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -647,10 +647,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -691,10 +691,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2->at(0), 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -741,10 +741,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -788,10 +788,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -832,10 +832,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2->at(0), 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -881,10 +881,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -928,10 +928,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -972,10 +972,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2->at(0), 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -1021,10 +1021,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -1068,10 +1068,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -1112,10 +1112,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2->at(0), 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -1161,10 +1161,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -1208,10 +1208,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -1252,10 +1252,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2->at(0), 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -1301,10 +1301,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -1348,10 +1348,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -1392,10 +1392,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2->at(0), 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -1441,10 +1441,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -1488,10 +1488,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -1532,10 +1532,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2->at(0), 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -1581,10 +1581,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -1628,10 +1628,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -1672,10 +1672,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2->at(0), 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -1721,10 +1721,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -1768,10 +1768,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -1812,10 +1812,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2->at(0), 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -1861,10 +1861,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -1908,10 +1908,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2[0], 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -1952,10 +1952,10 @@ namespace ros_opencl {
         clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2->at(0), 0, NULL, NULL);
         checkError (error);
 
-        size_t size[2] = {typesz, typesz2};
+        size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -2004,7 +2004,7 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -2051,7 +2051,7 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -2095,7 +2095,7 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -2144,7 +2144,7 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -2191,7 +2191,7 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -2235,7 +2235,7 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -2284,7 +2284,7 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -2331,7 +2331,7 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -2375,7 +2375,7 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -2424,7 +2424,7 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -2471,7 +2471,7 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -2515,7 +2515,7 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -2564,7 +2564,7 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -2611,7 +2611,7 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -2655,7 +2655,7 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -2704,7 +2704,7 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -2751,7 +2751,7 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 
@@ -2795,7 +2795,7 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (sz == sz2 and not two_dimensional){
+        if (not two_dimensional){
             work_dimension--;
         }
 

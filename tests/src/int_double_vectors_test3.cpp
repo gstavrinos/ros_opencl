@@ -13,7 +13,7 @@ void imageCallback (const sensor_msgs::Image& msg){
     sensor_msgs::Image im = sensor_msgs::Image(msg);
     sensor_msgs::Image im2 = sensor_msgs::Image(msg);
     std::vector<int> v;
-    std::vector<int> v2;
+    std::vector<double> v2;
     for (unsigned i = 0; i<msg.data.size(); i++){
         v.push_back(msg.data[i]);
         v2.push_back(msg.data[i]);
@@ -44,7 +44,7 @@ int main (int argc, char** argv){
 
     string full_kernel_path = ros::package::getPath("ros_opencl") + "/tests/kernels/" + kernel_filename;
 
-    roscl = new ros_opencl::ROS_OpenCL(full_kernel_path, "doubleGrayScale");
+    roscl = new ros_opencl::ROS_OpenCL(full_kernel_path, "doubleGrayScaleIntDouble");
 
     pub = nh.advertise<sensor_msgs::Image>(result_topic, 1);
     pub2 = nh.advertise<sensor_msgs::Image>(result_topic2, 1);
