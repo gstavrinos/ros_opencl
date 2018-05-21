@@ -494,15 +494,6 @@ namespace ros_opencl {
         free(result);
     }
 
-    /**
-     * @brief                          The function that initiates kernel processing.
-     *
-     * @param[in]  v                   The input data.
-     * @param[in]  global_work_size    Overrides the default global work size of the kernel. Only one element should be pushed back.
-     * @param[in]  buffer_size         Overrides the default number of elements of the kernel buffer for the input. Only one element should be pushed back.
-     *
-     * @return     The data that was written to the buffer.
-     */
     std::vector<float> ROS_OpenCL::process(const std::vector<float> v, const std::vector<size_t> global_work_size, const std::vector<size_t> buffer_size){
         size_t sz = v.size();
         cl_int typesz = sizeof(float) * sz;
