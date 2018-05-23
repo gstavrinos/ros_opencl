@@ -338,3 +338,8 @@ kernel void doubleGrayScaleDoubleDouble(global double* v, global double* v2){
         v2[i+2] = v2[i];
     }
 }
+
+kernel void buffSizeTest(global int* v){
+    unsigned int i = get_global_id(0);
+    v[i] = 0;
+}
