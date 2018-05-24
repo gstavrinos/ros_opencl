@@ -532,7 +532,13 @@ namespace ros_opencl {
         checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
 
         std::vector<float> res = std::vector<float>();
-        res.assign(result, result+sz);
+
+        if (buffer_size.size() > 0){
+            res.assign(result, result+buffer_size[0]);
+        }
+        else{
+            res.assign(result, result+sz);
+        }
 
         clReleaseCommandQueue (queue);
         clReleaseMemObject(buffer);
@@ -579,7 +585,12 @@ namespace ros_opencl {
         float *result = (float *) malloc(typesz);
         checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
 
-        v->assign(result, result+sz);
+        if (buffer_size.size() > 0){
+            v->assign(result, result+buffer_size[0]);
+        }
+        else{
+            v->assign(result, result+sz);
+        }
 
         clReleaseCommandQueue (queue);
         clReleaseMemObject(buffer);
@@ -625,7 +636,13 @@ namespace ros_opencl {
         checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
 
         std::vector<double> res = std::vector<double>();
-        res.assign(result, result+sz);
+
+        if (buffer_size.size() > 0){
+            res.assign(result, result+buffer_size[0]);
+        }
+        else{
+            res.assign(result, result+sz);
+        }
 
         clReleaseCommandQueue (queue);
         clReleaseMemObject(buffer);
@@ -672,7 +689,12 @@ namespace ros_opencl {
         double *result = (double *) malloc(typesz);
         checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
 
-        v->assign(result, result+sz);
+        if (buffer_size.size() > 0){
+            v->assign(result, result+buffer_size[0]);
+        }
+        else{
+            v->assign(result, result+sz);
+        }
 
         clReleaseCommandQueue (queue);
         clReleaseMemObject(buffer);
@@ -718,7 +740,13 @@ namespace ros_opencl {
         checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
 
         std::vector<int> res = std::vector<int>();
-        res.assign(result, result+sz);
+
+        if (buffer_size.size() > 0){
+            res.assign(result, result+buffer_size[0]);
+        }
+        else{
+            res.assign(result, result+sz);
+        }
 
         clReleaseCommandQueue (queue);
         clReleaseMemObject(buffer);
@@ -765,7 +793,12 @@ namespace ros_opencl {
         int *result = (int *) malloc(typesz);
         checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
 
-        v->assign(result, result+sz);
+        if (buffer_size.size() > 0){
+            v->assign(result, result+buffer_size[0]);
+        }
+        else{
+            v->assign(result, result+sz);
+        }
 
         clReleaseCommandQueue (queue);
         clReleaseMemObject(buffer);
@@ -811,7 +844,13 @@ namespace ros_opencl {
         checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
 
         std::vector<char> res = std::vector<char>();
-        res.assign(result, result+sz);
+
+        if (buffer_size.size() > 0){
+            res.assign(result, result+buffer_size[0]);
+        }
+        else{
+            res.assign(result, result+sz);
+        }
 
         clReleaseCommandQueue (queue);
         clReleaseMemObject(buffer);
@@ -858,7 +897,12 @@ namespace ros_opencl {
         char *result = (char *) malloc(typesz);
         checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
 
-        v->assign(result, result+sz);
+        if (buffer_size.size() > 0){
+            v->assign(result, result+buffer_size[0]);
+        }
+        else{
+            v->assign(result, result+sz);
+        }
 
         clReleaseCommandQueue (queue);
         clReleaseMemObject(buffer);

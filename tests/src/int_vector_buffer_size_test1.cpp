@@ -26,10 +26,10 @@ int main (int argc, char** argv){
     std::vector<size_t> g_work_size;
     std::vector<size_t> buffer_size;
     g_work_size.push_back(2);
-    buffer_size.push_back(3);
+    buffer_size.push_back(2);
 
     v = roscl.process(v, g_work_size, buffer_size);
 
 
-    ROS_INFO("The vector from [1, 2, 3] changed to [%d, %d, %d].", v[0], v[1], v[2]);
+    ROS_INFO("The vector from [1, 2, 3] changed to [%d, %d]. The new size of the vector is %lu!", v[0], v[1], v.size());
 }
