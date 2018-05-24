@@ -26,7 +26,7 @@ int main (int argc, char** argv){
     std::vector<size_t> g_work_size;
     std::vector<size_t> buffer_size;
     g_work_size.push_back(1);
-    g_work_size.push_back(3);
+    buffer_size.push_back(3);
 
     roscl.process(&v, g_work_size, buffer_size);
 
