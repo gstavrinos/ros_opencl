@@ -1,12 +1,12 @@
 #pragma once
 
-#include <vector>
 #include <string>
 #include <fstream>
 #include <iterator>
 #include <ros/ros.h>
 #include <ros/package.h>
 #include <sensor_msgs/Image.h>
+#include "ros_opencl_params.hpp"
 #include <sensor_msgs/LaserScan.h>
 #include <sensor_msgs/PointCloud2.h>
 
@@ -15,6 +15,8 @@
 #else
     #include "CL/cl.h"
 #endif
+
+using namespace ros_opencl_params;
 
 namespace ros_opencl {
 
@@ -214,12 +216,18 @@ class ROS_OpenCL{
          *                             buffer is typeof(float) * &lt;input vector size&gt;
          *
          * @param  v                   The input data.
-         * @param  global_work_size    <b>optional</b> Overrides the default global work size of the kernel. Only one element should be pushed back.
-         * @param  buffer_size         <b>optional</b> Overrides the default number of elements of the kernel buffer for the input. Only one element should be pushed back.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain only one element.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only one element.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. In this function this parameter is ignored.
          *
          * @return                     A copy of the processed input.
          */
-        std::vector<float> process(const std::vector<float> v, const std::vector<size_t> global_work_size = std::vector<size_t>(), const std::vector<size_t> buffer_size = std::vector<size_t>());
+        std::vector<float> process(const std::vector<float> v, const ROS_OpenCL_Params* params=NULL);
 
         /**
          * @brief                      The function that initiates kernel processing.
@@ -231,11 +239,17 @@ class ROS_OpenCL{
          *                             Changes are overwritten on the input data.
          *
          * @param  v                   The input data.
-         * @param  global_work_size    <b>optional</b> Overrides the default global work size of the kernel. Only one element should be pushed back.
-         * @param  buffer_size         <b>optional</b> Overrides the default number of elements of the kernel buffer for the input. Only one element should be pushed back.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain only one element.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only one element.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. In this function this parameter is ignored.
          *
          */
-        void process(std::vector<float>* v, const std::vector<size_t> global_work_size = std::vector<size_t>(), const std::vector<size_t> buffer_size = std::vector<size_t>());
+        void process(std::vector<float>* v, const ROS_OpenCL_Params* params=NULL);
 
         /**
          * @brief                      The function that initiates kernel processing.
@@ -246,12 +260,18 @@ class ROS_OpenCL{
          *                             buffer is typeof(double) * &lt;input vector size&gt;
          *
          * @param  v                   The input data.
-         * @param  global_work_size    <b>optional</b> Overrides the default global work size of the kernel. Only one element should be pushed back.
-         * @param  buffer_size         <b>optional</b> Overrides the default number of elements of the kernel buffer for the input. Only one element should be pushed back.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain only one element.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only one element.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. In this function this parameter is ignored.
          *
          * @return                     A copy of the processed input.
          */
-        std::vector<double> process(const std::vector<double> v, const std::vector<size_t> global_work_size = std::vector<size_t>(), const std::vector<size_t> buffer_size = std::vector<size_t>());
+        std::vector<double> process(const std::vector<double> v, const ROS_OpenCL_Params* params=NULL);
 
         /**
          * @brief                      The function that initiates kernel processing.
@@ -263,11 +283,17 @@ class ROS_OpenCL{
          *                             Changes are overwritten on the input data.
          *
          * @param  v                   The input data.
-         * @param  global_work_size    <b>optional</b> Overrides the default global work size of the kernel. Only one element should be pushed back.
-         * @param  buffer_size         <b>optional</b> Overrides the default number of elements of the kernel buffer for the input. Only one element should be pushed back.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain only one element.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only one element.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. In this function this parameter is ignored.
          *
          */
-        void process(std::vector<double>* v, const std::vector<size_t> global_work_size = std::vector<size_t>(), const std::vector<size_t> buffer_size = std::vector<size_t>());
+        void process(std::vector<double>* v, const ROS_OpenCL_Params* params=NULL);
 
         /**
          * @brief                      The function that initiates kernel processing.
@@ -278,12 +304,18 @@ class ROS_OpenCL{
          *                             buffer is typeof(int) * &lt;input vector size&gt;
          *
          * @param  v                   The input data.
-         * @param  global_work_size    <b>optional</b> Overrides the default global work size of the kernel. Only one element should be pushed back.
-         * @param  buffer_size         <b>optional</b> Overrides the default number of elements of the kernel buffer for the input. Only one element should be pushed back.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain only one element.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only one element.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. In this function this parameter is ignored.
          *
          * @return                     A copy of the processed input.
          */
-        std::vector<int> process(const std::vector<int> v, const std::vector<size_t> global_work_size = std::vector<size_t>(), const std::vector<size_t> buffer_size = std::vector<size_t>());
+        std::vector<int> process(const std::vector<int> v, const ROS_OpenCL_Params* params=NULL);
 
         /**
          * @brief                      The function that initiates kernel processing.
@@ -295,11 +327,17 @@ class ROS_OpenCL{
          *                             Changes are overwritten on the input data.
          *
          * @param  v                   The input data.
-         * @param  global_work_size    <b>optional</b> Overrides the default global work size of the kernel. Only one element should be pushed back.
-         * @param  buffer_size         <b>optional</b> Overrides the default number of elements of the kernel buffer for the input. Only one element should be pushed back.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain only one element.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only one element.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. In this function this parameter is ignored.
          *
          */
-        void process(std::vector<int>* v, const std::vector<size_t> global_work_size = std::vector<size_t>(), const std::vector<size_t> buffer_size = std::vector<size_t>());
+        void process(std::vector<int>* v, const ROS_OpenCL_Params* params=NULL);
 
         /**
          * @brief                      The function that initiates kernel processing.
@@ -310,12 +348,18 @@ class ROS_OpenCL{
          *                             buffer is typeof(char) * &lt;input vector size&gt;
          *
          * @param  v                   The input data.
-         * @param  global_work_size    <b>optional</b> Overrides the default global work size of the kernel. Only one element should be pushed back.
-         * @param  buffer_size         <b>optional</b> Overrides the default number of elements of the kernel buffer for the input. Only one element should be pushed back.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain only one element.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only one element.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. In this function this parameter is ignored.
          *
          * @return                     A copy of the processed input.
          */
-        std::vector<char> process(const std::vector<char> v, const std::vector<size_t> global_work_size = std::vector<size_t>(), const std::vector<size_t> buffer_size = std::vector<size_t>());
+        std::vector<char> process(const std::vector<char> v, const ROS_OpenCL_Params* params=NULL);
 
         /**
          * @brief                      The function that initiates kernel processing.
@@ -327,11 +371,17 @@ class ROS_OpenCL{
          *                             Changes are overwritten on the input data.
          *
          * @param  v                   The input data.
-         * @param  global_work_size    <b>optional</b> Overrides the default global work size of the kernel. Only one element should be pushed back.
-         * @param  buffer_size         <b>optional</b> Overrides the default number of elements of the kernel buffer for the input. Only one element should be pushed back.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain only one element.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only one element.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. In this function this parameter is ignored.
          *
          */
-        void process(std::vector<char>* v, const std::vector<size_t> global_work_size = std::vector<size_t>(), const std::vector<size_t> buffer_size = std::vector<size_t>());
+        void process(std::vector<char>* v, const ROS_OpenCL_Params* params=NULL);
 
         std::vector<char> process(const std::vector<char> v, const std::vector<char> v2, const bool two_dimensional=false);
         void process(std::vector<char>* v, const std::vector<char> v2, const bool two_dimensional=false);

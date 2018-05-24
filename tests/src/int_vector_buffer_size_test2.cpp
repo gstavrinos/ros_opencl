@@ -23,12 +23,11 @@ int main (int argc, char** argv){
     v.push_back(2);
     v.push_back(3);
 
-    std::vector<size_t> g_work_size;
-    std::vector<size_t> buffer_size;
-    g_work_size.push_back(1);
-    buffer_size.push_back(3);
+    ROS_OpenCL_Params params;
+    params.global_work_size.push_back(1);
+    params.buffers_size.push_back(3);
 
-    roscl.process(&v, g_work_size, buffer_size);
+    roscl.process(&v, &params);
 
     ROS_INFO("The vector from [1, 2, 3] changed to [%d, %d, %d]", v[0], v[1], v[2]);
 

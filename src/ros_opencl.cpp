@@ -299,7 +299,6 @@ namespace ros_opencl {
         std::swap(context, s->context);
         std::swap(program, s->program);
         std::swap(deviceIds, s->deviceIds);
-        ROS_INFO("=====");
         return *this;
     }
 
@@ -494,15 +493,15 @@ namespace ros_opencl {
         free(result);
     }
 
-    std::vector<float> ROS_OpenCL::process(const std::vector<float> v, const std::vector<size_t> global_work_size, const std::vector<size_t> buffer_size){
+    std::vector<float> ROS_OpenCL::process(const std::vector<float> v, const ROS_OpenCL_Params* params){
         size_t sz = v.size();
         cl_int typesz = sizeof(float) * sz;
-        size_t temp_sz = buffer_size.size();
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
         if (temp_sz > 0){
             if (temp_sz != 1){
-                ROS_WARN("buffer_size includes more elements than needed! Using only the first...");
+                ROS_WARN("buffers_size includes more elements than needed! Using only the first...");
             }
-            typesz = sizeof(float) * buffer_size[0];
+            typesz = sizeof(float) * params->buffers_size[0];
         }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
@@ -514,12 +513,12 @@ namespace ros_opencl {
         checkError (error);
 
         size_t size = sz;
-        temp_sz = global_work_size.size();
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
         if (temp_sz > 0){
             if (temp_sz != 1){
                 ROS_WARN("global_work_size includes more elements than needed! Using only the first...");
             }
-            size = global_work_size[0];
+            size = params->global_work_size[0];
         }
 
         cl_event gpuExec;
@@ -533,8 +532,8 @@ namespace ros_opencl {
 
         std::vector<float> res = std::vector<float>();
 
-        if (buffer_size.size() > 0){
-            res.assign(result, result+buffer_size[0]);
+        if (params != NULL and params->buffers_size.size() > 0){
+            res.assign(result, result+params->buffers_size[0]);
         }
         else{
             res.assign(result, result+sz);
@@ -548,15 +547,15 @@ namespace ros_opencl {
         return res;
     }
 
-    void ROS_OpenCL::process(std::vector<float>* v, const std::vector<size_t> global_work_size, const std::vector<size_t> buffer_size){
+    void ROS_OpenCL::process(std::vector<float>* v, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         cl_int typesz = sizeof(float) * sz;
-        size_t temp_sz = buffer_size.size();
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
         if (temp_sz > 0){
             if (temp_sz != 1){
                 ROS_WARN("buffer_size includes more elements than needed! Using only the first... Using only the first...");
             }
-            typesz = sizeof(float) * buffer_size[0];
+            typesz = sizeof(float) * params->buffers_size[0];
         }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
@@ -568,12 +567,12 @@ namespace ros_opencl {
         checkError (error);
 
         size_t size = sz;
-        temp_sz = global_work_size.size();
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
         if (temp_sz > 0){
             if (temp_sz != 1){
                 ROS_WARN("global_work_size includes more elements than needed! Using only the first...");
             }
-            size = global_work_size[0];
+            size = params->global_work_size[0];
         }
 
         cl_event gpuExec;
@@ -585,8 +584,8 @@ namespace ros_opencl {
         float *result = (float *) malloc(typesz);
         checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
 
-        if (buffer_size.size() > 0){
-            v->assign(result, result+buffer_size[0]);
+        if (params != NULL and params->buffers_size.size() > 0){
+            v->assign(result, result+params->buffers_size[0]);
         }
         else{
             v->assign(result, result+sz);
@@ -598,15 +597,15 @@ namespace ros_opencl {
         free(result);
     }
 
-    std::vector<double> ROS_OpenCL::process(const std::vector<double> v, const std::vector<size_t> global_work_size, const std::vector<size_t> buffer_size){
+    std::vector<double> ROS_OpenCL::process(const std::vector<double> v, const ROS_OpenCL_Params* params){
         size_t sz = v.size();
         cl_int typesz = sizeof(double) * sz;
-        size_t temp_sz = buffer_size.size();
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
         if (temp_sz > 0){
             if (temp_sz != 1){
                 ROS_WARN("buffer_size includes more elements than needed! Using only the first...");
             }
-            typesz = sizeof(float) * buffer_size[0];
+            typesz = sizeof(float) * params->buffers_size[0];
         }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
@@ -618,12 +617,12 @@ namespace ros_opencl {
         checkError (error);
 
         size_t size = sz;
-        temp_sz = global_work_size.size();
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
         if (temp_sz > 0){
             if (temp_sz != 1){
                 ROS_WARN("global_work_size includes more elements than needed! Using only the first...");
             }
-            size = global_work_size[0];
+            size = params->global_work_size[0];
         }
 
         cl_event gpuExec;
@@ -637,8 +636,8 @@ namespace ros_opencl {
 
         std::vector<double> res = std::vector<double>();
 
-        if (buffer_size.size() > 0){
-            res.assign(result, result+buffer_size[0]);
+        if (params != NULL and params->buffers_size.size() > 0){
+            res.assign(result, result+params->buffers_size[0]);
         }
         else{
             res.assign(result, result+sz);
@@ -652,15 +651,15 @@ namespace ros_opencl {
         return res;
     }
 
-    void ROS_OpenCL::process(std::vector<double>* v, const std::vector<size_t> global_work_size, const std::vector<size_t> buffer_size){
+    void ROS_OpenCL::process(std::vector<double>* v, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         cl_int typesz = sizeof(double) * sz;
-        size_t temp_sz = buffer_size.size();
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
         if (temp_sz > 0){
             if (temp_sz != 1){
                 ROS_WARN("buffer_size includes more elements than needed! Using only the first...");
             }
-            typesz = sizeof(float) * buffer_size[0];
+            typesz = sizeof(float) * params->buffers_size[0];
         }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
@@ -672,12 +671,12 @@ namespace ros_opencl {
         checkError (error);
 
         size_t size = sz;
-        temp_sz = global_work_size.size();
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
         if (temp_sz > 0){
             if (temp_sz != 1){
                 ROS_WARN("global_work_size includes more elements than needed! Using only the first...");
             }
-            size = global_work_size[0];
+            size = params->global_work_size[0];
         }
 
         cl_event gpuExec;
@@ -689,8 +688,8 @@ namespace ros_opencl {
         double *result = (double *) malloc(typesz);
         checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
 
-        if (buffer_size.size() > 0){
-            v->assign(result, result+buffer_size[0]);
+        if (params != NULL and params->buffers_size.size() > 0){
+            v->assign(result, result+params->buffers_size[0]);
         }
         else{
             v->assign(result, result+sz);
@@ -702,15 +701,15 @@ namespace ros_opencl {
         free(result);
     }
 
-    std::vector<int> ROS_OpenCL::process(const std::vector<int> v, const std::vector<size_t> global_work_size, const std::vector<size_t> buffer_size){
+    std::vector<int> ROS_OpenCL::process(const std::vector<int> v, const ROS_OpenCL_Params* params){
         size_t sz = v.size();
         cl_int typesz = sizeof(int) * sz;
-        size_t temp_sz = buffer_size.size();
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
         if (temp_sz > 0){
             if (temp_sz != 1){
                 ROS_WARN("buffer_size includes more elements than needed! Using only the first...");
             }
-            typesz = sizeof(float) * buffer_size[0];
+            typesz = sizeof(float) * params->buffers_size[0];
         }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
@@ -722,12 +721,12 @@ namespace ros_opencl {
         checkError (error);
 
         size_t size = sz;
-        temp_sz = global_work_size.size();
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
         if (temp_sz > 0){
             if (temp_sz != 1){
                 ROS_WARN("global_work_size includes more elements than needed! Using only the first...");
             }
-            size = global_work_size[0];
+            size = params->global_work_size[0];
         }
 
         cl_event gpuExec;
@@ -741,8 +740,8 @@ namespace ros_opencl {
 
         std::vector<int> res = std::vector<int>();
 
-        if (buffer_size.size() > 0){
-            res.assign(result, result+buffer_size[0]);
+        if (params != NULL and params->buffers_size.size() > 0){
+            res.assign(result, result+params->buffers_size[0]);
         }
         else{
             res.assign(result, result+sz);
@@ -756,15 +755,15 @@ namespace ros_opencl {
         return res;
     }
 
-    void ROS_OpenCL::process(std::vector<int>* v, const std::vector<size_t> global_work_size, const std::vector<size_t> buffer_size){
+    void ROS_OpenCL::process(std::vector<int>* v, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         cl_int typesz = sizeof(int) * sz;
-        size_t temp_sz = buffer_size.size();
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
         if (temp_sz > 0){
             if (temp_sz != 1){
                 ROS_WARN("buffer_size includes more elements than needed! Using only the first...");
             }
-            typesz = sizeof(float) * buffer_size[0];
+            typesz = sizeof(float) * params->buffers_size[0];
         }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
@@ -776,12 +775,12 @@ namespace ros_opencl {
         checkError (error);
 
         size_t size = sz;
-        temp_sz = global_work_size.size();
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
         if (temp_sz > 0){
             if (temp_sz != 1){
                 ROS_WARN("global_work_size includes more elements than needed! Using only the first...");
             }
-            size = global_work_size[0];
+            size = params->global_work_size[0];
         }
 
         cl_event gpuExec;
@@ -793,8 +792,8 @@ namespace ros_opencl {
         int *result = (int *) malloc(typesz);
         checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
 
-        if (buffer_size.size() > 0){
-            v->assign(result, result+buffer_size[0]);
+        if (params != NULL and params->buffers_size.size() > 0){
+            v->assign(result, result+params->buffers_size[0]);
         }
         else{
             v->assign(result, result+sz);
@@ -806,15 +805,15 @@ namespace ros_opencl {
         free(result);
     }
 
-    std::vector<char> ROS_OpenCL::process(const std::vector<char> v, const std::vector<size_t> global_work_size, const std::vector<size_t> buffer_size){
+    std::vector<char> ROS_OpenCL::process(const std::vector<char> v, const ROS_OpenCL_Params* params){
         size_t sz = v.size();
         cl_int typesz = sizeof(char) * sz;
-        size_t temp_sz = buffer_size.size();
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
         if (temp_sz > 0){
             if (temp_sz != 1){
                 ROS_WARN("buffer_size includes more elements than needed! Using only the first...");
             }
-            typesz = sizeof(float) * buffer_size[0];
+            typesz = sizeof(float) * params->buffers_size[0];
         }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
@@ -826,12 +825,12 @@ namespace ros_opencl {
         checkError (error);
 
         size_t size = sz;
-        temp_sz = global_work_size.size();
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
         if (temp_sz > 0){
             if (temp_sz != 1){
                 ROS_WARN("global_work_size includes more elements than needed! Using only the first...");
             }
-            size = global_work_size[0];
+            size = params->global_work_size[0];
         }
 
         cl_event gpuExec;
@@ -845,8 +844,8 @@ namespace ros_opencl {
 
         std::vector<char> res = std::vector<char>();
 
-        if (buffer_size.size() > 0){
-            res.assign(result, result+buffer_size[0]);
+        if (params != NULL and params->buffers_size.size() > 0){
+            res.assign(result, result+params->buffers_size[0]);
         }
         else{
             res.assign(result, result+sz);
@@ -860,15 +859,15 @@ namespace ros_opencl {
         return res;
     }
 
-    void ROS_OpenCL::process(std::vector<char>* v, const std::vector<size_t> global_work_size, const std::vector<size_t> buffer_size){
+    void ROS_OpenCL::process(std::vector<char>* v, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         cl_int typesz = sizeof(char) * sz;
-        size_t temp_sz = buffer_size.size();
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
         if (temp_sz > 0){
             if (temp_sz != 1){
                 ROS_WARN("buffer_size includes more elements than needed! Using only the first...");
             }
-            typesz = sizeof(float) * buffer_size[0];
+            typesz = sizeof(float) * params->buffers_size[0];
         }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
@@ -880,12 +879,12 @@ namespace ros_opencl {
         checkError (error);
 
         size_t size = sz;
-        temp_sz = global_work_size.size();
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
         if (temp_sz > 0){
             if (temp_sz != 1){
                 ROS_WARN("global_work_size includes more elements than needed! Using only the first...");
             }
-            size = global_work_size[0];
+            size = params->global_work_size[0];
         }
 
         cl_event gpuExec;
@@ -897,8 +896,8 @@ namespace ros_opencl {
         char *result = (char *) malloc(typesz);
         checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
 
-        if (buffer_size.size() > 0){
-            v->assign(result, result+buffer_size[0]);
+        if (params != NULL and params->buffers_size.size() > 0){
+            v->assign(result, result+params->buffers_size[0]);
         }
         else{
             v->assign(result, result+sz);
