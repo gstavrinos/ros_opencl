@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['program',['program',['../classros__opencl_1_1ROS__OpenCL.html#af240e8fd0ae17053a481ef43249ba935',1,'ros_opencl::ROS_OpenCL']]]
+  ['global_5fwork_5fsize',['global_work_size',['../classros__opencl__params_1_1ROS__OpenCL__Params.html#aaddc1a9022a197412d04700a41352eb0',1,'ros_opencl_params::ROS_OpenCL_Params']]]
 ];

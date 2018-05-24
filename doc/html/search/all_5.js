@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['operator_3d',['operator=',['../classros__opencl_1_1ROS__OpenCL.html#aecc490cdd29b9bb421efac1cbdfde076',1,'ros_opencl::ROS_OpenCL']]]
+  ['loadkernel',['LoadKernel',['../classros__opencl_1_1ROS__OpenCL.html#a2be8d7fe56157b7fe9a81563abc9e932',1,'ros_opencl::ROS_OpenCL']]]
 ];

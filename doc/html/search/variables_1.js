@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['deviceids',['deviceIds',['../classros__opencl_1_1ROS__OpenCL.html#a7989515846010001e136071939637147',1,'ros_opencl::ROS_OpenCL']]]
+  ['context',['context',['../classros__opencl_1_1ROS__OpenCL.html#abd4395f8060a822f307ddd97944bfd80',1,'ros_opencl::ROS_OpenCL']]]
 ];

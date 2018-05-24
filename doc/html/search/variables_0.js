@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['context',['context',['../classros__opencl_1_1ROS__OpenCL.html#abd4395f8060a822f307ddd97944bfd80',1,'ros_opencl::ROS_OpenCL']]]
+  ['buffers_5fsize',['buffers_size',['../classros__opencl__params_1_1ROS__OpenCL__Params.html#a2fcb0f16eed0b44136c9c2a5f5db3a37',1,'ros_opencl_params::ROS_OpenCL_Params']]]
 ];
