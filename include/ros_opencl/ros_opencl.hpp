@@ -219,8 +219,10 @@ class ROS_OpenCL{
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain only one element.
+         *                             The rest of the values are ignored.
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only one element.
+         *                             The rest of the values are ignored.
          *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
          *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
          *                             sizes of the buffers will be used. In this function this parameter is ignored.
@@ -242,8 +244,10 @@ class ROS_OpenCL{
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain only one element.
+         *                             The rest of the values are ignored.
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only one element.
+         *                             The rest of the values are ignored.
          *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
          *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
          *                             sizes of the buffers will be used. In this function this parameter is ignored.
@@ -263,8 +267,10 @@ class ROS_OpenCL{
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain only one element.
+         *                             The rest of the values are ignored.
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only one element.
+         *                             The rest of the values are ignored.
          *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
          *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
          *                             sizes of the buffers will be used. In this function this parameter is ignored.
@@ -286,8 +292,10 @@ class ROS_OpenCL{
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain only one element.
+         *                             The rest of the values are ignored.
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only one element.
+         *                             The rest of the values are ignored.
          *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
          *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
          *                             sizes of the buffers will be used. In this function this parameter is ignored.
@@ -307,8 +315,10 @@ class ROS_OpenCL{
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain only one element.
+         *                             The rest of the values are ignored.
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only one element.
+         *                             The rest of the values are ignored.
          *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
          *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
          *                             sizes of the buffers will be used. In this function this parameter is ignored.
@@ -330,8 +340,10 @@ class ROS_OpenCL{
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain only one element.
+         *                             The rest of the values are ignored.
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only one element.
+         *                             The rest of the values are ignored.
          *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
          *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
          *                             sizes of the buffers will be used. In this function this parameter is ignored.
@@ -351,8 +363,10 @@ class ROS_OpenCL{
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain only one element.
+         *                             The rest of the values are ignored.
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only one element.
+         *                             The rest of the values are ignored.
          *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
          *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
          *                             sizes of the buffers will be used. In this function this parameter is ignored.
@@ -374,8 +388,10 @@ class ROS_OpenCL{
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain only one element.
+         *                             The rest of the values are ignored.
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only one element.
+         *                             The rest of the values are ignored.
          *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
          *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
          *                             sizes of the buffers will be used. In this function this parameter is ignored.
@@ -383,69 +399,69 @@ class ROS_OpenCL{
          */
         void process(std::vector<char>* v, const ROS_OpenCL_Params* params=NULL);
 
-        std::vector<char> process(const std::vector<char> v, const std::vector<char> v2, const bool two_dimensional=false);
-        void process(std::vector<char>* v, const std::vector<char> v2, const bool two_dimensional=false);
-        void process(std::vector<char>* v, std::vector<char>* v2, const bool two_dimensional=false);
+        std::vector<char> process(const std::vector<char> v, const std::vector<char> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<char>* v, const std::vector<char> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<char>* v, std::vector<char>* v2, const ROS_OpenCL_Params* params=NULL);
 
-        std::vector<char> process(const std::vector<char> v, const std::vector<int> v2, const bool two_dimensional=false);
-        void process(std::vector<char>* v, const std::vector<int> v2, const bool two_dimensional=false);
-        void process(std::vector<char>* v, std::vector<int>* v2, const bool two_dimensional=false);
+        std::vector<char> process(const std::vector<char> v, const std::vector<int> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<char>* v, const std::vector<int> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<char>* v, std::vector<int>* v2, const ROS_OpenCL_Params* params=NULL);
 
-        std::vector<char> process(const std::vector<char> v, const std::vector<float> v2, const bool two_dimensional=false);
-        void process(std::vector<char>* v, const std::vector<float> v2, const bool two_dimensional=false);
-        void process(std::vector<char>* v, std::vector<float>* v2, const bool two_dimensional=false);
+        std::vector<char> process(const std::vector<char> v, const std::vector<float> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<char>* v, const std::vector<float> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<char>* v, std::vector<float>* v2, const ROS_OpenCL_Params* params=NULL);
 
-        std::vector<char> process(const std::vector<char> v, const std::vector<double> v2, const bool two_dimensional=false);
-        void process(std::vector<char>* v, const std::vector<double> v2, const bool two_dimensional=false);
-        void process(std::vector<char>* v, std::vector<double>* v2, const bool two_dimensional=false);
+        std::vector<char> process(const std::vector<char> v, const std::vector<double> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<char>* v, const std::vector<double> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<char>* v, std::vector<double>* v2, const ROS_OpenCL_Params* params=NULL);
 
-        std::vector<int> process(const std::vector<int> v, const std::vector<char> v2, const bool two_dimensional=false);
-        void process(std::vector<int>* v, const std::vector<char> v2, const bool two_dimensional=false);
-        void process(std::vector<int>* v, std::vector<char>* v2, const bool two_dimensional=false);
+        std::vector<int> process(const std::vector<int> v, const std::vector<char> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<int>* v, const std::vector<char> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<int>* v, std::vector<char>* v2, const ROS_OpenCL_Params* params=NULL);
 
-        std::vector<int> process(const std::vector<int> v, const std::vector<int> v2, const bool two_dimensional=false);
-        void process(std::vector<int>* v, const std::vector<int> v2, const bool two_dimensional=false);
-        void process(std::vector<int>* v, std::vector<int>* v2, const bool two_dimensional=false);
+        std::vector<int> process(const std::vector<int> v, const std::vector<int> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<int>* v, const std::vector<int> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<int>* v, std::vector<int>* v2, const ROS_OpenCL_Params* params=NULL);
 
-        std::vector<int> process(const std::vector<int> v, const std::vector<float> v2, const bool two_dimensional=false);
-        void process(std::vector<int>* v, const std::vector<float> v2, const bool two_dimensional=false);
-        void process(std::vector<int>* v, std::vector<float>* v2, const bool two_dimensional=false);
+        std::vector<int> process(const std::vector<int> v, const std::vector<float> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<int>* v, const std::vector<float> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<int>* v, std::vector<float>* v2, const ROS_OpenCL_Params* params=NULL);
 
-        std::vector<int> process(const std::vector<int> v, const std::vector<double> v2, const bool two_dimensional=false);
-        void process(std::vector<int>* v, const std::vector<double> v2, const bool two_dimensional=false);
-        void process(std::vector<int>* v, std::vector<double>* v2, const bool two_dimensional=false);
+        std::vector<int> process(const std::vector<int> v, const std::vector<double> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<int>* v, const std::vector<double> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<int>* v, std::vector<double>* v2, const ROS_OpenCL_Params* params=NULL);
 
-        std::vector<float> process(const std::vector<float> v, const std::vector<char> v2, const bool two_dimensional=false);
-        void process(std::vector<float>* v, const std::vector<char> v2, const bool two_dimensional=false);
-        void process(std::vector<float>* v, std::vector<char>* v2, const bool two_dimensional=false);
+        std::vector<float> process(const std::vector<float> v, const std::vector<char> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<float>* v, const std::vector<char> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<float>* v, std::vector<char>* v2, const ROS_OpenCL_Params* params=NULL);
 
-        std::vector<float> process(const std::vector<float> v, const std::vector<int> v2, const bool two_dimensional=false);
-        void process(std::vector<float>* v, const std::vector<int> v2, const bool two_dimensional=false);
-        void process(std::vector<float>* v, std::vector<int>* v2, const bool two_dimensional=false);
+        std::vector<float> process(const std::vector<float> v, const std::vector<int> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<float>* v, const std::vector<int> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<float>* v, std::vector<int>* v2, const ROS_OpenCL_Params* params=NULL);
 
-        std::vector<float> process(const std::vector<float> v, const std::vector<float> v2, const bool two_dimensional=false);
-        void process(std::vector<float>* v, const std::vector<float> v2, const bool two_dimensional=false);
-        void process(std::vector<float>* v, std::vector<float>* v2, const bool two_dimensional=false);
+        std::vector<float> process(const std::vector<float> v, const std::vector<float> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<float>* v, const std::vector<float> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<float>* v, std::vector<float>* v2, const ROS_OpenCL_Params* params=NULL);
 
-        std::vector<float> process(const std::vector<float> v, const std::vector<double> v2, const bool two_dimensional=false);
-        void process(std::vector<float>* v, const std::vector<double> v2, const bool two_dimensional=false);
-        void process(std::vector<float>* v, std::vector<double>* v2, const bool two_dimensional=false);
+        std::vector<float> process(const std::vector<float> v, const std::vector<double> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<float>* v, const std::vector<double> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<float>* v, std::vector<double>* v2, const ROS_OpenCL_Params* params=NULL);
 
-        std::vector<double> process(const std::vector<double> v, const std::vector<char> v2, const bool two_dimensional=false);
-        void process(std::vector<double>* v, const std::vector<char> v2, const bool two_dimensional=false);
-        void process(std::vector<double>* v, std::vector<char>* v2, const bool two_dimensional=false);
+        std::vector<double> process(const std::vector<double> v, const std::vector<char> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<double>* v, const std::vector<char> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<double>* v, std::vector<char>* v2, const ROS_OpenCL_Params* params=NULL);
 
-        std::vector<double> process(const std::vector<double> v, const std::vector<int> v2, const bool two_dimensional=false);
-        void process(std::vector<double>* v, const std::vector<int> v2, const bool two_dimensional=false);
-        void process(std::vector<double>* v, std::vector<int>* v2, const bool two_dimensional=false);
+        std::vector<double> process(const std::vector<double> v, const std::vector<int> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<double>* v, const std::vector<int> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<double>* v, std::vector<int>* v2, const ROS_OpenCL_Params* params=NULL);
 
-        std::vector<double> process(const std::vector<double> v, const std::vector<float> v2, const bool two_dimensional=false);
-        void process(std::vector<double>* v, const std::vector<float> v2, const bool two_dimensional=false);
-        void process(std::vector<double>* v, std::vector<float>* v2, const bool two_dimensional=false);
+        std::vector<double> process(const std::vector<double> v, const std::vector<float> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<double>* v, const std::vector<float> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<double>* v, std::vector<float>* v2, const ROS_OpenCL_Params* params=NULL);
 
-        std::vector<double> process(const std::vector<double> v, const std::vector<double> v2, const bool two_dimensional=false);
-        void process(std::vector<double>* v, const std::vector<double> v2, const bool two_dimensional=false);
-        void process(std::vector<double>* v, std::vector<double>* v2, const bool two_dimensional=false);
+        std::vector<double> process(const std::vector<double> v, const std::vector<double> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<double>* v, const std::vector<double> v2, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<double>* v, std::vector<double>* v2, const ROS_OpenCL_Params* params=NULL);
 
         // |                             |
         // |            TODO             |
@@ -454,8 +470,7 @@ class ROS_OpenCL{
         // v                             v
 
         // Extra TODO:
-        // Remove the second buffer on functions with vectors of the same type!
-        // Dimensionality parameters
+        // Remove the second buffer on functions with vectors of the same type AND size!
 
         // Finish doxygen documentation
 

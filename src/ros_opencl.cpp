@@ -909,11 +909,24 @@ namespace ros_opencl {
         free(result);
     }
 
-    std::vector<char> ROS_OpenCL::process(const std::vector<char> v, const std::vector<char> v2, const bool two_dimensional){
+    std::vector<char> ROS_OpenCL::process(const std::vector<char> v, const std::vector<char> v2, const ROS_OpenCL_Params* params){
         size_t sz = v.size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(char) * sz;
         size_t typesz2 = sizeof(char) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(char) * params->buffers_size[0];
+                typesz2 = sizeof(char) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -931,8 +944,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -956,11 +989,24 @@ namespace ros_opencl {
         return res;
     }
 
-    void ROS_OpenCL::process(std::vector<char>* v, const std::vector<char> v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<char>* v, const std::vector<char> v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(char) * sz;
         size_t typesz2 = sizeof(char) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(char) * params->buffers_size[0];
+                typesz2 = sizeof(char) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -978,8 +1024,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -1000,11 +1066,24 @@ namespace ros_opencl {
         free(result);
     }
 
-    void ROS_OpenCL::process(std::vector<char>* v, std::vector<char>* v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<char>* v, std::vector<char>* v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2->size();
         size_t typesz = sizeof(char) * sz;
         size_t typesz2 = sizeof(char) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(char) * params->buffers_size[0];
+                typesz2 = sizeof(char) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -1022,8 +1101,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -1050,11 +1149,24 @@ namespace ros_opencl {
         free(result2);
     }
 
-    std::vector<char> ROS_OpenCL::process(const std::vector<char> v, const std::vector<int> v2, const bool two_dimensional){
+    std::vector<char> ROS_OpenCL::process(const std::vector<char> v, const std::vector<int> v2, const ROS_OpenCL_Params* params){
         size_t sz = v.size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(char) * sz;
         size_t typesz2 = sizeof(int) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(char) * params->buffers_size[0];
+                typesz2 = sizeof(int) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -1072,8 +1184,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -1097,11 +1229,24 @@ namespace ros_opencl {
         return res;
     }
 
-    void ROS_OpenCL::process(std::vector<char>* v, const std::vector<int> v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<char>* v, const std::vector<int> v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(char) * sz;
         size_t typesz2 = sizeof(int) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(char) * params->buffers_size[0];
+                typesz2 = sizeof(int) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -1119,8 +1264,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -1141,11 +1306,24 @@ namespace ros_opencl {
         free(result);
     }
 
-    void ROS_OpenCL::process(std::vector<char>* v, std::vector<int>* v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<char>* v, std::vector<int>* v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2->size();
         size_t typesz = sizeof(char) * sz;
         size_t typesz2 = sizeof(int) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(char) * params->buffers_size[0];
+                typesz2 = sizeof(int) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -1163,8 +1341,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -1190,11 +1388,24 @@ namespace ros_opencl {
         free(result2);
     }
 
-    std::vector<char> ROS_OpenCL::process(const std::vector<char> v, const std::vector<float> v2, const bool two_dimensional){
+    std::vector<char> ROS_OpenCL::process(const std::vector<char> v, const std::vector<float> v2, const ROS_OpenCL_Params* params){
         size_t sz = v.size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(char) * sz;
         size_t typesz2 = sizeof(float) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(char) * params->buffers_size[0];
+                typesz2 = sizeof(float) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -1212,8 +1423,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -1237,11 +1468,24 @@ namespace ros_opencl {
         return res;
     }
 
-    void ROS_OpenCL::process(std::vector<char>* v, const std::vector<float> v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<char>* v, const std::vector<float> v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(char) * sz;
         size_t typesz2 = sizeof(float) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(char) * params->buffers_size[0];
+                typesz2 = sizeof(float) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -1259,8 +1503,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -1281,11 +1545,24 @@ namespace ros_opencl {
         free(result);
     }
 
-    void ROS_OpenCL::process(std::vector<char>* v, std::vector<float>* v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<char>* v, std::vector<float>* v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2->size();
         size_t typesz = sizeof(char) * sz;
         size_t typesz2 = sizeof(float) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(char) * params->buffers_size[0];
+                typesz2 = sizeof(float) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -1303,8 +1580,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -1330,11 +1627,24 @@ namespace ros_opencl {
         free(result2);
     }
 
-    std::vector<char> ROS_OpenCL::process(const std::vector<char> v, const std::vector<double> v2, const bool two_dimensional){
+    std::vector<char> ROS_OpenCL::process(const std::vector<char> v, const std::vector<double> v2, const ROS_OpenCL_Params* params){
         size_t sz = v.size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(char) * sz;
         size_t typesz2 = sizeof(double) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(char) * params->buffers_size[0];
+                typesz2 = sizeof(double) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -1352,8 +1662,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -1377,11 +1707,24 @@ namespace ros_opencl {
         return res;
     }
 
-    void ROS_OpenCL::process(std::vector<char>* v, const std::vector<double> v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<char>* v, const std::vector<double> v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(char) * sz;
         size_t typesz2 = sizeof(double) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(char) * params->buffers_size[0];
+                typesz2 = sizeof(double) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -1399,8 +1742,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -1421,11 +1784,24 @@ namespace ros_opencl {
         free(result);
     }
 
-    void ROS_OpenCL::process(std::vector<char>* v, std::vector<double>* v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<char>* v, std::vector<double>* v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2->size();
         size_t typesz = sizeof(char) * sz;
         size_t typesz2 = sizeof(double) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(char) * params->buffers_size[0];
+                typesz2 = sizeof(double) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -1443,8 +1819,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -1470,11 +1866,24 @@ namespace ros_opencl {
         free(result2);
     }
 
-    std::vector<int> ROS_OpenCL::process(const std::vector<int> v, const std::vector<char> v2, const bool two_dimensional){
+    std::vector<int> ROS_OpenCL::process(const std::vector<int> v, const std::vector<char> v2, const ROS_OpenCL_Params* params){
         size_t sz = v.size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(int) * sz;
         size_t typesz2 = sizeof(char) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(int) * params->buffers_size[0];
+                typesz2 = sizeof(char) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -1492,8 +1901,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -1517,11 +1946,24 @@ namespace ros_opencl {
         return res;
     }
 
-    void ROS_OpenCL::process(std::vector<int>* v, const std::vector<char> v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<int>* v, const std::vector<char> v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(int) * sz;
         size_t typesz2 = sizeof(char) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(int) * params->buffers_size[0];
+                typesz2 = sizeof(char) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -1539,8 +1981,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -1561,11 +2023,24 @@ namespace ros_opencl {
         free(result);
     }
 
-    void ROS_OpenCL::process(std::vector<int>* v, std::vector<char>* v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<int>* v, std::vector<char>* v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2->size();
         size_t typesz = sizeof(int) * sz;
         size_t typesz2 = sizeof(char) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(int) * params->buffers_size[0];
+                typesz2 = sizeof(char) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -1583,8 +2058,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -1610,11 +2105,24 @@ namespace ros_opencl {
         free(result2);
     }
 
-    std::vector<int> ROS_OpenCL::process(const std::vector<int> v, const std::vector<int> v2, const bool two_dimensional){
+    std::vector<int> ROS_OpenCL::process(const std::vector<int> v, const std::vector<int> v2, const ROS_OpenCL_Params* params){
         size_t sz = v.size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(int) * sz;
         size_t typesz2 = sizeof(int) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(int) * params->buffers_size[0];
+                typesz2 = sizeof(int) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -1632,8 +2140,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -1657,11 +2185,24 @@ namespace ros_opencl {
         return res;
     }
 
-    void ROS_OpenCL::process(std::vector<int>* v, const std::vector<int> v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<int>* v, const std::vector<int> v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(int) * sz;
         size_t typesz2 = sizeof(int) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(int) * params->buffers_size[0];
+                typesz2 = sizeof(int) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -1679,8 +2220,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -1701,11 +2262,24 @@ namespace ros_opencl {
         free(result);
     }
 
-    void ROS_OpenCL::process(std::vector<int>* v, std::vector<int>* v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<int>* v, std::vector<int>* v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2->size();
         size_t typesz = sizeof(int) * sz;
         size_t typesz2 = sizeof(int) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(int) * params->buffers_size[0];
+                typesz2 = sizeof(int) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -1723,8 +2297,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -1750,11 +2344,24 @@ namespace ros_opencl {
         free(result2);
     }
 
-    std::vector<int> ROS_OpenCL::process(const std::vector<int> v, const std::vector<float> v2, const bool two_dimensional){
+    std::vector<int> ROS_OpenCL::process(const std::vector<int> v, const std::vector<float> v2, const ROS_OpenCL_Params* params){
         size_t sz = v.size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(int) * sz;
         size_t typesz2 = sizeof(float) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(int) * params->buffers_size[0];
+                typesz2 = sizeof(float) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -1772,8 +2379,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -1797,11 +2424,24 @@ namespace ros_opencl {
         return res;
     }
 
-    void ROS_OpenCL::process(std::vector<int>* v, const std::vector<float> v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<int>* v, const std::vector<float> v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(int) * sz;
         size_t typesz2 = sizeof(float) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(int) * params->buffers_size[0];
+                typesz2 = sizeof(float) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -1819,8 +2459,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -1841,11 +2501,24 @@ namespace ros_opencl {
         free(result);
     }
 
-    void ROS_OpenCL::process(std::vector<int>* v, std::vector<float>* v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<int>* v, std::vector<float>* v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2->size();
         size_t typesz = sizeof(int) * sz;
         size_t typesz2 = sizeof(float) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(int) * params->buffers_size[0];
+                typesz2 = sizeof(float) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -1863,8 +2536,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -1890,11 +2583,24 @@ namespace ros_opencl {
         free(result2);
     }
 
-    std::vector<int> ROS_OpenCL::process(const std::vector<int> v, const std::vector<double> v2, const bool two_dimensional){
+    std::vector<int> ROS_OpenCL::process(const std::vector<int> v, const std::vector<double> v2, const ROS_OpenCL_Params* params){
         size_t sz = v.size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(int) * sz;
         size_t typesz2 = sizeof(double) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(int) * params->buffers_size[0];
+                typesz2 = sizeof(double) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -1912,8 +2618,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -1937,11 +2663,24 @@ namespace ros_opencl {
         return res;
     }
 
-    void ROS_OpenCL::process(std::vector<int>* v, const std::vector<double> v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<int>* v, const std::vector<double> v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(int) * sz;
         size_t typesz2 = sizeof(double) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(int) * params->buffers_size[0];
+                typesz2 = sizeof(double) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -1959,8 +2698,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -1981,11 +2740,24 @@ namespace ros_opencl {
         free(result);
     }
 
-    void ROS_OpenCL::process(std::vector<int>* v, std::vector<double>* v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<int>* v, std::vector<double>* v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2->size();
         size_t typesz = sizeof(int) * sz;
         size_t typesz2 = sizeof(double) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(int) * params->buffers_size[0];
+                typesz2 = sizeof(double) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -2003,8 +2775,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -2030,11 +2822,24 @@ namespace ros_opencl {
         free(result2);
     }
 
-    std::vector<float> ROS_OpenCL::process(const std::vector<float> v, const std::vector<char> v2, const bool two_dimensional){
+    std::vector<float> ROS_OpenCL::process(const std::vector<float> v, const std::vector<char> v2, const ROS_OpenCL_Params* params){
         size_t sz = v.size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(float) * sz;
         size_t typesz2 = sizeof(char) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(float) * params->buffers_size[0];
+                typesz2 = sizeof(char) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -2052,8 +2857,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -2077,11 +2902,24 @@ namespace ros_opencl {
         return res;
     }
 
-    void ROS_OpenCL::process(std::vector<float>* v, const std::vector<char> v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<float>* v, const std::vector<char> v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(float) * sz;
         size_t typesz2 = sizeof(char) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(float) * params->buffers_size[0];
+                typesz2 = sizeof(char) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -2099,8 +2937,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -2121,11 +2979,24 @@ namespace ros_opencl {
         free(result);
     }
 
-    void ROS_OpenCL::process(std::vector<float>* v, std::vector<char>* v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<float>* v, std::vector<char>* v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2->size();
         size_t typesz = sizeof(float) * sz;
         size_t typesz2 = sizeof(char) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(float) * params->buffers_size[0];
+                typesz2 = sizeof(char) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -2143,8 +3014,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -2170,11 +3061,24 @@ namespace ros_opencl {
         free(result2);
     }
 
-    std::vector<float> ROS_OpenCL::process(const std::vector<float> v, const std::vector<int> v2, const bool two_dimensional){
+    std::vector<float> ROS_OpenCL::process(const std::vector<float> v, const std::vector<int> v2, const ROS_OpenCL_Params* params){
         size_t sz = v.size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(float) * sz;
         size_t typesz2 = sizeof(int) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(float) * params->buffers_size[0];
+                typesz2 = sizeof(int) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -2192,8 +3096,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -2217,11 +3141,24 @@ namespace ros_opencl {
         return res;
     }
 
-    void ROS_OpenCL::process(std::vector<float>* v, const std::vector<int> v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<float>* v, const std::vector<int> v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(float) * sz;
         size_t typesz2 = sizeof(int) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(float) * params->buffers_size[0];
+                typesz2 = sizeof(int) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -2239,8 +3176,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -2261,11 +3218,24 @@ namespace ros_opencl {
         free(result);
     }
 
-    void ROS_OpenCL::process(std::vector<float>* v, std::vector<int>* v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<float>* v, std::vector<int>* v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2->size();
         size_t typesz = sizeof(float) * sz;
         size_t typesz2 = sizeof(int) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(float) * params->buffers_size[0];
+                typesz2 = sizeof(int) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -2283,8 +3253,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -2310,11 +3300,24 @@ namespace ros_opencl {
         free(result2);
     }
 
-    std::vector<float> ROS_OpenCL::process(const std::vector<float> v, const std::vector<float> v2, const bool two_dimensional){
+    std::vector<float> ROS_OpenCL::process(const std::vector<float> v, const std::vector<float> v2, const ROS_OpenCL_Params* params){
         size_t sz = v.size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(float) * sz;
         size_t typesz2 = sizeof(float) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(float) * params->buffers_size[0];
+                typesz2 = sizeof(float) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -2332,8 +3335,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -2357,11 +3380,24 @@ namespace ros_opencl {
         return res;
     }
 
-    void ROS_OpenCL::process(std::vector<float>* v, const std::vector<float> v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<float>* v, const std::vector<float> v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(float) * sz;
         size_t typesz2 = sizeof(float) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(float) * params->buffers_size[0];
+                typesz2 = sizeof(float) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -2379,8 +3415,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -2401,11 +3457,24 @@ namespace ros_opencl {
         free(result);
     }
 
-    void ROS_OpenCL::process(std::vector<float>* v, std::vector<float>* v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<float>* v, std::vector<float>* v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2->size();
         size_t typesz = sizeof(float) * sz;
         size_t typesz2 = sizeof(float) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(float) * params->buffers_size[0];
+                typesz2 = sizeof(float) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -2423,8 +3492,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -2450,11 +3539,24 @@ namespace ros_opencl {
         free(result2);
     }
 
-    std::vector<float> ROS_OpenCL::process(const std::vector<float> v, const std::vector<double> v2, const bool two_dimensional){
+    std::vector<float> ROS_OpenCL::process(const std::vector<float> v, const std::vector<double> v2, const ROS_OpenCL_Params* params){
         size_t sz = v.size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(float) * sz;
         size_t typesz2 = sizeof(double) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(float) * params->buffers_size[0];
+                typesz2 = sizeof(double) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -2472,8 +3574,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -2497,11 +3619,24 @@ namespace ros_opencl {
         return res;
     }
 
-    void ROS_OpenCL::process(std::vector<float>* v, const std::vector<double> v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<float>* v, const std::vector<double> v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(float) * sz;
         size_t typesz2 = sizeof(double) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(float) * params->buffers_size[0];
+                typesz2 = sizeof(double) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -2519,8 +3654,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -2541,11 +3696,24 @@ namespace ros_opencl {
         free(result);
     }
 
-    void ROS_OpenCL::process(std::vector<float>* v, std::vector<double>* v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<float>* v, std::vector<double>* v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2->size();
         size_t typesz = sizeof(float) * sz;
         size_t typesz2 = sizeof(double) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(float) * params->buffers_size[0];
+                typesz2 = sizeof(double) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -2563,8 +3731,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -2590,11 +3778,24 @@ namespace ros_opencl {
         free(result2);
     }
 
-    std::vector<double> ROS_OpenCL::process(const std::vector<double> v, const std::vector<char> v2, const bool two_dimensional){
+    std::vector<double> ROS_OpenCL::process(const std::vector<double> v, const std::vector<char> v2, const ROS_OpenCL_Params* params){
         size_t sz = v.size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(double) * sz;
         size_t typesz2 = sizeof(char) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(double) * params->buffers_size[0];
+                typesz2 = sizeof(char) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -2612,8 +3813,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -2637,11 +3858,24 @@ namespace ros_opencl {
         return res;
     }
 
-    void ROS_OpenCL::process(std::vector<double>* v, const std::vector<char> v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<double>* v, const std::vector<char> v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(double) * sz;
         size_t typesz2 = sizeof(char) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(double) * params->buffers_size[0];
+                typesz2 = sizeof(char) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -2659,8 +3893,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -2681,11 +3935,24 @@ namespace ros_opencl {
         free(result);
     }
 
-    void ROS_OpenCL::process(std::vector<double>* v, std::vector<char>* v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<double>* v, std::vector<char>* v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2->size();
         size_t typesz = sizeof(double) * sz;
         size_t typesz2 = sizeof(char) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(double) * params->buffers_size[0];
+                typesz2 = sizeof(char) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -2703,8 +3970,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -2730,11 +4017,24 @@ namespace ros_opencl {
         free(result2);
     }
 
-    std::vector<double> ROS_OpenCL::process(const std::vector<double> v, const std::vector<int> v2, const bool two_dimensional){
+    std::vector<double> ROS_OpenCL::process(const std::vector<double> v, const std::vector<int> v2, const ROS_OpenCL_Params* params){
         size_t sz = v.size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(double) * sz;
         size_t typesz2 = sizeof(int) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(double) * params->buffers_size[0];
+                typesz2 = sizeof(int) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -2752,8 +4052,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -2777,11 +4097,24 @@ namespace ros_opencl {
         return res;
     }
 
-    void ROS_OpenCL::process(std::vector<double>* v, const std::vector<int> v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<double>* v, const std::vector<int> v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(double) * sz;
         size_t typesz2 = sizeof(int) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(double) * params->buffers_size[0];
+                typesz2 = sizeof(int) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -2799,8 +4132,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -2821,11 +4174,24 @@ namespace ros_opencl {
         free(result);
     }
 
-    void ROS_OpenCL::process(std::vector<double>* v, std::vector<int>* v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<double>* v, std::vector<int>* v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2->size();
         size_t typesz = sizeof(double) * sz;
         size_t typesz2 = sizeof(int) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(double) * params->buffers_size[0];
+                typesz2 = sizeof(int) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -2843,8 +4209,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -2870,11 +4256,24 @@ namespace ros_opencl {
         free(result2);
     }
 
-    std::vector<double> ROS_OpenCL::process(const std::vector<double> v, const std::vector<float> v2, const bool two_dimensional){
+    std::vector<double> ROS_OpenCL::process(const std::vector<double> v, const std::vector<float> v2, const ROS_OpenCL_Params* params){
         size_t sz = v.size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(double) * sz;
         size_t typesz2 = sizeof(float) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(double) * params->buffers_size[0];
+                typesz2 = sizeof(float) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -2892,8 +4291,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -2917,11 +4336,24 @@ namespace ros_opencl {
         return res;
     }
 
-    void ROS_OpenCL::process(std::vector<double>* v, const std::vector<float> v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<double>* v, const std::vector<float> v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(double) * sz;
         size_t typesz2 = sizeof(float) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(double) * params->buffers_size[0];
+                typesz2 = sizeof(float) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -2939,8 +4371,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -2961,11 +4413,24 @@ namespace ros_opencl {
         free(result);
     }
 
-    void ROS_OpenCL::process(std::vector<double>* v, std::vector<float>* v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<double>* v, std::vector<float>* v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2->size();
         size_t typesz = sizeof(double) * sz;
         size_t typesz2 = sizeof(float) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(double) * params->buffers_size[0];
+                typesz2 = sizeof(float) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -2983,8 +4448,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -3010,11 +4495,24 @@ namespace ros_opencl {
         free(result2);
     }
 
-    std::vector<double> ROS_OpenCL::process(const std::vector<double> v, const std::vector<double> v2, const bool two_dimensional){
+    std::vector<double> ROS_OpenCL::process(const std::vector<double> v, const std::vector<double> v2, const ROS_OpenCL_Params* params){
         size_t sz = v.size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(double) * sz;
         size_t typesz2 = sizeof(double) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(double) * params->buffers_size[0];
+                typesz2 = sizeof(double) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -3032,8 +4530,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -3057,11 +4575,24 @@ namespace ros_opencl {
         return res;
     }
 
-    void ROS_OpenCL::process(std::vector<double>* v, const std::vector<double> v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<double>* v, const std::vector<double> v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2.size();
         size_t typesz = sizeof(double) * sz;
         size_t typesz2 = sizeof(double) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(double) * params->buffers_size[0];
+                typesz2 = sizeof(double) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -3079,8 +4610,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
@@ -3101,11 +4652,24 @@ namespace ros_opencl {
         free(result);
     }
 
-    void ROS_OpenCL::process(std::vector<double>* v, std::vector<double>* v2, const bool two_dimensional){
+    void ROS_OpenCL::process(std::vector<double>* v, std::vector<double>* v2, const ROS_OpenCL_Params* params){
         size_t sz = v->size();
         size_t sz2 = v2->size();
         size_t typesz = sizeof(double) * sz;
         size_t typesz2 = sizeof(double) * sz2;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 1){
+                if (temp_sz > 2){
+                    ROS_WARN("buffer_size includes more than two elements. Exactly two are needed. Using the first two...");
+                }
+                typesz = sizeof(double) * params->buffers_size[0];
+                typesz2 = sizeof(double) * params->buffers_size[1];
+            }
+            else{
+                ROS_WARN("buffer_size includes only one element. Exactly two are needed for custom buffer sizes. Using default values...");
+            }
+        }
         cl_int error = 0;
         cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
         checkError(error);
@@ -3123,8 +4687,28 @@ namespace ros_opencl {
         size_t size[2] = {sz, sz2};
         size_t work_dimension = 2;
 
-        if (not two_dimensional){
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
             work_dimension--;
+        }
+        else if(temp_sz > 0){
+            if (params->two_dimensional){
+                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
+                    For default two dimensional global work size, leave the global_work_size vector empty, \
+                    and set two_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension--;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                if (temp_sz > 2){
+                    ROS_WARN("global_work_size includes more than two elements. A maximum of two is allowed. Using the first two...");
+                }
+            }
         }
 
         cl_event gpuExec;
