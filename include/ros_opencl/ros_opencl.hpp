@@ -399,68 +399,1364 @@ class ROS_OpenCL{
          */
         void process(std::vector<char>* v, const ROS_OpenCL_Params* params=NULL);
 
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(char) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(char) * &lt;input v2 size&gt;.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         * @return                     A copy of the processed input based on v.
+         */
         std::vector<char> process(const std::vector<char> v, const std::vector<char> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(char) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(char) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on v.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<char>* v, const std::vector<char> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(char) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(char) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<char>* v, std::vector<char>* v2, const ROS_OpenCL_Params* params=NULL);
 
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(char) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(int) * &lt;input v2 size&gt;.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         * @return                     A copy of the processed input based on v.
+         */
         std::vector<char> process(const std::vector<char> v, const std::vector<int> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(char) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(int) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<char>* v, const std::vector<int> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(char) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(int) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<char>* v, std::vector<int>* v2, const ROS_OpenCL_Params* params=NULL);
 
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(char) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(float) * &lt;input v2 size&gt;.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         * @return                     A copy of the processed input based on v.
+         */
         std::vector<char> process(const std::vector<char> v, const std::vector<float> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(char) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(float) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<char>* v, const std::vector<float> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(char) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(float) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<char>* v, std::vector<float>* v2, const ROS_OpenCL_Params* params=NULL);
 
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(char) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(double) * &lt;input v2 size&gt;.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         * @return                     A copy of the processed input based on v.
+         */
         std::vector<char> process(const std::vector<char> v, const std::vector<double> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(char) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(double) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<char>* v, const std::vector<double> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(char) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(double) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<char>* v, std::vector<double>* v2, const ROS_OpenCL_Params* params=NULL);
 
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(int) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(char) * &lt;input v2 size&gt;.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         * @return                     A copy of the processed input based on v.
+         */
         std::vector<int> process(const std::vector<int> v, const std::vector<char> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(int) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(char) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<int>* v, const std::vector<char> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(int) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(char) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<int>* v, std::vector<char>* v2, const ROS_OpenCL_Params* params=NULL);
 
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(int) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(int) * &lt;input v2 size&gt;.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         * @return                     A copy of the processed input based on v.
+         */
         std::vector<int> process(const std::vector<int> v, const std::vector<int> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(int) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(int) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<int>* v, const std::vector<int> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(int) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(int) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<int>* v, std::vector<int>* v2, const ROS_OpenCL_Params* params=NULL);
 
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(int) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(float) * &lt;input v2 size&gt;.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         * @return                     A copy of the processed input based on v.
+         */
         std::vector<int> process(const std::vector<int> v, const std::vector<float> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(int) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(float) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<int>* v, const std::vector<float> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(int) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(float) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<int>* v, std::vector<float>* v2, const ROS_OpenCL_Params* params=NULL);
 
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(int) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(double) * &lt;input v2 size&gt;.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         * @return                     A copy of the processed input based on v.
+         */
         std::vector<int> process(const std::vector<int> v, const std::vector<double> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(int) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(double) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<int>* v, const std::vector<double> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(int) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(double) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<int>* v, std::vector<double>* v2, const ROS_OpenCL_Params* params=NULL);
 
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(float) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(char) * &lt;input v2 size&gt;.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         * @return                     A copy of the processed input based on v.
+         */
         std::vector<float> process(const std::vector<float> v, const std::vector<char> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(float) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(char) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<float>* v, const std::vector<char> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(float) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(char) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<float>* v, std::vector<char>* v2, const ROS_OpenCL_Params* params=NULL);
 
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(float) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(int) * &lt;input v2 size&gt;.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         * @return                     A copy of the processed input based on v.
+         */
         std::vector<float> process(const std::vector<float> v, const std::vector<int> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(float) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(int) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<float>* v, const std::vector<int> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(float) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(int) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<float>* v, std::vector<int>* v2, const ROS_OpenCL_Params* params=NULL);
 
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(float) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(float) * &lt;input v2 size&gt;.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         * @return                     A copy of the processed input based on v.
+         */
         std::vector<float> process(const std::vector<float> v, const std::vector<float> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(float) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(float) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<float>* v, const std::vector<float> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(float) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(float) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<float>* v, std::vector<float>* v2, const ROS_OpenCL_Params* params=NULL);
 
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(float) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(double) * &lt;input v2 size&gt;.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         * @return                     A copy of the processed input based on v.
+         */
         std::vector<float> process(const std::vector<float> v, const std::vector<double> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(float) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(double) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<float>* v, const std::vector<double> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(float) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(double) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<float>* v, std::vector<double>* v2, const ROS_OpenCL_Params* params=NULL);
 
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(double) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(char) * &lt;input v2 size&gt;.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         * @return                     A copy of the processed input based on v.
+         */
         std::vector<double> process(const std::vector<double> v, const std::vector<char> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(double) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(char) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<double>* v, const std::vector<char> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(double) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(char) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<double>* v, std::vector<char>* v2, const ROS_OpenCL_Params* params=NULL);
 
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(double) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(int) * &lt;input v2 size&gt;.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         * @return                     A copy of the processed input based on v.
+         */
         std::vector<double> process(const std::vector<double> v, const std::vector<int> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(double) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(int) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<double>* v, const std::vector<int> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(double) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(int) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<double>* v, std::vector<int>* v2, const ROS_OpenCL_Params* params=NULL);
 
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(double) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(float) * &lt;input v2 size&gt;.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         * @return                     A copy of the processed input based on v.
+         */
         std::vector<double> process(const std::vector<double> v, const std::vector<float> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(double) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(float) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<double>* v, const std::vector<float> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(double) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(float) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<double>* v, std::vector<float>* v2, const ROS_OpenCL_Params* params=NULL);
 
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(double) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(double) * &lt;input v2 size&gt;.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         * @return                     A copy of the processed input based on v.
+         */
         std::vector<double> process(const std::vector<double> v, const std::vector<double> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(double) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(double) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<double>* v, const std::vector<double> v2, const ROS_OpenCL_Params* params=NULL);
+
+        /**
+         * @brief                      The function that initiates kernel processing.
+         *
+         *                             It uses a read/write buffer to send and receive
+         *                             data from the kernel for the first vector and a write only buffer for 
+         *                             the second. The global work size used by default,
+         *                             matches the size of the first input vector. The size of the read/write
+         *                             buffer is typeof(double) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             typeof(double) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
+         *
+         * @param  v                   The input data.
+         * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
+        *                              full-scale dataset to be compared with v.
+         * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
+         *                             - global_work_size: A vector of size_t that changes the global worker size of 
+         *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
+         *                             The rest of the values are ignored.
+         *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
+         *                              with the kernel according to its contents. In this function it should contain only two elements.
+         *                             The rest of the values are ignored.
+         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
+         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             ignored with a warning.
+         *
+         */
         void process(std::vector<double>* v, std::vector<double>* v2, const ROS_OpenCL_Params* params=NULL);
 
         // |                             |
@@ -472,7 +1768,7 @@ class ROS_OpenCL{
         // Extra TODO:
         // Remove the second buffer on functions with vectors of the same type AND size!
 
-        // Finish doxygen documentation
+        // Proofread doxygen documentation
 
 };
 
