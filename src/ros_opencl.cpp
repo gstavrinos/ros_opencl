@@ -1136,17 +1136,25 @@ namespace ros_opencl {
 
         v->assign(result, result+sz);
 
-        char *result2 = (char *) malloc(typesz2);
-        checkError(clEnqueueReadBuffer(queue, buffer2, CL_TRUE, 0, typesz2, result2, 0, NULL, NULL));
+        char *result2;
+        if (typesz2 != typesz or sz != sz2){
+            result2 = (char *) malloc(typesz2);
+            checkError(clEnqueueReadBuffer(queue, buffer2, CL_TRUE, 0, typesz2, result2, 0, NULL, NULL));
 
-        v2->assign(result2, result2+sz2);
+            v2->assign(result2, result2+sz2);
+            free(result2);
+        }
+        else{
+            checkError(clEnqueueReadBuffer(queue, buffer2, CL_TRUE, 0, typesz2, result, 0, NULL, NULL));
+
+            v2->assign(result, result+sz2);
+        }
 
         clReleaseCommandQueue (queue);
         clReleaseMemObject(buffer);
         clReleaseMemObject(buffer2);
         clReleaseEvent(gpuExec);
         free(result);
-        free(result2);
     }
 
     std::vector<char> ROS_OpenCL::process(const std::vector<char> v, const std::vector<int> v2, const ROS_OpenCL_Params* params){
@@ -2331,17 +2339,25 @@ namespace ros_opencl {
 
         v->assign(result, result+sz);
 
-        int *result2 = (int *) malloc(typesz2);
-        checkError(clEnqueueReadBuffer(queue, buffer2, CL_TRUE, 0, typesz2, result2, 0, NULL, NULL));
+        int *result2;
+        if (typesz2 != typesz or sz != sz2){
+            result2 = (int *) malloc(typesz2);
+            checkError(clEnqueueReadBuffer(queue, buffer2, CL_TRUE, 0, typesz2, result2, 0, NULL, NULL));
 
-        v2->assign(result2, result2+sz2);
+            v2->assign(result2, result2+sz2);
+            free(result2);
+        }
+        else{
+            checkError(clEnqueueReadBuffer(queue, buffer2, CL_TRUE, 0, typesz2, result, 0, NULL, NULL));
+
+            v2->assign(result, result+sz2);
+        }
 
         clReleaseCommandQueue (queue);
         clReleaseMemObject(buffer);
         clReleaseMemObject(buffer2);
         clReleaseEvent(gpuExec);
         free(result);
-        free(result2);
     }
 
     std::vector<int> ROS_OpenCL::process(const std::vector<int> v, const std::vector<float> v2, const ROS_OpenCL_Params* params){
@@ -3526,17 +3542,25 @@ namespace ros_opencl {
 
         v->assign(result, result+sz);
 
-        float *result2 = (float *) malloc(typesz2);
-        checkError(clEnqueueReadBuffer(queue, buffer2, CL_TRUE, 0, typesz2, result2, 0, NULL, NULL));
+        float *result2;
+        if (typesz2 != typesz or sz != sz2){
+            result2 = (float *) malloc(typesz2);
+            checkError(clEnqueueReadBuffer(queue, buffer2, CL_TRUE, 0, typesz2, result2, 0, NULL, NULL));
 
-        v2->assign(result2, result2+sz2);
+            v2->assign(result2, result2+sz2);
+            free(result2);
+        }
+        else{
+            checkError(clEnqueueReadBuffer(queue, buffer2, CL_TRUE, 0, typesz2, result, 0, NULL, NULL));
+
+            v2->assign(result, result+sz2);
+        }
 
         clReleaseCommandQueue (queue);
         clReleaseMemObject(buffer);
         clReleaseMemObject(buffer2);
         clReleaseEvent(gpuExec);
         free(result);
-        free(result2);
     }
 
     std::vector<float> ROS_OpenCL::process(const std::vector<float> v, const std::vector<double> v2, const ROS_OpenCL_Params* params){
@@ -4721,17 +4745,25 @@ namespace ros_opencl {
 
         v->assign(result, result+sz);
 
-        double *result2 = (double *) malloc(typesz2);
-        checkError(clEnqueueReadBuffer(queue, buffer2, CL_TRUE, 0, typesz2, result2, 0, NULL, NULL));
+        double *result2;
+        if (typesz2 != typesz or sz != sz2){
+            result2 = (double *) malloc(typesz2);
+            checkError(clEnqueueReadBuffer(queue, buffer2, CL_TRUE, 0, typesz2, result2, 0, NULL, NULL));
 
-        v2->assign(result2, result2+sz2);
+            v2->assign(result2, result2+sz2);
+            free(result2);
+        }
+        else{
+            checkError(clEnqueueReadBuffer(queue, buffer2, CL_TRUE, 0, typesz2, result, 0, NULL, NULL));
+
+            v2->assign(result, result+sz2);
+        }
 
         clReleaseCommandQueue (queue);
         clReleaseMemObject(buffer);
         clReleaseMemObject(buffer2);
         clReleaseEvent(gpuExec);
         free(result);
-        free(result2);
     }
 
 }
