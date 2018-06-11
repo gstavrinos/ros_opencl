@@ -411,7 +411,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -440,7 +440,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -460,15 +460,15 @@ class ROS_OpenCL{
          * @brief                      The function that initiates kernel processing.
          *
          *                             It uses a read/write buffer to send and receive
-         *                             data from the kernel for the first vector and a write only buffer for 
-         *                             the second. The global work size used by default,
+         *                             data from the kernel for the first and second vector.
+         *                             The global work size used by default,
          *                             matches the size of the first input vector. The size of the read/write
-         *                             buffer is typeof(char) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             buffers is typeof(char) * &lt;input v size&gt; and
          *                             typeof(char) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -496,7 +496,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -525,7 +525,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -545,15 +545,15 @@ class ROS_OpenCL{
          * @brief                      The function that initiates kernel processing.
          *
          *                             It uses a read/write buffer to send and receive
-         *                             data from the kernel for the first vector and a write only buffer for 
-         *                             the second. The global work size used by default,
+         *                             data from the kernel for the first and second vector.
+         *                             The global work size used by default,
          *                             matches the size of the first input vector. The size of the read/write
-         *                             buffer is typeof(char) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             buffers is typeof(char) * &lt;input v size&gt; and
          *                             typeof(int) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -581,7 +581,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -610,7 +610,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -630,15 +630,15 @@ class ROS_OpenCL{
          * @brief                      The function that initiates kernel processing.
          *
          *                             It uses a read/write buffer to send and receive
-         *                             data from the kernel for the first vector and a write only buffer for 
-         *                             the second. The global work size used by default,
+         *                             data from the kernel for the first and second vector.
+         *                             The global work size used by default,
          *                             matches the size of the first input vector. The size of the read/write
-         *                             buffer is typeof(char) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             buffers is typeof(char) * &lt;input v size&gt; and
          *                             typeof(float) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -666,7 +666,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -695,7 +695,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -715,15 +715,15 @@ class ROS_OpenCL{
          * @brief                      The function that initiates kernel processing.
          *
          *                             It uses a read/write buffer to send and receive
-         *                             data from the kernel for the first vector and a write only buffer for 
-         *                             the second. The global work size used by default,
+         *                             data from the kernel for the first and second vector.
+         *                             The global work size used by default,
          *                             matches the size of the first input vector. The size of the read/write
-         *                             buffer is typeof(char) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             buffers is typeof(char) * &lt;input v size&gt; and
          *                             typeof(double) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -751,7 +751,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -780,7 +780,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -800,15 +800,15 @@ class ROS_OpenCL{
          * @brief                      The function that initiates kernel processing.
          *
          *                             It uses a read/write buffer to send and receive
-         *                             data from the kernel for the first vector and a write only buffer for 
-         *                             the second. The global work size used by default,
+         *                             data from the kernel for the first and second vector.
+         *                             The global work size used by default,
          *                             matches the size of the first input vector. The size of the read/write
-         *                             buffer is typeof(int) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             buffers is typeof(int) * &lt;input v size&gt; and
          *                             typeof(char) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -836,7 +836,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -865,7 +865,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -885,15 +885,15 @@ class ROS_OpenCL{
          * @brief                      The function that initiates kernel processing.
          *
          *                             It uses a read/write buffer to send and receive
-         *                             data from the kernel for the first vector and a write only buffer for 
-         *                             the second. The global work size used by default,
+         *                             data from the kernel for the first and second vector.
+         *                             The global work size used by default,
          *                             matches the size of the first input vector. The size of the read/write
-         *                             buffer is typeof(int) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             buffers is typeof(int) * &lt;input v size&gt; and
          *                             typeof(int) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -921,7 +921,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -950,7 +950,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -970,15 +970,15 @@ class ROS_OpenCL{
          * @brief                      The function that initiates kernel processing.
          *
          *                             It uses a read/write buffer to send and receive
-         *                             data from the kernel for the first vector and a write only buffer for 
-         *                             the second. The global work size used by default,
+         *                             data from the kernel for the first and second vector.
+         *                             The global work size used by default,
          *                             matches the size of the first input vector. The size of the read/write
-         *                             buffer is typeof(int) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             buffers is typeof(int) * &lt;input v size&gt; and
          *                             typeof(float) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -1006,7 +1006,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -1035,7 +1035,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -1055,15 +1055,15 @@ class ROS_OpenCL{
          * @brief                      The function that initiates kernel processing.
          *
          *                             It uses a read/write buffer to send and receive
-         *                             data from the kernel for the first vector and a write only buffer for 
-         *                             the second. The global work size used by default,
+         *                             data from the kernel for the first and second vector.
+         *                             The global work size used by default,
          *                             matches the size of the first input vector. The size of the read/write
-         *                             buffer is typeof(int) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             buffers is typeof(int) * &lt;input v size&gt; and
          *                             typeof(double) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -1091,7 +1091,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -1120,7 +1120,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -1140,15 +1140,15 @@ class ROS_OpenCL{
          * @brief                      The function that initiates kernel processing.
          *
          *                             It uses a read/write buffer to send and receive
-         *                             data from the kernel for the first vector and a write only buffer for 
-         *                             the second. The global work size used by default,
+         *                             data from the kernel for the first and second vector.
+         *                             The global work size used by default,
          *                             matches the size of the first input vector. The size of the read/write
-         *                             buffer is typeof(float) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             buffers is typeof(float) * &lt;input v size&gt; and
          *                             typeof(char) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -1176,7 +1176,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -1205,7 +1205,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -1225,15 +1225,15 @@ class ROS_OpenCL{
          * @brief                      The function that initiates kernel processing.
          *
          *                             It uses a read/write buffer to send and receive
-         *                             data from the kernel for the first vector and a write only buffer for 
-         *                             the second. The global work size used by default,
+         *                             data from the kernel for the first and second vector.
+         *                             The global work size used by default,
          *                             matches the size of the first input vector. The size of the read/write
-         *                             buffer is typeof(float) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             buffers is typeof(float) * &lt;input v size&gt; and
          *                             typeof(int) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -1261,7 +1261,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -1290,7 +1290,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -1310,15 +1310,15 @@ class ROS_OpenCL{
          * @brief                      The function that initiates kernel processing.
          *
          *                             It uses a read/write buffer to send and receive
-         *                             data from the kernel for the first vector and a write only buffer for 
-         *                             the second. The global work size used by default,
+         *                             data from the kernel for the first and second vector.
+         *                             The global work size used by default,
          *                             matches the size of the first input vector. The size of the read/write
-         *                             buffer is typeof(float) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             buffers is typeof(float) * &lt;input v size&gt; and
          *                             typeof(float) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -1346,7 +1346,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -1375,7 +1375,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -1395,15 +1395,15 @@ class ROS_OpenCL{
          * @brief                      The function that initiates kernel processing.
          *
          *                             It uses a read/write buffer to send and receive
-         *                             data from the kernel for the first vector and a write only buffer for 
-         *                             the second. The global work size used by default,
+         *                             data from the kernel for the first and second vector.
+         *                             The global work size used by default,
          *                             matches the size of the first input vector. The size of the read/write
-         *                             buffer is typeof(float) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             buffers is typeof(float) * &lt;input v size&gt; and
          *                             typeof(double) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -1431,7 +1431,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -1460,7 +1460,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -1480,15 +1480,15 @@ class ROS_OpenCL{
          * @brief                      The function that initiates kernel processing.
          *
          *                             It uses a read/write buffer to send and receive
-         *                             data from the kernel for the first vector and a write only buffer for 
-         *                             the second. The global work size used by default,
+         *                             data from the kernel for the first and second vector.
+         *                             The global work size used by default,
          *                             matches the size of the first input vector. The size of the read/write
-         *                             buffer is typeof(double) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             buffers is typeof(double) * &lt;input v size&gt; and
          *                             typeof(char) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -1516,7 +1516,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -1545,7 +1545,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -1565,15 +1565,15 @@ class ROS_OpenCL{
          * @brief                      The function that initiates kernel processing.
          *
          *                             It uses a read/write buffer to send and receive
-         *                             data from the kernel for the first vector and a write only buffer for 
-         *                             the second. The global work size used by default,
+         *                             data from the kernel for the first and second vector.
+         *                             The global work size used by default,
          *                             matches the size of the first input vector. The size of the read/write
-         *                             buffer is typeof(double) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             buffers is typeof(double) * &lt;input v size&gt; and
          *                             typeof(int) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -1601,7 +1601,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -1630,7 +1630,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -1650,15 +1650,15 @@ class ROS_OpenCL{
          * @brief                      The function that initiates kernel processing.
          *
          *                             It uses a read/write buffer to send and receive
-         *                             data from the kernel for the first vector and a write only buffer for 
-         *                             the second. The global work size used by default,
+         *                             data from the kernel for the first and second vector.
+         *                             The global work size used by default,
          *                             matches the size of the first input vector. The size of the read/write
-         *                             buffer is typeof(double) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             buffers is typeof(double) * &lt;input v size&gt; and
          *                             typeof(float) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -1686,7 +1686,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -1715,7 +1715,7 @@ class ROS_OpenCL{
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -1735,15 +1735,15 @@ class ROS_OpenCL{
          * @brief                      The function that initiates kernel processing.
          *
          *                             It uses a read/write buffer to send and receive
-         *                             data from the kernel for the first vector and a write only buffer for 
-         *                             the second. The global work size used by default,
+         *                             data from the kernel for the first and second vector.
+         *                             The global work size used by default,
          *                             matches the size of the first input vector. The size of the read/write
-         *                             buffer is typeof(double) * &lt;input v size&gt;. The size of the write only buffer is
+         *                             buffers is typeof(double) * &lt;input v size&gt; and
          *                             typeof(double) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.
          *
          * @param  v                   The input data.
          * @param  v2                  Secondary input data. Could be a small set of complementary values, or a 
-        *                              full-scale dataset to be compared with v.
+         *                             full-scale dataset to be compared with v.
          * @param  params              <b>optional</b> A ROS_OpenCL_Params object that includes the following params:
          *                             - global_work_size: A vector of size_t that changes the global worker size of 
          *                             the kernel according to its contents. In this function it should contain a maximum of two elements.
@@ -1765,10 +1765,6 @@ class ROS_OpenCL{
         // |                             |
         // v                             v
 
-        // Extra TODO:
-        // Remove the second buffer on functions with vectors of the same type AND size!
-
-        // Proofread doxygen documentation
 
 };
 

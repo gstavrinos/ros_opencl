@@ -1343,7 +1343,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The function that initiates kernel processing. </p>
-<p>It uses a read/write buffer to send and receive data from the kernel for the first vector and a write only buffer for the second. The global work size used by default, matches the size of the first input vector. The size of the read/write buffer is typeof(char) * &lt;input v size&gt;. The size of the write only buffer is typeof(char) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
+<p>It uses a read/write buffer to send and receive data from the kernel for the first and second vector. The global work size used by default, matches the size of the first input vector. The size of the read/write buffers is typeof(char) * &lt;input v size&gt; and typeof(char) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>The input data. </td></tr>
@@ -1409,7 +1409,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A copy of the processed input based on v. </dd></dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l01152">1152</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l01160">1160</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -1459,7 +1459,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l01232">1232</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l01240">1240</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -1494,7 +1494,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The function that initiates kernel processing. </p>
-<p>It uses a read/write buffer to send and receive data from the kernel for the first vector and a write only buffer for the second. The global work size used by default, matches the size of the first input vector. The size of the read/write buffer is typeof(char) * &lt;input v size&gt;. The size of the write only buffer is typeof(int) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
+<p>It uses a read/write buffer to send and receive data from the kernel for the first and second vector. The global work size used by default, matches the size of the first input vector. The size of the read/write buffers is typeof(char) * &lt;input v size&gt; and typeof(int) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>The input data. </td></tr>
@@ -1509,7 +1509,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l01309">1309</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l01317">1317</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -1560,7 +1560,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A copy of the processed input based on v. </dd></dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l01391">1391</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l01399">1399</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -1610,7 +1610,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l01471">1471</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l01479">1479</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -1645,7 +1645,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The function that initiates kernel processing. </p>
-<p>It uses a read/write buffer to send and receive data from the kernel for the first vector and a write only buffer for the second. The global work size used by default, matches the size of the first input vector. The size of the read/write buffer is typeof(char) * &lt;input v size&gt;. The size of the write only buffer is typeof(float) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
+<p>It uses a read/write buffer to send and receive data from the kernel for the first and second vector. The global work size used by default, matches the size of the first input vector. The size of the read/write buffers is typeof(char) * &lt;input v size&gt; and typeof(float) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>The input data. </td></tr>
@@ -1660,7 +1660,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l01548">1548</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l01556">1556</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -1711,7 +1711,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A copy of the processed input based on v. </dd></dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l01630">1630</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l01638">1638</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -1761,7 +1761,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l01710">1710</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l01718">1718</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -1796,7 +1796,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The function that initiates kernel processing. </p>
-<p>It uses a read/write buffer to send and receive data from the kernel for the first vector and a write only buffer for the second. The global work size used by default, matches the size of the first input vector. The size of the read/write buffer is typeof(char) * &lt;input v size&gt;. The size of the write only buffer is typeof(double) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
+<p>It uses a read/write buffer to send and receive data from the kernel for the first and second vector. The global work size used by default, matches the size of the first input vector. The size of the read/write buffers is typeof(char) * &lt;input v size&gt; and typeof(double) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>The input data. </td></tr>
@@ -1811,7 +1811,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l01787">1787</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l01795">1795</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -1862,7 +1862,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A copy of the processed input based on v. </dd></dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l01869">1869</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l01877">1877</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -1912,7 +1912,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l01949">1949</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l01957">1957</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -1947,7 +1947,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The function that initiates kernel processing. </p>
-<p>It uses a read/write buffer to send and receive data from the kernel for the first vector and a write only buffer for the second. The global work size used by default, matches the size of the first input vector. The size of the read/write buffer is typeof(int) * &lt;input v size&gt;. The size of the write only buffer is typeof(char) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
+<p>It uses a read/write buffer to send and receive data from the kernel for the first and second vector. The global work size used by default, matches the size of the first input vector. The size of the read/write buffers is typeof(int) * &lt;input v size&gt; and typeof(char) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>The input data. </td></tr>
@@ -1962,7 +1962,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l02026">2026</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l02034">2034</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -2013,7 +2013,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A copy of the processed input based on v. </dd></dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l02108">2108</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l02116">2116</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -2063,7 +2063,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l02188">2188</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l02196">2196</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -2098,7 +2098,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The function that initiates kernel processing. </p>
-<p>It uses a read/write buffer to send and receive data from the kernel for the first vector and a write only buffer for the second. The global work size used by default, matches the size of the first input vector. The size of the read/write buffer is typeof(int) * &lt;input v size&gt;. The size of the write only buffer is typeof(int) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
+<p>It uses a read/write buffer to send and receive data from the kernel for the first and second vector. The global work size used by default, matches the size of the first input vector. The size of the read/write buffers is typeof(int) * &lt;input v size&gt; and typeof(int) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>The input data. </td></tr>
@@ -2113,7 +2113,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l02265">2265</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l02273">2273</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -2164,7 +2164,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A copy of the processed input based on v. </dd></dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l02347">2347</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l02363">2363</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -2214,7 +2214,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l02427">2427</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l02443">2443</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -2249,7 +2249,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The function that initiates kernel processing. </p>
-<p>It uses a read/write buffer to send and receive data from the kernel for the first vector and a write only buffer for the second. The global work size used by default, matches the size of the first input vector. The size of the read/write buffer is typeof(int) * &lt;input v size&gt;. The size of the write only buffer is typeof(float) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
+<p>It uses a read/write buffer to send and receive data from the kernel for the first and second vector. The global work size used by default, matches the size of the first input vector. The size of the read/write buffers is typeof(int) * &lt;input v size&gt; and typeof(float) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>The input data. </td></tr>
@@ -2264,7 +2264,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l02504">2504</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l02520">2520</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -2315,7 +2315,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A copy of the processed input based on v. </dd></dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l02586">2586</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l02602">2602</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -2365,7 +2365,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l02666">2666</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l02682">2682</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -2400,7 +2400,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The function that initiates kernel processing. </p>
-<p>It uses a read/write buffer to send and receive data from the kernel for the first vector and a write only buffer for the second. The global work size used by default, matches the size of the first input vector. The size of the read/write buffer is typeof(int) * &lt;input v size&gt;. The size of the write only buffer is typeof(double) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
+<p>It uses a read/write buffer to send and receive data from the kernel for the first and second vector. The global work size used by default, matches the size of the first input vector. The size of the read/write buffers is typeof(int) * &lt;input v size&gt; and typeof(double) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>The input data. </td></tr>
@@ -2415,7 +2415,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l02743">2743</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l02759">2759</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -2466,7 +2466,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A copy of the processed input based on v. </dd></dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l02825">2825</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l02841">2841</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -2516,7 +2516,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l02905">2905</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l02921">2921</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -2551,7 +2551,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The function that initiates kernel processing. </p>
-<p>It uses a read/write buffer to send and receive data from the kernel for the first vector and a write only buffer for the second. The global work size used by default, matches the size of the first input vector. The size of the read/write buffer is typeof(float) * &lt;input v size&gt;. The size of the write only buffer is typeof(char) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
+<p>It uses a read/write buffer to send and receive data from the kernel for the first and second vector. The global work size used by default, matches the size of the first input vector. The size of the read/write buffers is typeof(float) * &lt;input v size&gt; and typeof(char) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>The input data. </td></tr>
@@ -2566,7 +2566,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l02982">2982</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l02998">2998</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -2617,7 +2617,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A copy of the processed input based on v. </dd></dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l03064">3064</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l03080">3080</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -2667,7 +2667,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l03144">3144</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l03160">3160</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -2702,7 +2702,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The function that initiates kernel processing. </p>
-<p>It uses a read/write buffer to send and receive data from the kernel for the first vector and a write only buffer for the second. The global work size used by default, matches the size of the first input vector. The size of the read/write buffer is typeof(float) * &lt;input v size&gt;. The size of the write only buffer is typeof(int) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
+<p>It uses a read/write buffer to send and receive data from the kernel for the first and second vector. The global work size used by default, matches the size of the first input vector. The size of the read/write buffers is typeof(float) * &lt;input v size&gt; and typeof(int) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>The input data. </td></tr>
@@ -2717,7 +2717,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l03221">3221</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l03237">3237</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -2768,7 +2768,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A copy of the processed input based on v. </dd></dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l03303">3303</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l03319">3319</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -2818,7 +2818,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l03383">3383</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l03399">3399</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -2853,7 +2853,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The function that initiates kernel processing. </p>
-<p>It uses a read/write buffer to send and receive data from the kernel for the first vector and a write only buffer for the second. The global work size used by default, matches the size of the first input vector. The size of the read/write buffer is typeof(float) * &lt;input v size&gt;. The size of the write only buffer is typeof(float) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
+<p>It uses a read/write buffer to send and receive data from the kernel for the first and second vector. The global work size used by default, matches the size of the first input vector. The size of the read/write buffers is typeof(float) * &lt;input v size&gt; and typeof(float) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>The input data. </td></tr>
@@ -2868,7 +2868,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l03460">3460</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l03476">3476</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -2919,7 +2919,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A copy of the processed input based on v. </dd></dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l03542">3542</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l03566">3566</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -2969,7 +2969,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l03622">3622</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l03646">3646</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -3004,7 +3004,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The function that initiates kernel processing. </p>
-<p>It uses a read/write buffer to send and receive data from the kernel for the first vector and a write only buffer for the second. The global work size used by default, matches the size of the first input vector. The size of the read/write buffer is typeof(float) * &lt;input v size&gt;. The size of the write only buffer is typeof(double) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
+<p>It uses a read/write buffer to send and receive data from the kernel for the first and second vector. The global work size used by default, matches the size of the first input vector. The size of the read/write buffers is typeof(float) * &lt;input v size&gt; and typeof(double) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>The input data. </td></tr>
@@ -3019,7 +3019,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l03699">3699</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l03723">3723</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -3070,7 +3070,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A copy of the processed input based on v. </dd></dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l03781">3781</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l03805">3805</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -3120,7 +3120,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l03861">3861</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l03885">3885</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -3155,7 +3155,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The function that initiates kernel processing. </p>
-<p>It uses a read/write buffer to send and receive data from the kernel for the first vector and a write only buffer for the second. The global work size used by default, matches the size of the first input vector. The size of the read/write buffer is typeof(double) * &lt;input v size&gt;. The size of the write only buffer is typeof(char) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
+<p>It uses a read/write buffer to send and receive data from the kernel for the first and second vector. The global work size used by default, matches the size of the first input vector. The size of the read/write buffers is typeof(double) * &lt;input v size&gt; and typeof(char) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>The input data. </td></tr>
@@ -3170,7 +3170,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l03938">3938</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l03962">3962</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -3221,7 +3221,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A copy of the processed input based on v. </dd></dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l04020">4020</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l04044">4044</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -3271,7 +3271,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l04100">4100</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l04124">4124</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -3306,7 +3306,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The function that initiates kernel processing. </p>
-<p>It uses a read/write buffer to send and receive data from the kernel for the first vector and a write only buffer for the second. The global work size used by default, matches the size of the first input vector. The size of the read/write buffer is typeof(double) * &lt;input v size&gt;. The size of the write only buffer is typeof(int) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
+<p>It uses a read/write buffer to send and receive data from the kernel for the first and second vector. The global work size used by default, matches the size of the first input vector. The size of the read/write buffers is typeof(double) * &lt;input v size&gt; and typeof(int) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>The input data. </td></tr>
@@ -3321,7 +3321,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l04177">4177</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l04201">4201</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -3372,7 +3372,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A copy of the processed input based on v. </dd></dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l04259">4259</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l04283">4283</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -3422,7 +3422,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l04339">4339</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l04363">4363</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -3457,7 +3457,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The function that initiates kernel processing. </p>
-<p>It uses a read/write buffer to send and receive data from the kernel for the first vector and a write only buffer for the second. The global work size used by default, matches the size of the first input vector. The size of the read/write buffer is typeof(double) * &lt;input v size&gt;. The size of the write only buffer is typeof(float) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
+<p>It uses a read/write buffer to send and receive data from the kernel for the first and second vector. The global work size used by default, matches the size of the first input vector. The size of the read/write buffers is typeof(double) * &lt;input v size&gt; and typeof(float) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>The input data. </td></tr>
@@ -3472,7 +3472,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l04416">4416</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l04440">4440</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -3523,7 +3523,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A copy of the processed input based on v. </dd></dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l04498">4498</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l04522">4522</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -3573,7 +3573,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l04578">4578</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l04602">4602</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
@@ -3608,7 +3608,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The function that initiates kernel processing. </p>
-<p>It uses a read/write buffer to send and receive data from the kernel for the first vector and a write only buffer for the second. The global work size used by default, matches the size of the first input vector. The size of the read/write buffer is typeof(double) * &lt;input v size&gt;. The size of the write only buffer is typeof(double) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
+<p>It uses a read/write buffer to send and receive data from the kernel for the first and second vector. The global work size used by default, matches the size of the first input vector. The size of the read/write buffers is typeof(double) * &lt;input v size&gt; and typeof(double) * &lt;input v2 size&gt;. Changes made inside the kernel are overwritten on both v and v2 respectively.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>The input data. </td></tr>
@@ -3623,7 +3623,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l04655">4655</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ros__opencl_8cpp_source.html#l04679">4679</a> of file <a class="el" href="ros__opencl_8cpp_source.html">ros_opencl.cpp</a>.</p>
 
 </div>
 </div>
