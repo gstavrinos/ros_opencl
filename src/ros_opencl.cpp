@@ -945,14 +945,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -1025,14 +1025,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -1102,14 +1102,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -1136,8 +1136,8 @@ namespace ros_opencl {
 
         v->assign(result, result+sz);
 
-        char *result2;
         if (typesz2 != typesz or sz != sz2){
+            char *result2;
             result2 = (char *) malloc(typesz2);
             checkError(clEnqueueReadBuffer(queue, buffer2, CL_TRUE, 0, typesz2, result2, 0, NULL, NULL));
 
@@ -1193,14 +1193,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -1273,14 +1273,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -1350,14 +1350,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -1432,14 +1432,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -1512,14 +1512,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -1589,14 +1589,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -1671,14 +1671,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -1751,14 +1751,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -1828,14 +1828,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -1910,14 +1910,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -1990,14 +1990,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -2067,14 +2067,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -2149,14 +2149,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -2229,14 +2229,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -2306,14 +2306,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -2339,8 +2339,8 @@ namespace ros_opencl {
 
         v->assign(result, result+sz);
 
-        int *result2;
         if (typesz2 != typesz or sz != sz2){
+            int *result2;
             result2 = (int *) malloc(typesz2);
             checkError(clEnqueueReadBuffer(queue, buffer2, CL_TRUE, 0, typesz2, result2, 0, NULL, NULL));
 
@@ -2396,14 +2396,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -2476,14 +2476,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -2553,14 +2553,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -2635,14 +2635,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -2715,14 +2715,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -2792,14 +2792,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -2874,14 +2874,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -2954,14 +2954,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -3031,14 +3031,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -3113,14 +3113,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -3193,14 +3193,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -3270,14 +3270,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -3352,14 +3352,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -3432,14 +3432,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -3509,14 +3509,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -3542,8 +3542,8 @@ namespace ros_opencl {
 
         v->assign(result, result+sz);
 
-        float *result2;
         if (typesz2 != typesz or sz != sz2){
+            float *result2;
             result2 = (float *) malloc(typesz2);
             checkError(clEnqueueReadBuffer(queue, buffer2, CL_TRUE, 0, typesz2, result2, 0, NULL, NULL));
 
@@ -3599,14 +3599,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -3679,14 +3679,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -3756,14 +3756,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -3838,14 +3838,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -3918,14 +3918,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -3995,14 +3995,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -4077,14 +4077,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -4157,14 +4157,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -4234,14 +4234,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -4316,14 +4316,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -4396,14 +4396,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -4473,14 +4473,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -4555,14 +4555,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -4635,14 +4635,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -4712,14 +4712,14 @@ namespace ros_opencl {
         size_t work_dimension = 2;
 
         temp_sz = params != NULL ? params->global_work_size.size() : 0;
-        if (params == NULL or (params != NULL and not(params->two_dimensional or temp_sz > 0))){
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
             work_dimension--;
         }
         else if(temp_sz > 0){
-            if (params->two_dimensional){
-                ROS_WARN("two_dimensional should be set to true without pushing to global_work_size. \
-                    For default two dimensional global work size, leave the global_work_size vector empty, \
-                    and set two_dimensional to true. Setting the global work size based on the values inside \
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
                     the global_work_size vector.");
             }
             if (temp_sz == 1){
@@ -4745,8 +4745,8 @@ namespace ros_opencl {
 
         v->assign(result, result+sz);
 
-        double *result2;
         if (typesz2 != typesz or sz != sz2){
+            double *result2;
             result2 = (double *) malloc(typesz2);
             checkError(clEnqueueReadBuffer(queue, buffer2, CL_TRUE, 0, typesz2, result2, 0, NULL, NULL));
 
@@ -4762,6 +4762,423 @@ namespace ros_opencl {
         clReleaseCommandQueue (queue);
         clReleaseMemObject(buffer);
         clReleaseMemObject(buffer2);
+        clReleaseEvent(gpuExec);
+        free(result);
+    }
+
+    std::vector<char> ROS_OpenCL::process(const std::vector<char> v, const std::vector<char> v2, const std::vector<char> v3, const ROS_OpenCL_Params* params){
+        size_t sz = v.size();
+        size_t sz2 = v2.size();
+        size_t sz3 = v3.size();
+        size_t typesz = sizeof(char) * sz;
+        size_t typesz2 = sizeof(char) * sz2;
+        size_t typesz3 = sizeof(char) * sz3;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 2){
+                if (temp_sz > 3){
+                    ROS_WARN("buffer_size includes more than three elements. Exactly three are needed. Using the first three...");
+                }
+                typesz = sizeof(char) * params->buffers_size[0];
+                typesz2 = sizeof(char) * params->buffers_size[1];
+                typesz3 = sizeof(char) * params->buffers_size[2];
+            }
+            else{
+                ROS_WARN("buffer_size includes less than three elements. Exactly three are needed for custom buffer sizes. Using default values...");
+            }
+        }
+        cl_int error = 0;
+        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
+        checkError(error);
+        cl_mem buffer2 = clCreateBuffer(context, CL_MEM_WRITE_ONLY, typesz2, NULL, &error);
+        checkError(error);
+        cl_mem buffer3 = clCreateBuffer(context, CL_MEM_WRITE_ONLY, typesz3, NULL, &error);
+        checkError(error);
+        clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
+        clSetKernelArg (kernel, 1, sizeof (cl_mem), &buffer2);
+        clSetKernelArg (kernel, 2, sizeof (cl_mem), &buffer3);
+        cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
+
+        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, typesz, &v[0], 0, NULL, NULL);
+        checkError (error);
+        clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2[0], 0, NULL, NULL);
+        checkError (error);
+        clEnqueueWriteBuffer(queue, buffer3, CL_TRUE, 0, typesz3, &v3[0], 0, NULL, NULL);
+        checkError (error);
+
+        size_t size[3] = {sz, sz2, sz3};
+        size_t work_dimension = 3;
+
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
+            work_dimension = 1;
+        }
+        else if(temp_sz > 0){
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension = 1;
+            }
+            else if (temp_sz == 2){
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                work_dimension = 2;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                size[2] = params->global_work_size[2];
+                if (temp_sz > 3){
+                    ROS_WARN("global_work_size includes more than three elements. A maximum of three is allowed. Using the first three...");
+                }
+            }
+        }
+
+        cl_event gpuExec;
+
+        checkError (clEnqueueNDRangeKernel (queue, kernel, work_dimension, NULL, size, NULL, 0, NULL, &gpuExec));
+
+        clWaitForEvents(1, &gpuExec);
+
+        char *result = (char *) malloc(typesz);
+        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
+
+        std::vector<char> res = std::vector<char>();
+        res.assign(result, result+sz);
+
+        clReleaseCommandQueue (queue);
+        clReleaseMemObject(buffer);
+        clReleaseMemObject(buffer2);
+        clReleaseMemObject(buffer3);
+        clReleaseEvent(gpuExec);
+        free(result);
+
+        return res;
+    }
+
+    void ROS_OpenCL::process(std::vector<char>* v, const std::vector<char> v2, const std::vector<char> v3, const ROS_OpenCL_Params* params){
+        size_t sz = v->size();
+        size_t sz2 = v2.size();
+        size_t sz3 = v3.size();
+        size_t typesz = sizeof(char) * sz;
+        size_t typesz2 = sizeof(char) * sz2;
+        size_t typesz3 = sizeof(char) * sz3;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 2){
+                if (temp_sz > 3){
+                    ROS_WARN("buffer_size includes more than three elements. Exactly three are needed. Using the first three...");
+                }
+                typesz = sizeof(char) * params->buffers_size[0];
+                typesz2 = sizeof(char) * params->buffers_size[1];
+                typesz3 = sizeof(char) * params->buffers_size[2];
+            }
+            else{
+                ROS_WARN("buffer_size includes less than three elements. Exactly three are needed for custom buffer sizes. Using default values...");
+            }
+        }
+        cl_int error = 0;
+        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
+        checkError(error);
+        cl_mem buffer2 = clCreateBuffer(context, CL_MEM_WRITE_ONLY, typesz2, NULL, &error);
+        checkError(error);
+        cl_mem buffer3 = clCreateBuffer(context, CL_MEM_WRITE_ONLY, typesz3, NULL, &error);
+        checkError(error);
+        clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
+        clSetKernelArg (kernel, 1, sizeof (cl_mem), &buffer2);
+        clSetKernelArg (kernel, 2, sizeof (cl_mem), &buffer3);
+        cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
+
+        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, typesz, &v->at(0), 0, NULL, NULL);
+        checkError (error);
+        clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2[0], 0, NULL, NULL);
+        checkError (error);
+        clEnqueueWriteBuffer(queue, buffer3, CL_TRUE, 0, typesz3, &v3[0], 0, NULL, NULL);
+        checkError (error);
+
+        size_t size[3] = {sz, sz2, sz3};
+        size_t work_dimension = 3;
+
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
+            work_dimension = 1;
+        }
+        else if(temp_sz > 0){
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension = 1;
+            }
+            else if (temp_sz == 2){
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                work_dimension = 2;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                size[2] = params->global_work_size[2];
+                if (temp_sz > 3){
+                    ROS_WARN("global_work_size includes more than three elements. A maximum of three is allowed. Using the first three...");
+                }
+            }
+        }
+
+        cl_event gpuExec;
+
+        checkError (clEnqueueNDRangeKernel (queue, kernel, work_dimension, NULL, size, NULL, 0, NULL, &gpuExec));
+
+        clWaitForEvents(1, &gpuExec);
+
+        checkError (clEnqueueNDRangeKernel (queue, kernel, work_dimension, NULL, size, NULL, 0, NULL, &gpuExec));
+
+        clWaitForEvents(1, &gpuExec);
+
+        char *result = (char *) malloc(typesz);
+        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
+
+        v->assign(result, result+sz);
+
+        clReleaseCommandQueue (queue);
+        clReleaseMemObject(buffer);
+        clReleaseMemObject(buffer2);
+        clReleaseMemObject(buffer3);
+        clReleaseEvent(gpuExec);
+        free(result);
+    }
+
+    void ROS_OpenCL::process(std::vector<char>* v, std::vector<char>* v2, const std::vector<char> v3, const ROS_OpenCL_Params* params){
+        size_t sz = v->size();
+        size_t sz2 = v2->size();
+        size_t sz3 = v3.size();
+        size_t typesz = sizeof(char) * sz;
+        size_t typesz2 = sizeof(char) * sz2;
+        size_t typesz3 = sizeof(char) * sz3;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 2){
+                if (temp_sz > 3){
+                    ROS_WARN("buffer_size includes more than three elements. Exactly three are needed. Using the first three...");
+                }
+                typesz = sizeof(char) * params->buffers_size[0];
+                typesz2 = sizeof(char) * params->buffers_size[1];
+                typesz3 = sizeof(char) * params->buffers_size[2];
+            }
+            else{
+                ROS_WARN("buffer_size includes less than three elements. Exactly three are needed for custom buffer sizes. Using default values...");
+            }
+        }
+        cl_int error = 0;
+        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
+        checkError(error);
+        cl_mem buffer2 = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz2, NULL, &error);
+        checkError(error);
+        cl_mem buffer3 = clCreateBuffer(context, CL_MEM_WRITE_ONLY, typesz3, NULL, &error);
+        checkError(error);
+        clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
+        clSetKernelArg (kernel, 1, sizeof (cl_mem), &buffer2);
+        clSetKernelArg (kernel, 2, sizeof (cl_mem), &buffer3);
+        cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
+
+        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, typesz, &v->at(0), 0, NULL, NULL);
+        checkError (error);
+        clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2->at(0), 0, NULL, NULL);
+        checkError (error);
+        clEnqueueWriteBuffer(queue, buffer3, CL_TRUE, 0, typesz3, &v3[0], 0, NULL, NULL);
+        checkError (error);
+
+        size_t size[3] = {sz, sz2, sz3};
+        size_t work_dimension = 3;
+
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
+            work_dimension = 1;
+        }
+        else if(temp_sz > 0){
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension = 1;
+            }
+            else if (temp_sz == 2){
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                work_dimension = 2;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                size[2] = params->global_work_size[2];
+                if (temp_sz > 3){
+                    ROS_WARN("global_work_size includes more than three elements. A maximum of three is allowed. Using the first three...");
+                }
+            }
+        }
+
+        cl_event gpuExec;
+
+        checkError (clEnqueueNDRangeKernel (queue, kernel, work_dimension, NULL, size, NULL, 0, NULL, &gpuExec));
+
+        clWaitForEvents(1, &gpuExec);
+
+        char *result = (char *) malloc(typesz);
+        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
+
+        v->assign(result, result+sz);
+
+        if (typesz2 != typesz or sz != sz2){
+            char *result2;
+            result2 = (char *) malloc(typesz2);
+            checkError(clEnqueueReadBuffer(queue, buffer2, CL_TRUE, 0, typesz2, result2, 0, NULL, NULL));
+
+            v2->assign(result2, result2+sz2);
+            free(result2);
+        }
+        else{
+            checkError(clEnqueueReadBuffer(queue, buffer2, CL_TRUE, 0, typesz2, result, 0, NULL, NULL));
+
+            v2->assign(result, result+sz2);
+        }
+
+        clReleaseCommandQueue (queue);
+        clReleaseMemObject(buffer);
+        clReleaseMemObject(buffer2);
+        clReleaseMemObject(buffer3);
+        clReleaseEvent(gpuExec);
+        free(result);
+    }
+
+    void ROS_OpenCL::process(std::vector<char>* v, std::vector<char>* v2, std::vector<char>* v3, const ROS_OpenCL_Params* params){
+        size_t sz = v->size();
+        size_t sz2 = v2->size();
+        size_t sz3 = v3->size();
+        size_t typesz = sizeof(char) * sz;
+        size_t typesz2 = sizeof(char) * sz2;
+        size_t typesz3 = sizeof(char) * sz3;
+        size_t temp_sz = params != NULL ? params->buffers_size.size() : 0;
+        if (temp_sz > 0){
+            if (temp_sz > 2){
+                if (temp_sz > 3){
+                    ROS_WARN("buffer_size includes more than three elements. Exactly three are needed. Using the first three...");
+                }
+                typesz = sizeof(char) * params->buffers_size[0];
+                typesz2 = sizeof(char) * params->buffers_size[1];
+                typesz3 = sizeof(char) * params->buffers_size[2];
+            }
+            else{
+                ROS_WARN("buffer_size includes less than three elements. Exactly three are needed for custom buffer sizes. Using default values...");
+            }
+        }
+        cl_int error = 0;
+        cl_mem buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz, NULL, &error);
+        checkError(error);
+        cl_mem buffer2 = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz2, NULL, &error);
+        checkError(error);
+        cl_mem buffer3 = clCreateBuffer(context, CL_MEM_READ_WRITE, typesz3, NULL, &error);
+        checkError(error);
+        clSetKernelArg (kernel, 0, sizeof (cl_mem), &buffer);
+        clSetKernelArg (kernel, 1, sizeof (cl_mem), &buffer2);
+        clSetKernelArg (kernel, 2, sizeof (cl_mem), &buffer3);
+        cl_command_queue queue = clCreateCommandQueueWithProperties (context, deviceIds [0], NULL, &error);
+
+        clEnqueueWriteBuffer(queue, buffer, CL_TRUE, 0, typesz, &v->at(0), 0, NULL, NULL);
+        checkError (error);
+        clEnqueueWriteBuffer(queue, buffer2, CL_TRUE, 0, typesz2, &v2->at(0), 0, NULL, NULL);
+        checkError (error);
+        clEnqueueWriteBuffer(queue, buffer3, CL_TRUE, 0, typesz3, &v3->at(0), 0, NULL, NULL);
+        checkError (error);
+
+        size_t size[3] = {sz, sz2, sz3};
+        size_t work_dimension = 3;
+
+        temp_sz = params != NULL ? params->global_work_size.size() : 0;
+        if (params == NULL or (params != NULL and not(params->multi_dimensional or temp_sz > 0))){
+            work_dimension = 1;
+        }
+        else if(temp_sz > 0){
+            if (params->multi_dimensional){
+                ROS_WARN("multi_dimensional should be set to true without pushing to global_work_size. \
+                    For default multidimensional global work size, leave the global_work_size vector empty, \
+                    and set multi_dimensional to true. Setting the global work size based on the values inside \
+                    the global_work_size vector.");
+            }
+            if (temp_sz == 1){
+                size[0] = params->global_work_size[0];
+                work_dimension = 1;
+            }
+            else if (temp_sz == 2){
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                work_dimension = 2;
+            }
+            else{
+                size[0] = params->global_work_size[0];
+                size[1] = params->global_work_size[1];
+                size[2] = params->global_work_size[2];
+                if (temp_sz > 3){
+                    ROS_WARN("global_work_size includes more than three elements. A maximum of three is allowed. Using the first three...");
+                }
+            }
+        }
+
+        cl_event gpuExec;
+
+        checkError (clEnqueueNDRangeKernel (queue, kernel, work_dimension, NULL, size, NULL, 0, NULL, &gpuExec));
+
+        clWaitForEvents(1, &gpuExec);
+
+        char *result = (char *) malloc(typesz);
+        checkError(clEnqueueReadBuffer(queue, buffer, CL_TRUE, 0, typesz, result, 0, NULL, NULL));
+
+        v->assign(result, result+sz);
+
+        if (typesz2 != typesz or sz != sz2){
+            char *result2;
+            result2 = (char *) malloc(typesz2);
+            checkError(clEnqueueReadBuffer(queue, buffer2, CL_TRUE, 0, typesz2, result2, 0, NULL, NULL));
+
+            v2->assign(result2, result2+sz2);
+            free(result2);
+        }
+        else{
+            checkError(clEnqueueReadBuffer(queue, buffer2, CL_TRUE, 0, typesz2, result, 0, NULL, NULL));
+
+            v2->assign(result, result+sz2);
+        }
+
+        if (typesz3 != typesz or sz != sz3){
+            char *result3;
+            result3 = (char *) malloc(typesz3);
+            checkError(clEnqueueReadBuffer(queue, buffer3, CL_TRUE, 0, typesz3, result3, 0, NULL, NULL));
+
+            v3->assign(result3, result3+sz3);
+            free(result3);
+        }
+        else{
+            checkError(clEnqueueReadBuffer(queue, buffer2, CL_TRUE, 0, typesz2, result, 0, NULL, NULL));
+
+            v3->assign(result, result+sz3);
+        }
+
+        clReleaseCommandQueue (queue);
+        clReleaseMemObject(buffer);
+        clReleaseMemObject(buffer2);
+        clReleaseMemObject(buffer3);
         clReleaseEvent(gpuExec);
         free(result);
     }

@@ -223,8 +223,8 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only one element.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
          *                             sizes of the buffers will be used. In this function this parameter is ignored.
          *
          * @return                     A copy of the processed input.
@@ -248,8 +248,8 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only one element.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
          *                             sizes of the buffers will be used. In this function this parameter is ignored.
          *
          */
@@ -271,8 +271,8 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only one element.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
          *                             sizes of the buffers will be used. In this function this parameter is ignored.
          *
          * @return                     A copy of the processed input.
@@ -296,8 +296,8 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only one element.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
          *                             sizes of the buffers will be used. In this function this parameter is ignored.
          *
          */
@@ -319,8 +319,8 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only one element.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
          *                             sizes of the buffers will be used. In this function this parameter is ignored.
          *
          * @return                     A copy of the processed input.
@@ -344,8 +344,8 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only one element.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
          *                             sizes of the buffers will be used. In this function this parameter is ignored.
          *
          */
@@ -367,8 +367,8 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only one element.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
          *                             sizes of the buffers will be used. In this function this parameter is ignored.
          *
          * @return                     A copy of the processed input.
@@ -392,8 +392,8 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only one element.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
          *                             sizes of the buffers will be used. In this function this parameter is ignored.
          *
          */
@@ -419,9 +419,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          * @return                     A copy of the processed input based on v.
@@ -448,9 +448,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -476,9 +476,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -504,9 +504,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          * @return                     A copy of the processed input based on v.
@@ -533,9 +533,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -561,9 +561,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -589,9 +589,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          * @return                     A copy of the processed input based on v.
@@ -618,9 +618,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -646,9 +646,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -674,9 +674,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          * @return                     A copy of the processed input based on v.
@@ -703,9 +703,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -731,9 +731,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -759,9 +759,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          * @return                     A copy of the processed input based on v.
@@ -788,9 +788,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -816,9 +816,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -844,9 +844,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          * @return                     A copy of the processed input based on v.
@@ -873,9 +873,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -901,9 +901,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -929,9 +929,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          * @return                     A copy of the processed input based on v.
@@ -958,9 +958,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -986,9 +986,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -1014,9 +1014,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          * @return                     A copy of the processed input based on v.
@@ -1043,9 +1043,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -1071,9 +1071,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -1099,9 +1099,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          * @return                     A copy of the processed input based on v.
@@ -1128,9 +1128,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -1156,9 +1156,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -1184,9 +1184,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          * @return                     A copy of the processed input based on v.
@@ -1213,9 +1213,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -1241,9 +1241,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -1269,9 +1269,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          * @return                     A copy of the processed input based on v.
@@ -1298,9 +1298,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -1326,9 +1326,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -1354,9 +1354,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          * @return                     A copy of the processed input based on v.
@@ -1383,9 +1383,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -1411,9 +1411,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -1439,9 +1439,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          * @return                     A copy of the processed input based on v.
@@ -1468,9 +1468,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -1496,9 +1496,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -1524,9 +1524,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          * @return                     A copy of the processed input based on v.
@@ -1553,9 +1553,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -1581,9 +1581,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -1609,9 +1609,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          * @return                     A copy of the processed input based on v.
@@ -1638,9 +1638,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -1666,9 +1666,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -1694,9 +1694,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          * @return                     A copy of the processed input based on v.
@@ -1723,9 +1723,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -1751,9 +1751,9 @@ class ROS_OpenCL{
          *                             - buffers_size: A vector of size_t that changes the size of the buffers used to communicate
          *                              with the kernel according to its contents. In this function it should contain only two elements.
          *                             The rest of the values are ignored.
-         *                             - two_dimensional: A boolean that states if the kernel is two dimensional. By default, this parameter
-         *                             is set to false. Generally, if the two_dimensional is true but global_work_size is empty, the default 
-         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of two_dimensional is 
+         *                             - multi_dimensional: A boolean that states if the kernel is multidimensional. By default, this parameter
+         *                             is set to false. Generally, if the multi_dimensional is true but global_work_size is empty, the default 
+         *                             sizes of the buffers will be used. If global_work_size is not empty, the value of multi_dimensional is 
          *                             ignored with a warning.
          *
          */
@@ -1765,7 +1765,13 @@ class ROS_OpenCL{
         // |                             |
         // v                             v
 
+        std::vector<char> process(const std::vector<char> v, const std::vector<char> v2, const std::vector<char> v3, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<char>* v, const std::vector<char> v2, const std::vector<char> v3, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<char>* v, std::vector<char>* v2, const std::vector<char> v3, const ROS_OpenCL_Params* params=NULL);
+        void process(std::vector<char>* v, std::vector<char>* v2, std::vector<char>* v3, const ROS_OpenCL_Params* params=NULL);
 
+        // Add all triplet functions
+        // Check documentation again, especially on two_dimensional->multi_dimensional parts!
 };
 
 }
