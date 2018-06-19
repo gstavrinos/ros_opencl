@@ -40,7 +40,7 @@ int main (int argc, char** argv){
     nh.param("ros_opencl_double_double_vectors_test3/kernel_filename", kernel_filename, string("test_kernels.cl"));
     nh.param("ros_opencl_double_double_vectors_test3/image_topic", image_topic, string("/usb_cam/image_raw"));
     nh.param("ros_opencl_double_double_vectors_test3/result_topic", result_topic, string("ros_opencl_double_double_vectors_test3/result"));
-    nh.param("ros_opencl_double_double_vectors_test3/result_topic", result_topic2, string("ros_opencl_double_double_vectors_test3/result2"));
+    nh.param("ros_opencl_double_double_vectors_test3/result_topic2", result_topic2, string("ros_opencl_double_double_vectors_test3/result2"));
 
     string full_kernel_path = ros::package::getPath("ros_opencl") + "/tests/kernels/" + kernel_filename;
 
