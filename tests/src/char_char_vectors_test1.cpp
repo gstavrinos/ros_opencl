@@ -37,7 +37,7 @@ int main (int argc, char** argv){
 
     nh.param("ros_opencl_char_char_vectors_test1/kernel_filename", kernel_filename, string("test_kernels.cl"));
     nh.param("ros_opencl_char_char_vectors_test1/image_topic", image_topic, string("/usb_cam/image_raw"));
-    nh.param("ros_opencl_char_char_vectors_test1/result_topic2", result_topic, string("ros_opencl_char_char_vectors_test1/result"));
+    nh.param("ros_opencl_char_char_vectors_test1/result_topic", result_topic, string("ros_opencl_char_char_vectors_test1/result"));
 
     string full_kernel_path = ros::package::getPath("ros_opencl") + "/tests/kernels/" + kernel_filename;
 
