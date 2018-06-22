@@ -110,8 +110,8 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a683743545b4b332952e206ea5b437e9f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classros__opencl__params_1_1ROS__OpenCL__Params.html#a683743545b4b332952e206ea5b437e9f">two_dimensional</a></td></tr>
-<tr class="separator:a683743545b4b332952e206ea5b437e9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41722289bddb807391d6f90c596c81db"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classros__opencl__params_1_1ROS__OpenCL__Params.html#a41722289bddb807391d6f90c596c81db">multi_dimensional</a></td></tr>
+<tr class="separator:a41722289bddb807391d6f90c596c81db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaddc1a9022a197412d04700a41352eb0"><td class="memItemLeft" align="right" valign="top">std::vector&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classros__opencl__params_1_1ROS__OpenCL__Params.html#aaddc1a9022a197412d04700a41352eb0">global_work_size</a></td></tr>
 <tr class="separator:aaddc1a9022a197412d04700a41352eb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2fcb0f16eed0b44136c9c2a5f5db3a37"><td class="memItemLeft" align="right" valign="top">std::vector&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classros__opencl__params_1_1ROS__OpenCL__Params.html#a2fcb0f16eed0b44136c9c2a5f5db3a37">buffers_size</a></td></tr>
@@ -207,16 +207,16 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a683743545b4b332952e206ea5b437e9f"></a>
+<a class="anchor" id="a41722289bddb807391d6f90c596c81db"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool ros_opencl_params::ROS_OpenCL_Params::two_dimensional</td>
+          <td class="memname">bool ros_opencl_params::ROS_OpenCL_Params::multi_dimensional</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>True if the global work size should be two dimensional with the sizes of the two buffers. This is equivalent to using the buffers_size parameter, and pushing back the sizes of the two input vectors. Defaults to false, and is not used in functions with one input vector. </p>
+<p>True if the global work size should be multidimensional with the sizes of the buffers. This is equivalent to using the buffers_size parameter, and pushing back the sizes of the input vectors. Defaults to false, and is not used in functions with one input vector. </p>
 
 <p>Definition at line <a class="el" href="ros__opencl__params_8hpp_source.html#l00014">14</a> of file <a class="el" href="ros__opencl__params_8hpp_source.html">ros_opencl_params.hpp</a>.</p>
 
