@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>ros_opencl</name>
-  <version>1.1.1</version>
+  <version>1.2.0</version>
   <description>The ros_opencl package offers a library for easy integration of the OpenCL library into ROS.</description>
 
   <maintainer email="gstavrinos@iit.demokritos.gr">George Stavrinos</maintainer>

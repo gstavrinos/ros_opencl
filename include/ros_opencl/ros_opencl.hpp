@@ -1759,12 +1759,6 @@ class ROS_OpenCL{
          */
         void process(std::vector<double>* v, std::vector<double>* v2, const ROS_OpenCL_Params* params=NULL);
 
-        // |                             |
-        // |            TODO             |
-        // |  -- Not yet implemented --  |
-        // |                             |
-        // v                             v
-
         /**
          * @brief                      The function that initiates kernel processing.
          *
@@ -9508,7 +9502,14 @@ class ROS_OpenCL{
          *
          */
         void process(std::vector<double>* v, std::vector<double>* v2, std::vector<double>* v3, const ROS_OpenCL_Params* params=NULL);
-        // Add all triplet functions
+
+
+        // |                             |
+        // |            TODO             |
+        // |  -- Not yet implemented --  |
+        // |                             |
+        // v                             v
+
         // Check documentation again, especially on two_dimensional->multi_dimensional parts!
 };
 
